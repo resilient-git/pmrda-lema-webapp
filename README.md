@@ -1,6 +1,6 @@
 # PMRDA - Land and Estate Web App Angular Client
 
-s
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli)
 
 ## Development server
