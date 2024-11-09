@@ -1,0 +1,272 @@
+<div class="grid grid-cols-1 xl:grid-cols-2 w-full">
+    <div class="grid sm:grid-flow-col xl:grid-flow-row">
+        <div class="relative flex flex-col flex-auto bg-card shadow overflow-hidden">
+            <div style="text-align: center;background: #c1c1c1;" class="text-3xl font-semibold tracking-tight leading-8">Property Transfer Document
+            </div>       
+            <div class="timeline-steps aos-init aos-animate" data-aos="fade-up">
+                <div class="timeline-step timeline-step-done" style="margin-top: 3px;">
+                    <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2003">
+                        <p class="h6 mt-2 mt-lg-3 mb-2 mb-lg-3">01. Application</p>
+                    </div>
+                </div>
+                <div class="timeline-step  timeline-step-done"  style="margin-top: 3px;">
+                    <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2004">
+                        <p class="h6 mt-2 mt-lg-3 mb-2 mb-lg-3">02. Documents</p>
+                    </div>
+                </div>
+               
+                <div class="timeline-step timeline-step-active mb-0"  style="margin-top: 3px;">
+                    <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2020">
+                        <p class="h6 mt-2 mt-lg-3 mb-2 mb-lg-3">03. Actions</p>
+                    </div>
+                </div>
+            </div>
+            <div style="border: 3px solid #ad2331;padding:0px;">
+
+                <mat-grid-list cols="3" rowHeight="6:1">
+                    <mat-grid-tile>
+                        Property ID&nbsp;-&nbsp;<b>{{pta.uprn}}</b>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        Application Number&nbsp;-&nbsp;<b>{{pta.application_number}}</b>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        Application Date&nbsp;-&nbsp;<b>{{pta.application_date}}</b>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        Owner Name&nbsp;-&nbsp;<b>{{pta.owner_name}}</b>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        Owner Mobile&nbsp;-&nbsp;<b>{{pta.owner_mobile}}</b>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        Appointment Date&nbsp;:&nbsp;<b>{{pta.appointment_date}}</b>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        Appointment Time Slot&nbsp;:&nbsp;<b>{{pta.appointment_time}}</b>
+                    </mat-grid-tile>
+                </mat-grid-list>
+
+                <div class="mt-1 "></div>
+                
+                <div style="padding:10px;border:20px solid #2565a6;">
+                    <form [formGroup]="approveForm">
+                      <!--<mat-form-field class="fuse-mat-no-subscript  w-1/2 pr-2">
+                          <mat-label>Leasedeed Registration Number and Haveli Number/भाडेपट्टा दस्त क्र., हवेली क्र.</mat-label>
+                          <input
+                              matInput
+                              [formControlName]="'leasedeed_registration_number_haveli_number'"
+                              [placeholder]="'Enter Leasedeed Registration Number and Haveli Number'" 
+                              required>                    
+                      </mat-form-field> 
+                      <mat-form-field class="fuse-mat-no-subscript  w-1/2 pr-2">
+                          <mat-label>Leasedeed Registration Date/भाडेपट्टा दस्त दि.</mat-label>
+                          <input
+                              matInput
+                              [formControlName]="'leasedeed_registration_date'"
+                              [placeholder]="'Leasedeed Registration Date'" 
+                              required>
+                      </mat-form-field> -->
+                    <div class="mt-4 mb-4 "></div>
+                    <mat-form-field class="fuse-mat-no-subscript  w-1/2 pr-2">
+                        <mat-label>Sales Amount/मालमत्ता विक्री रक्कम</mat-label>
+                        <input
+                            matInput
+                            [formControlName]="'sales_amount'"
+                            [placeholder]="'Sales Amount/मालमत्ता विक्री रक्कम'" 
+                            required>
+                    </mat-form-field> 
+                    <mat-form-field class="fuse-mat-no-subscript  w-1/2 pr-2">
+                        <mat-label>Market Value/मालमत्ता बाजार मूल्य</mat-label>
+                        <input
+                            matInput
+                            [formControlName]="'market_value'"
+                            [placeholder]="'Market Value/मालमत्ता बाजार मूल्य'" 
+                            required>
+                    </mat-form-field> 
+                    <div class="mt-4 mb-4"></div>
+                    <div style="float: left;width:50%;">
+                        <div>विहित नमुन्यातील फॉर्म क्र. 01 जोडला आहे काय?</div>
+
+                              <mat-radio-group
+                                [color]="'primary'"
+                                [formControlName]="'form_1_attached'" required>
+                                <mat-radio-button
+                                    class="mb-4"
+                                    value="1">
+                                    होय
+                                </mat-radio-button>
+                                &nbsp;&nbsp;&nbsp;
+                                <mat-radio-button
+                                    class="mb-4"
+                                    value="2">
+                                    नाही
+                                </mat-radio-button>  
+                                
+                            </mat-radio-group>   
+
+                        
+                        </div>
+                    <mat-form-field class="fuse-mat-no-subscript  w-1/2 pr-2">
+                        <mat-label>कर्ज परतफेड केलेल्या वित्त संस्थेचे नाव, पत्र क्र. व दिनांक</mat-label>
+                        <input
+                            matInput
+                            [formControlName]="'loan_details'"
+                            [placeholder]="'कर्ज परतफेड केलेल्या वित्त संस्थेचे नाव, पत्र क्र. व दिनांक'" 
+                            required>
+                    </mat-form-field> 
+                    <div class="mt-4 mb-4"></div>
+                    <mat-form-field class="fuse-mat-no-subscript  w-1/2 pr-2">
+                        <mat-label>सोसायटी सभासद यादीतील सभासदांचे नाव व क्र. </mat-label>
+                        <input
+                            matInput
+                            [formControlName]="'society_details'"
+                            [placeholder]="'सोसायटी सभासद यादीतील सभासदांचे नाव व क्र.'" 
+                            required>
+                    </mat-form-field> 
+                    <mat-form-field class="fuse-mat-no-subscript  w-1/2 pr-2">
+                        <mat-label>सोसायटी ना हरकत दाखला</mat-label>
+                        <input
+                            matInput
+                            [formControlName]="'society_noc_details'"
+                            [placeholder]="'सोसायटी ना हरकत दाखला'" 
+                            required>
+                    </mat-form-field> 
+                    <div class="mt-4 mb-4"></div>
+
+                    <mat-form-field class="fuse-mat-no-subscript  w-1/2 pr-2">
+                        <mat-label>दोघांमध्ये झालेल्या करारनाम्याची तारीख व कोणापुढे झाला?</mat-label>
+                        <input
+                            matInput
+                            [formControlName]="'mou_details'"
+                            [placeholder]="'दोघांमध्ये झालेल्या करारनाम्याची तारीख व कोणापुढे झाला?'" 
+                            required>
+                    </mat-form-field> 
+                    <mat-form-field class="fuse-mat-no-subscript  w-1/2 pr-2">
+                        <mat-label>वाढीव बांधकामाबाबतचे हमीपत्र/बंधपत्र</mat-label>
+                        <input
+                            matInput
+                            [formControlName]="'additional_work_letter'"
+                            [placeholder]="'वाढीव बांधकामाबाबतचे हमीपत्र/बंधपत्र'" 
+                            required>
+                    </mat-form-field> 
+                    <div class="mt-4 mb-4"></div>
+
+                    <mat-form-field class="fuse-mat-no-subscript  w-1/2 pr-2">
+                        <mat-label>गाळयाचे मूळ अधिमुल्य रक्कम  रु.</mat-label>
+                        <input
+                            matInput
+                            [formControlName]="'basic_premium_amount'"
+                            [placeholder]="'गाळयाचे मूळ अधिमुल्य रक्कम'" 
+                            required>
+                    </mat-form-field> 
+                    <mat-form-field class="fuse-mat-no-subscript  w-1/2 pr-2">
+                        <mat-label>अ) फॉर्म नं.1 मध्ये नमुद केलेली प्लॉटची किंमत</mat-label>
+                        <input
+                            matInput
+                            [formControlName]="'form_1_amount'"
+                            [placeholder]="'फॉर्म नं.1 मध्ये नमुद केलेली प्लॉटची किंमत'" 
+                            required>
+                    </mat-form-field> 
+                    <div class="mt-4 mb-4"></div>
+                    
+
+                     <!--<mat-form-field class="fuse-mat-no-subscript  w-1/2 pr-2">
+                       <mat-label> 
+                            हस्तांतरण फी                   
+                        </mat-label>
+                        <input                        
+                            matInput
+                            [formControlName]="'transfer_fee'"
+                            required readonly>
+                    </mat-form-field> -->
+
+                    <div style="float: left;width:50%;">
+                        हस्तांतरण फी - {{pta.transfer_fee}}
+                    </div>
+                    <mat-form-field class="fuse-mat-no-subscript  w-1/2 pr-2">
+                        <mat-label>                    
+                            अनधिकृत अथवा वाढीव बांधकाम केले आहे किंवा कसे? याबाबत कनिष्ठ अभियंता, अभियांत्रिकी विभाग यांचेकडील अहवाल
+                        </mat-label>
+                        <input
+                            matInput
+                            [formControlName]="'additional_work_details'"
+                            [placeholder]="'अनधिकृत अथवा वाढीव बांधकाम केले आहे किंवा कसे? याबाबत कनिष्ठ अभियंता, अभियांत्रिकी विभाग यांचेकडील अहवाल'" 
+                            required>
+                    </mat-form-field> 
+                    <div class="mt-4 mb-4"></div>
+
+                
+                   
+<!--
+-->
+        
+                    <div class="flex">
+                                                
+                        <mat-label>Kindly forward the application to the concerned officer for further processing.
+                        <br/>
+                        <mat-radio-group [formControlName]="'forward_to'">
+                            <mat-radio-button *ngFor="let option of radioOptions" [value]="option.user_id" style="border-bottom:1px dotted rgb(127, 122, 122); width: 95%;padding-top: 10px;margin-left:10px;">
+                                {{ option.role_name }} &rarr;
+                                {{ option.first_name }} {{ option.last_name }} <br/>                                  
+                            </mat-radio-button><br/>
+                        </mat-radio-group>
+                        </mat-label><br/>
+                        
+                    </div>
+        
+                    <div class="flex mt-8" style="text-align: center;">
+                        <button class="px-8" mat-flat-button [color]="'primary'" type="button"
+                        (click)="sendApproval()" >
+                        <!-- [disabled]="approveForm.invalid"  -->
+                            Approve
+                        </button>
+                        
+        
+                    </div>
+                  </form>
+                
+               
+                <div class="mt-4 mb-4 "></div>   
+
+                <div>
+                    <form [formGroup]="rejectForm">
+                        <div class="text-xl font-semibold">Raise Query & Send Back Application</div>
+                     
+                      <div class="flex">
+                          <mat-form-field class="fuse-mat-textarea flex-auto">
+                              <textarea #namedElement
+                                  matInput
+                                  [formControlName]="'reason'"
+                                  [placeholder]="'Enter Reason for Rejection'"
+                                  [rows]="5"></textarea>
+                              <mat-icon
+                                  class="icon-size-5"
+                                  matPrefix
+                                  [svgIcon]="'heroicons_solid:pencil'"></mat-icon>
+                          </mat-form-field>
+                      </div>
+                      <div class="flex" style="text-align: center;">
+                          <button class="px-8" mat-flat-button [color]="'primary'" type="button" 
+                          (click)="sendRejection()">
+                          <!-- [disabled]="rejectForm.invalid"  -->
+                          Send Query
+                          </button>                  
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                
+                <div class="mt-4 mb-4 "></div>   
+                <div> 
+                    <button style="float: left;" class="px-8 mx-2" mat-flat-button [color]="'primary'" type="button"
+                    [routerLink]="['/clerk/view-calculation-transfer-document/'+ application_id]">
+                    &lArr; Documents 
+                    </button>                    
+                </div>
+                <div style="clear:both;">&nbsp;</div>
+            </div>
+            
+        </div>
+    </div>
+</div>

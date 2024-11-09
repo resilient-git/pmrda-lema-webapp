@@ -1,0 +1,60 @@
+<div class="flex flex-col flex-auto w-full">
+    <div class="flex flex-wrap w-full max-w-screen-xl mx-auto">
+      <div style="padding-left: 30px;padding-top: 25px;padding-bottom: 5px;">
+        <div class="text-3xl font-bold"> Deed Printing & Handover</div><br/><br/>
+       <a href="{{pdfSrc}}" style="color:blue;" target="_blank">
+          <button
+              class="px-8"
+              mat-flat-button
+              [color]="'primary'"
+              type="button"
+              >
+              Download/Print
+          </button>
+        </a>
+        <form>
+         
+         
+       <br/><br/>
+
+       <div>
+        <br/><br/>
+        <form [formGroup]="approveForm">
+          <div class="text-xl font-semibold">Complete Handover </div>
+          <div class="flex flex-col mx-2 box_border_2">
+            <div class="text-sm font-medium leading-none text-secondary">
+                Upload Signed Last Page of Deed<br/>स्वाक्षरी केलेले डीडचे शेवटचे पृष्ठ अपलोड करा
+            </div>
+            <div class="mt-2 font-medium leading-none">
+                <input  class="flex flex-row" type="file"  
+                [formControlName]="'deed_signed_last_page'" (change)="onSelect($event,'transferee_aadhar_card')"
+                    accept="image/*,.pdf" required/>
+            </div>
+          </div>
+          <div class="flex">
+           
+          </div>
+
+
+         
+
+          <div class="flex mt-8" style="text-align: center;">
+              <button class="px-8" mat-flat-button [color]="'primary'" type="button"
+              (click)="sendApproval()" >
+              <!-- [disabled]="approveForm.invalid"  -->
+                  Submit
+              </button>
+              
+
+          </div>
+        </form>
+      </div>
+
+      
+        </form>
+      </div>
+        
+        
+    </div>
+  </div>
+<div #myDiv (click)="dummyBinding()"></div>

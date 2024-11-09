@@ -1,0 +1,105 @@
+<div class="grid grid-cols-1 xl:grid-cols-2 w-full">
+    <div class="grid sm:grid-flow-col xl:grid-flow-row">
+        <div class="relative flex flex-col flex-auto bg-card shadow overflow-hidden">
+            <div style="text-align: center;background: #c1c1c1;" class="text-3xl font-semibold tracking-tight leading-8">Close Bank NoC Application
+            </div>  
+            <div style="border: 3px solid #ad2331;padding:0px;">
+
+                <mat-grid-list cols="3" rowHeight="6:1">
+                    <mat-grid-tile>
+                        Property ID&nbsp;-&nbsp;<b>{{pta.uprn}}</b>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        Application Number&nbsp;-&nbsp;<b>{{pta.application_number}}</b>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        Application Date&nbsp;-&nbsp;<b>{{pta.application_date}}</b>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        Owner Name&nbsp;-&nbsp;<b>{{pta.owner_name}}</b>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        Owner Mobile&nbsp;-&nbsp;<b>{{pta.owner_mobile}}</b>
+                    </mat-grid-tile>
+                    
+                </mat-grid-list>
+
+                <div class="mt-1 "></div>
+                <mat-grid-list cols="1" rowHeight="3:1">
+                    <mat-grid-tile>
+                        <div>
+                            <form [formGroup]="approveForm">
+                              <div class="text-xl font-semibold">Complete Application</div>
+                              <p>To close application upload signed Bank NoC certificate and proceed.</p><br/><br/>
+                              <div class="flex">
+                                    <div class="flex flex-col mx-2 box_border_2">
+                                        <div class="text-sm font-medium leading-none text-secondary">
+                                            Upload Signed  Bank NoC Certificate<br/>स्वाक्षरी केलेले प्रमाणपत्र अपलोड करा
+                                        </div>
+                                        <div class="mt-2 font-medium leading-none">
+                                            <input  class="flex flex-row" type="file"  
+                                            [formControlName]="'signed_certificate'" (change)="onSelect($event)"
+                                                accept=".pdf" required/>
+                                        </div>
+                                    </div>
+                              </div>
+                  
+                  
+                             
+                  
+                              <div class="flex mt-8" style="text-align: center;">
+                                  <button class="px-8" mat-flat-button [color]="'primary'" type="button"
+                                  (click)="sendApproval()" >
+                                  <!-- [disabled]="approveForm.invalid"  -->
+                                      Approve
+                                  </button>
+                                  
+                  
+                              </div>
+                            </form>
+                          </div>
+                    </mat-grid-tile>
+                    <!--<mat-grid-tile>
+                        <div>
+                            <form [formGroup]="rejectForm">
+                              <div class="text-xl font-semibold">Reject Application</div>
+                              <p>To reject this application enter Reason and proceed.</p>
+                              <div class="flex">
+                                  <mat-form-field class="fuse-mat-textarea flex-auto">
+                                      <textarea
+                                          matInput
+                                          [formControlName]="'reason'"
+                                          [placeholder]="'Enter Reason for Rejection'"
+                                          [rows]="5"></textarea>
+                                      <mat-icon
+                                          class="icon-size-5"
+                                          matPrefix
+                                          [svgIcon]="'heroicons_solid:pencil'"></mat-icon>
+                                  </mat-form-field>
+                              </div>
+                  
+                  
+                             
+                  
+                              <div class="flex" style="text-align: center;">
+                                  <button class="px-8" mat-flat-button [color]="'primary'" type="button" 
+                                  (click)="sendRejection()">
+                                    
+                                      Reject
+                                  </button>
+                                 
+                  
+                              </div>
+                            </form>
+                          </div>
+                    </mat-grid-tile>-->
+                </mat-grid-list>
+                
+                <div class="mt-4 mb-4 "></div>   
+                
+                <div style="clear:both;">&nbsp;</div>
+            </div>
+            
+        </div>
+    </div>
+</div>

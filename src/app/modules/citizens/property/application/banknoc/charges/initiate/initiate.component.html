@@ -1,0 +1,145 @@
+<div class="grid grid-cols-1 xl:grid-cols-2 w-full">
+    <div class="grid sm:grid-flow-col xl:grid-flow-row">
+        <div class="relative flex flex-col flex-auto bg-card shadow overflow-hidden">
+            <div style="text-align: center;background: #c1c1c1;" class="text-3xl font-semibold tracking-tight leading-8">Property Transfer Application
+            </div>       
+            <div class="timeline-steps aos-init aos-animate" data-aos="fade-up">
+                <div class="timeline-step timeline-step-done" style="margin-top: 3px;">
+                    <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2003">
+                        <p class="h6 mt-2 mt-lg-3 mb-2 mb-lg-3">01. Application</p>
+                    </div>
+                </div>
+                <div class="timeline-step timeline-step-done"  style="margin-top: 3px;">
+                    <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2004">
+                        <p class="h6 mt-2 mt-lg-3 mb-2 mb-lg-3">02. Fee Receipt</p>
+                    </div>
+                </div>
+                <div class="timeline-step timeline-step-active"  style="margin-top: 3px;">
+                    <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2005">
+                        <p class="h6 mt-2 mt-lg-3 mb-2 mb-lg-3">03. Transfer Payment</p>
+                    </div>
+                </div>
+                <div class="timeline-step"  style="margin-top: 3px;">
+                    <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2010">
+                        <p class="h6 mt-2 mt-lg-3 mb-2 mb-lg-3">04. Transfer Reciept</p>
+                    </div>
+                </div>
+                <div class="timeline-step mb-0"  style="margin-top: 3px;">
+                    <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2010">
+                        <p class="h6 mt-2 mt-lg-3 mb-2 mb-lg-3">05. Transfer Certificate</p>
+                    </div>
+                </div>
+
+                
+            </div>
+            <div style="border: 3px solid #ad2331;padding:10px;">
+                <form 
+                [formGroup]="initiateForm">
+        <!--
+
+                <input matInput hidden="true" [formControlName]="'tid'" required>
+                
+                <input matInput hidden="true" [formControlName]="'order_id'" required>
+                <input matInput hidden="true" [formControlName]="'amount'" required>
+                
+                    <input matInput hidden="true" [formControlName]="'merchant_id'" required><input matInput hidden="true" [formControlName]="'currency'" required>
+                <input matInput hidden="true" [formControlName]="'redirect_url'" required>
+                <input matInput hidden="true" [formControlName]="'cancel_url'" required>
+                <input matInput hidden="true" [formControlName]="'language'" required>
+                -->
+                
+
+                <div class="mt-2 mb-2 "></div>
+                <div class="flex flex-col gt-xs:flex-row">
+                
+                    <div #myDiv (click)="dummyBinding()"> 
+                        
+                        <p class="my-6 font-medium">
+                            Pay Property Transfer Payment through Online Gateway by using Debit Card / Credit Card / Net Banking / UPI.
+                        </p>
+                        <p class="my-6 font-medium">
+                            Property Transfer Charges - Rs. {{amount}}
+
+                            
+                        </p>
+        
+                    </div>
+                    
+                    <div class="mt-2 mb-2 "></div>
+
+                
+                
+
+                    
+
+                    <div class="mt-2 mb-2 "></div>
+                    <div class="inline-flex items-end w-full mt-1.5">
+                        <!-- <mat-checkbox
+                            [color]="'primary'"
+                            [formControlName]="'agreements'" required>
+                            <span> I have read and agree to PMRDA Payment Policy, tearms and conditions and Privacy policy
+                            </span>
+                            <a
+                                class="ml-1 text-primary-500 hover:underline"
+                                [routerLink]="['./']">Terms of Service
+                            </a>
+                            <span>and</span>
+                            <a
+                                class="ml-1 text-primary-500 hover:underline"
+                                [routerLink]="['./']">Privacy Policy
+                            </a>
+                        </mat-checkbox>-->
+                        <span> I have read and agree to PMRDA Payment Policy, tearms and conditions and Privacy policy
+                        </span>
+                        <a
+                            class="ml-1 text-primary-500 hover:underline"
+                            [routerLink]="['./']">Terms of Service
+                        </a>
+                        <span> and </span>
+                        <a
+                            class="ml-1 text-primary-500 hover:underline"
+                            [routerLink]="['./']">Privacy Policy
+                        </a>
+                    </div>
+                        
+                </div>
+
+                <div class="mt-4 mb-4 "></div>
+
+                <div class="flex items-center">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button
+                        class="px-8"
+                        mat-flat-button
+                        [color]="'primary'"
+                        type="submit"
+                        (click)="proceedToPay()"
+                        >
+                        Proceed to Pay
+                    </button>
+                </div>
+
+                <div class="mt-4 mb-4 "></div>
+
+                <!-- <div >
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span> By clicking continue, i am agree with 
+                    </span>
+                    <a
+                        class="ml-1 text-primary-500 hover:underline"
+                        [routerLink]="['./']">Terms & Policy
+                    </a>
+                </div> -->
+                <div class="mt-4 mb-4 "></div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

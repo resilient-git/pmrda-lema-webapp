@@ -1,0 +1,75 @@
+<div class="flex flex-col flex-auto w-full">
+    <div class="flex flex-wrap w-full max-w-screen-xl mx-auto p-6 md:p-8">
+        <div class="flex items-center justify-between w-full">
+            <div>
+                <h2 class="text-3xl font-semibold tracking-tight leading-8">Property Transfer Application </h2>
+            </div>    
+        </div>
+        <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 w-full mt-8">
+            <div class="grid gap-8 sm:grid-flow-col xl:grid-flow-row">
+                <div class="relative flex flex-col flex-auto bg-card rounded-2xl shadow overflow-hidden">   
+                    <div class="timeline-steps aos-init aos-animate" data-aos="fade-up">
+                        <div class="timeline-step timeline-step-done">
+                            <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2003">
+                                
+                                <p class="h6 mt-3 mt-lg-3 mb-3 mb-lg-3">Select Property</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step timeline-step-done">
+                            <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2004">
+                                
+                                <p class="h6 mt-3 mt-lg-3 mb-3 mb-lg-3">Application</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step timeline-step-done">
+                            <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2005">
+                                
+                                <p class="h6 mt-3 mt-lg-3 mb-3 mb-lg-3">Payment</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step timeline-step-done">
+                            <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2010">
+                               
+                                <p class="h6 mt-3 mt-lg-3 mb-3 mb-lg-3">Reciept</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step timeline-step-active mb-0">
+                            <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2020">
+                                
+                                <p class="h6 mt-3 mt-lg-3 mb-3 mb-lg-3">Status</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="border: 3px solid #ad2331;padding:10px;">
+                        <form>
+                            <!-- {{app_date }} -->
+                            <div class="flex flex-col gt-xs:flex-row text-center">
+                                <mat-card *ngFor="let data of bookData$|async" class=" border p-2 mb-4">
+                                    <mat-card-title class="bold" style="font-size: 22px;display: block;">
+                                        {{data.app_day}}, {{data.app_date}}
+                                        &nbsp;
+                                    </mat-card-title>
+                                    <mat-card-subtitle>
+                                        Morning Session (11am - 1pm) :: {{10 - data.app_booked_morning}} slots available(out of 10 slots)
+                                        <button mat-raised-button [color]="'primary'" *ngIf="data.app_booked_morning < 10" type="button"
+                                            (click)="fuseCard.face = 'back';bookConfirm(1,data.app_day, data.app_date)">
+                                            Book Morning Session Slot 
+                                            <mat-icon>arrow_right_alt</mat-icon>
+                                        </button>
+                                        <br/><br/>
+                                        Afternoon Session (3pm - 5pm) :: {{10 - data.app_booked_evening}} slots available(out of 10 slots)
+                                        <button mat-raised-button [color]="'primary'" *ngIf="data.app_booked_evening < 10" type="button"
+                                            (click)="fuseCard.face = 'back';bookConfirm(2,data.app_day, data.app_date)">
+                                            Book Afternoon Session Slot 
+                                            <mat-icon>arrow_right_alt</mat-icon>
+                                        </button>
+                                    </mat-card-subtitle>
+                                </mat-card>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

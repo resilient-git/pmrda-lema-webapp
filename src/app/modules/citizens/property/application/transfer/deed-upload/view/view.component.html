@@ -1,0 +1,57 @@
+<div class="flex flex-col flex-auto w-full">
+    <div class="flex flex-wrap w-full max-w-screen-xl mx-auto">
+      <div style="padding-left: 30px;padding-top: 25px;padding-bottom: 5px;">
+        <div class="text-3xl font-bold"> Download Deed</div><br/><br/>
+       <a href="{{pdfSrc}}" style="color:blue;" target="_blank">
+          <button
+              class="px-8"
+              mat-flat-button
+              [color]="'primary'"
+              type="button"
+              >
+              Download/Print
+          </button>
+        </a>
+        <br/><br/><br/><br/>
+        <div class="text-3xl font-bold"> Upload Certified Deed</div>
+       
+
+       <div>
+        
+        <form [formGroup]="approveForm">
+         
+          <div class="flex flex-col mx-2 box_border_2">
+            <div class="text-sm font-medium leading-none text-secondary">
+                Upload Certified Deed<br/>प्रमाणित डीड अपलोड करा
+            </div>
+            <div class="mt-2 font-medium leading-none">
+                <input  class="flex flex-row" type="file"  
+                [formControlName]="'certified_deed'" (change)="onSelect($event,'certified_deed')"
+                    accept=".pdf" required/>
+            </div>
+        </div>
+          <div class="flex">
+           
+          </div>
+
+
+         
+
+          <div class="flex mt-8" style="text-align: center;">
+              <button class="px-8" mat-flat-button [color]="'primary'" type="button"
+              (click)="sendApproval()" >
+              <!-- [disabled]="approveForm.invalid"  -->
+                  Submit
+              </button>
+              
+
+          </div>
+        </form>
+      </div>
+
+      </div>
+        
+        
+    </div>
+  </div>
+<div #myDiv (click)="dummyBinding()"></div>

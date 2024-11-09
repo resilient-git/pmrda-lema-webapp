@@ -1,0 +1,122 @@
+<div class="flex flex-col flex-auto w-full">
+
+    <div class="flex flex-wrap w-full max-w-screen-xl mx-auto p-6 md:p-8">
+        <div class="flex items-center justify-between w-full">
+            <div>
+                <h2 class="text-3xl font-semibold tracking-tight leading-8">Update Gut/CTS/Survey</h2>
+
+            </div>
+           
+        </div>
+  <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 w-full mt-8">
+     <div class="grid gap-8 sm:grid-flow-col xl:grid-flow-row">
+            <!--statement -->
+        <div class="relative flex flex-col flex-auto p-6 pr-3 pb-3 bg-card rounded-2xl shadow overflow-hidden">   
+ 
+       <form
+            [formGroup]="bulklandForm">
+            <div class="flex-auto grid grid-cols-4 gap-4 mt-6">
+               
+                <div class="col-span-3 flex flex-col items-left justify-left">
+                    <mat-label>Taluka </mat-label>
+                    <mat-label class="p-3 border m-1 rounded bg-gray-100">{{bulklandForm.value.taluka_name_en}}({{bulklandForm.value.taluka_name_mr}})
+                    </mat-label>
+                </div>
+
+
+                <div class="col-span-3 flex flex-col items-left justify-left">
+                    <mat-label>Village </mat-label>
+                    <mat-label class="p-3 border m-1 rounded bg-gray-100">{{bulklandForm.value.village_name_en}} ({{bulklandForm.value.village_name_mr}})
+                    </mat-label>
+               </div>
+               
+               <div class="col-span-3 flex flex-col items-left justify-left">
+                  <mat-label>Area in Sqare meter </mat-label>
+                  <mat-label class="p-3 border m-1 rounded bg-gray-100">{{bulklandForm.value.area_in_sq_m}} 
+                  </mat-label>
+               </div>
+            
+               <div class="col-span-3 flex flex-col items-left justify-left">
+                <mat-label>Source Code </mat-label>
+                <mat-label class="p-3 border m-1 rounded bg-gray-100">{{bulklandForm.value.source_name}}
+                </mat-label>
+               </div>
+
+               <div class="col-span-3 flex flex-col items-left justify-left" *ngIf="bulklandForm.value.other_source == 'other_source'" >
+                <mat-label>Other Source </mat-label>
+                <mat-label class="p-3 border m-1 rounded bg-gray-100">{{bulklandForm.value.other_source}}
+                </mat-label>
+               </div>
+
+               <div class="col-span-3 flex flex-col items-left justify-left" *ngIf="bulklandForm.value.other_source == 'Land Acquition'">
+                <mat-label>Sepecial Land Acquation Officer Designation </mat-label>
+                <mat-label class="p-3 border m-1 rounded bg-gray-100">{{bulklandForm.value.special_land_acquition_officer_number}}
+                </mat-label>
+               </div>
+
+               <div class="col-span-3 flex flex-col items-left justify-left" *ngIf="bulklandForm.value.other_source == 'Land Acquition'">
+                <mat-label>Award Number </mat-label>
+                <mat-label class="p-3 border m-1 rounded bg-gray-100">{{bulklandForm.value.award_number}}
+                </mat-label>
+               </div>
+               <div class="col-span-3 flex flex-col items-left justify-left" *ngIf="bulklandForm.value.other_source == 'Land Acquition'">
+                <mat-label>Date Of Award</mat-label>
+                <mat-label class="p-3 border m-1 rounded bg-gray-100">{{bulklandForm.value.date_of_award}}
+                </mat-label>
+               </div>
+               
+               <div class="col-span-3 flex flex-col items-left justify-left" *ngIf="bulklandForm.value.other_source == 'Land Acquition'">
+                <mat-label>Date Of Possession </mat-label>
+                <mat-label class="p-3 border m-1 rounded bg-gray-100">{{bulklandForm.value.date_of_possession}}
+                </mat-label>
+               </div>
+   
+               <div class="col-span-3 flex flex-col items-left justify-left">
+                <mat-label>Aminity  </mat-label>
+                <mat-label class="p-3 border m-1 rounded bg-gray-100">{{bulklandForm.value.aminity_name}} 
+                </mat-label>
+               </div>
+
+               <div class="col-span-3 flex flex-col items-left justify-left" *ngIf="bulklandForm.value.other_source == 'aminity_name'">
+                <mat-label>Other Aaminity </mat-label>
+                <mat-label class="p-3 border m-1 rounded bg-gray-100">{{bulklandForm.value.other_aminity}}
+                </mat-label>
+               </div>
+
+               <div class="col-span-3 flex flex-col items-left justify-left" >
+                <mat-label>Allocation Status</mat-label>
+                <mat-label class="p-3 border m-1 rounded bg-gray-100"  *ngIf="bulklandForm.value.is_aminity_allocated == '0'" >Unallocated</mat-label>
+                <mat-label class="p-3 border m-1 rounded bg-gray-100"  *ngIf="bulklandForm.value.is_aminity_allocated == '1'" >Allocated</mat-label>
+                     
+               </div>
+
+
+
+                <div class="col-span-3 flex flex-col items-left justify-left">
+                    <mat-form-field>
+                        <mat-label>Gut/CTS/Survey/Plot Number</mat-label>
+                        <input
+                            matInput
+                            [formControlName]="'gpsc_number'"> 
+                     </mat-form-field>        
+                </div>
+                                  
+            </div>
+            <div class="flex ">
+                <button class="px-8 mx-2" mat-flat-button [color]="'primary'" type="button"
+                    (click)="send()">
+                    Submit
+                </button>
+
+                <button class="px-8" mat-flat-button [color]="'primary'" type="button"
+                    [routerLink]="['/admin/gat-cts/list']">
+                    Back
+                </button>
+            </div>
+  
+       </form>
+          </div>
+     </div>
+    </div>
+  </div>
+</div>

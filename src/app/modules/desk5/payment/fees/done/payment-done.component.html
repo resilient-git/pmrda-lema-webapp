@@ -1,0 +1,71 @@
+<div class="flex flex-col flex-auto w-full">
+
+    <div class="flex flex-wrap w-full max-w-screen-xl mx-auto p-6 md:p-8">
+        <div class="flex items-center justify-between w-full">
+            <div>
+                <h2 class="text-3xl font-semibold tracking-tight leading-8">Payment Related</h2>
+
+            </div>
+           
+        </div>
+  <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 w-full mt-6">
+     <div class="grid gap-8 sm:grid-flow-col xl:grid-flow-row">
+            <!--statement -->
+        <div class="relative flex flex-col flex-auto p-6 pr-3 pb-3 bg-card rounded-2xl shadow overflow-hidden">   
+
+       
+    
+            <div class="flex flex-col gt-xs:flex-row center">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                
+                <!-- <mat-icon
+                        class="icon-size-24 opacity-25 text-green-500 dark:text-green-400"
+                        [svgIcon]="'heroicons_outline:check-circle'"></mat-icon> -->
+                <div class="absolute  right-0 w-24 h-24 -m-6">
+                    
+                    <mat-icon
+                        class="icon-size-24 opacity-25 text-green-500 dark:text-green-400"
+                        [svgIcon]="'heroicons_outline:check-circle'">
+                    </mat-icon>
+                </div> 
+                
+                    <p class="text-xl font-semibold tracking-tight leading-8 truncate">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                       You sent money successfully
+                    </p>
+                    <p class="my-6 font-medium">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                       Thank you for Payment!!
+                    </p>
+    
+                    <!-- <div class="mt-4 mb-4 "></div>-->
+                    <div class="flex ">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button
+                            class="px-8"
+                            mat-flat-button
+                            [color]="'primary'"
+                            type="button"
+                            [routerLink]="['/desk5/schedule-applications/'+application_code]"
+                            >
+                            Schedule Appointment
+                        </button>
+                    </div>
+
+                    <div class="mt-4 mb-4 "></div>
+
+       
+       <!-- </form> -->
+          </div>
+     </div>
+    </div>
+  </div>
+</div>

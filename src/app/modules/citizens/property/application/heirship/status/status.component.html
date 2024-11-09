@@ -1,0 +1,119 @@
+<div class="flex flex-col flex-auto w-full">
+    <div class="flex flex-wrap w-full max-w-screen-xl mx-auto p-6 md:p-8">
+     
+        <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 w-full mt-8">
+            <div class="grid gap-8 sm:grid-flow-col xl:grid-flow-row">
+                    <!--statement -->
+            
+                <div class="relative flex flex-col flex-auto p-6 pr-3 pb-3 bg-card rounded-2xl shadow overflow-hidden">   
+                    <!-- {{horizontalStepperForm.value | json}}  -->
+                    <form
+                            [formGroup]="horizontalStepperForm">
+                            <h2 class="text-3xl font-semibold tracking-tight leading-8">Track Application</h2>
+                            <div class="relative flex flex-col p-6 pr-3 pb-3 bg-card rounded-2xl shadow overflow-hidden">
+                                <mat-form-field class="flex-auto gt-xs:pr-3">
+                                    <mat-label>Type Transfer Application Number</mat-label> 
+                                    <b style="margin-left:-16px;background-color:#c1c1c1;width:200px;padding:15px 6px 15px 6px;"> PTAN/2023-24/</b>
+                                    <!--<input
+                                        matInput
+                                        [formControlName]="'heirship_code_year'"
+                                        [style.width.px]="75" 
+                                        [style.background]="'#f9f9f9'"
+                                    />
+                                    <b style="margin-left:-16px;background-color:#c1c1c1;padding:15px 10px 15px 6px;">/</b>
+                                    -->
+                                    <input
+                                        matInput
+                                        [formControlName]="'heirship_code'"
+                                        required 
+                                    />
+                                    <button type="submit" mat-flat-button
+                                        [color]="'primary'" 
+                                        (click)="getApplicationStatus()">
+                                        &nbsp;&nbsp;Get Details &rarr;&nbsp;&nbsp;
+                                    </button>
+                                </mat-form-field>    
+                               <!-- --- OR --- <hr/>
+                                <mat-form-field class="flex-auto gt-xs:pr-3">
+                                    <mat-label>Type Heirship UPRN</mat-label>  
+                                    <mat-icon
+                                    class="icon-size-5"
+                                    [svgIcon]="'heroicons_solid:search'"
+                                    matPrefix></mat-icon>
+                                    <input
+                                        matInput
+                                        [formControlName]="'heirship_code'"
+                                        
+                                        required>
+                                        <button type="submit" mat-flat-button
+                                        [color]="'primary'" 
+                                        (click)="getHeirshipDetails()">
+                                        &nbsp;&nbsp;Get Details &rarr;&nbsp;&nbsp;
+                                        </button>
+                                </mat-form-field>  -->  
+                            </div>
+                
+                        <div class="mt-4 mb-4 "></div>
+
+
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 w-full mt-8" #myDiv *ngIf="showLoader">
+            <div class="flex flex-row flex-wrap mt-4 -mx-6">
+                <div class="flex flex-col mx-6 my-3 box_border_1">
+                    Loading ...
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 xl:grid-cols-2 w-full" *ngIf="(pd | json) != '{}'">
+            <div class="flex flex-row flex-wrap -mx-6">
+                
+                <div class="flex flex-col mx-6 my-3 box_border_1">
+                    <h2 class="text-3xl font-semibold tracking-tight leading-8">Transfer Application Details
+                        <br/><br/>
+                    </h2>
+                    <div class="font-medium leading-none">
+                        Application Status &rarr; {{pd.status_text}} 
+                        <br/><br/>
+                    </div>
+                    <!--<div class="font-medium leading-none">
+                        owner_mobile: "9876543210"
+​
+owner_name: "dad26317"
+​
+transferee_email: "office@resilient-lab.com"
+​
+transferee_first_name: "Patil"
+​
+transferee_last_name: "Patil"
+​
+transferee_middle_name: "Hindurao"
+​
+transferee_mobile: "9876543210"
+
+
+                    </div>-->
+                    
+                    <div class="font-medium leading-none">
+                        
+                        Application Number &rarr; {{pd.app_id}}
+                        <br/><br/>
+                    </div>
+                    
+                    <div class="font-medium leading-none">
+                        UPRN &rarr; {{pd.uprn}}
+                        <br/><br/>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

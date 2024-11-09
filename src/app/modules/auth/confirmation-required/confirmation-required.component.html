@@ -1,0 +1,134 @@
+<div class="flex flex-col sm:flex-row items-center md:items-start sm:justify-center md:justify-start flex-auto min-w-0">
+    <div class="md:flex md:items-top md:justify-end w-full sm:w-auto md:h-full md:w-1/2 py-8 px-4 sm:p-12 md:p-16 sm:rounded-2xl md:rounded-none sm:shadow md:shadow-none sm:bg-card">
+        <div class="w-full max-w-180 sm:w-180 mx-auto sm:mx-0">
+            <!-- Logo -->
+            <div class="w-12">
+                <img src="assets/images/logo/logo.png">
+            </div>
+
+            <!-- Title -->
+            <div class="mt-8 text-4xl font-extrabold tracking-tight leading-tight">Confirmation Required</div>
+            <div class="mt-4" style="border: 3px solid #333;border-radius: 10px;padding: 10px;">
+                <h2 class="text-4x2 font-extrabold tracking-tight leading-tight">Mobile Number Verification</h2>
+                <h3 class=" text-4x3 font-extrabold tracking-tight">Verification Code</h3> 
+                Please type the verification code sent to {{mobile}}.<br/>
+                <!-- <input type="text" name="otp_1" style="margin-left:6px;background: gray !important;border: 3px solid green !important;color: white !important;padding: 6px;width: 30px !important;">
+                <input type="text" name="otp_2" style="margin-left:6px;background: gray !important;border: 3px solid green !important;color: white !important;padding: 6px;width: 30px !important;">
+                <input type="text" name="otp_3" style="margin-left:6px;background: gray !important;border: 3px solid green !important;color: white !important;padding: 6px;width: 30px !important;">
+                <input type="text" name="otp_4" style="margin-left:6px;background: gray !important;border: 3px solid green !important;color: white !important;padding: 6px;width: 30px !important;">
+                <input type="text" name="otp_5" style="margin-left:6px;background: gray !important;border: 3px solid green !important;color: white !important;padding: 6px;width: 30px !important;">
+                <input type="text" name="otp_6" style="margin-left:6px;background: gray !important;border: 3px solid green !important;color: white !important;padding: 6px;width: 30px !important;"> -->
+                <ng-otp-input  
+                    (onInputChange)="onOtpChange($event)"  
+                    [config]="{length:6}">
+                </ng-otp-input> 
+                <div class="mt-2 mb-2 "></div>
+                <button  
+                    style="margin-top:20px;padding:3px;color:#fff;background: rgb(174 36 50) !important">
+                    
+                        Re-send Mobile OTP
+                </button>
+                <button  
+                    style="float:right;padding:13px;color:#fff;background: rgb(37 101 166) !important;" (click)="verifyOtp(1)">
+                    
+                        Verify Mobile OTP &rarr;
+                </button>
+            </div>
+
+            <div class="mt-4" style="border: 3px solid #333;border-radius: 10px;padding: 10px;">
+                <h2 class="text-4x2 font-extrabold tracking-tight leading-tight">Email Address Verification</h2>
+                A confirmation mail with instructions has been sent to your email address.
+                Follow those instructions to confirm your email address and activate your account.
+                <h3 class=" text-4x3 font-extrabold tracking-tight">Verification Code</h3> 
+                Please type the verification code sent to {{email}}.<br/>
+                <!-- <input type="text" name="otp_1" style="margin-left:6px;background: gray !important;border: 3px solid green !important;color: white !important;padding: 6px;width: 30px !important;">
+                <input type="text" name="otp_2" style="margin-left:6px;background: gray !important;border: 3px solid green !important;color: white !important;padding: 6px;width: 30px !important;">
+                <input type="text" name="otp_3" style="margin-left:6px;background: gray !important;border: 3px solid green !important;color: white !important;padding: 6px;width: 30px !important;">
+                <input type="text" name="otp_4" style="margin-left:6px;background: gray !important;border: 3px solid green !important;color: white !important;padding: 6px;width: 30px !important;">
+                <input type="text" name="otp_5" style="margin-left:6px;background: gray !important;border: 3px solid green !important;color: white !important;padding: 6px;width: 30px !important;">
+                <input type="text" name="otp_6" style="margin-left:6px;background: gray !important;border: 3px solid green !important;color: white !important;padding: 6px;width: 30px !important;"> -->
+                
+                <ng-otp-input  
+                    (onInputChange)="onOtpChange($event)"  
+                    [config]="{length:6}">
+                </ng-otp-input> 
+                <div class="mt-2 mb-2 "></div>
+                <button  
+                    style="margin-top:20px;padding:3px;color:#fff;background: rgb(174 36 50) !important">
+                    
+                        Re-send Email OTP
+                </button>
+                <button  
+                    style="float:right;padding:13px;color:#fff;background: rgb(37 101 166) !important;"
+                    (click)="verifyOtp(2)">
+                    
+                        Verify Email OTP &rarr;
+                </button>
+            </div>
+
+            <!-- Form footer -->
+            <div class="mt-8 text-md font-medium text-secondary">
+                <span>Return to</span>
+                <a
+                    class="ml-1 text-primary-500 hover:underline"
+                    [routerLink]="['/sign-in']">sign in
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="relative hidden md:flex flex-auto items-center justify-center w-1/2 h-full p-16 lg:px-28 overflow-hidden bg-gray-800 dark:border-l">
+        <!-- Background - @formatter:off -->
+        <!-- Rings -->
+        <svg class="absolute inset-0 pointer-events-none"
+             viewBox="0 0 960 540" width="100%" height="100%" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+            <g class="text-gray-700 opacity-25" fill="none" stroke="currentColor" stroke-width="100">
+                <circle r="234" cx="196" cy="23"></circle>
+                <circle r="234" cx="790" cy="491"></circle>
+            </g>
+        </svg>
+        <!-- Dots -->
+        <svg class="absolute -top-16 -right-16 text-gray-700"
+             viewBox="0 0 220 192" width="220" height="192" fill="none">
+            <defs>
+                <pattern id="837c3e70-6c3a-44e6-8854-cc48c737b659" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                    <rect x="0" y="0" width="4" height="4" fill="currentColor"></rect>
+                </pattern>
+            </defs>
+            <rect width="220" height="192" fill="url(#837c3e70-6c3a-44e6-8854-cc48c737b659)"></rect>
+        </svg>
+        <!-- @formatter:on -->
+        <!-- Content -->
+        <div class="z-10 relative w-full max-w-2xl">
+            <div class="text-7xl font-bold leading-none text-gray-100">
+                <div>Pune Metropolitan Region Development Authority (PMRDA)</div>
+                <div class="text-4xl">Department - Land & Estate</div>
+            </div>
+            <div class="mt-6 text-lg tracking-tight leading-6 text-gray-400">
+                
+                   
+                    <ul>
+                        <li> &rarr; Property Transfer</li>                        
+                        <li> &rarr; Record of Inheritance</li>
+                        <li> &rarr; NoC for Loan</li>
+                    </ul>
+            </div>
+            <div class="flex items-center mt-8">
+                <div class="flex flex-0 items-center -space-x-1.5">
+                    <img
+                        class="flex-0 w-10 h-10 rounded-full ring-4 ring-offset-1 ring-gray-800 ring-offset-gray-800 object-cover"
+                        src="assets/images/avatars/female-18.jpg">
+                    <img
+                        class="flex-0 w-10 h-10 rounded-full ring-4 ring-offset-1 ring-gray-800 ring-offset-gray-800 object-cover"
+                        src="assets/images/avatars/female-11.jpg">
+                    <img
+                        class="flex-0 w-10 h-10 rounded-full ring-4 ring-offset-1 ring-gray-800 ring-offset-gray-800 object-cover"
+                        src="assets/images/avatars/male-09.jpg">
+                    <img
+                        class="flex-0 w-10 h-10 rounded-full ring-4 ring-offset-1 ring-gray-800 ring-offset-gray-800 object-cover"
+                        src="assets/images/avatars/male-16.jpg">
+                </div>
+                <div class="ml-4 font-medium tracking-tight text-gray-400">More than 17k people joined us, it's your turn</div>
+            </div>
+        </div>
+    </div>
+</div>

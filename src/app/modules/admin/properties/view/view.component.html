@@ -1,0 +1,248 @@
+<div class="flex flex-col flex-auto w-full">
+
+    <div class="flex flex-wrap w-full max-w-screen-xl mx-auto">
+        <div class="flex items-center justify-between w-full">
+            <div>
+                <h2 class="text-3xl font-semibold tracking-tight leading-8">View Properties</h2>
+
+            </div>
+
+        </div>
+        <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 w-full mt-4">
+            <div class="flex-auto grid grid-cols-1">
+                <!--statement -->
+                <!-- <div class="relative flex flex-col flex-auto p-6 pr-3 pb-3 bg-card rounded-2xl shadow overflow-hidden"> -->
+                <!-- {{propertyData|keyvalue|json}} -->
+                <!-- <form [formGroup]="propertyData">  -->
+                <div class="flex-auto grid grid-cols-1">
+                    <table class="tbl">
+                        <tr>
+                            <td>Taluka </td>
+                            <td>{{propertyData.taluka_name_en}}
+                                ({{propertyData.taluka_name_mr}})
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Village/Sector </td>
+                            <td>{{propertyData.village_name_en}}
+                                ({{propertyData.village_name_mr}})
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Gat/Plot/CTS/Survey Number </td>
+                            <td>{{propertyData.gpsc_number}}</td>
+                        </tr>
+                        <tr>
+                            <td>Scheme Number </td>
+                            <td>{{propertyData.scheme_number}}</td>
+                        </tr>
+                        <tr>
+                            <td>Scheme Structure Type </td>
+                            <td>{{propertyData.structure_type_name_en}}
+                                ({{propertyData.structure_type_name_mr}})</td>
+                        </tr>
+                        <tr>
+                            <td>Society </td>
+                            <td>{{propertyData.society_name_en}}
+                                ({{propertyData.society_name_mr}})</td>
+                        </tr>
+                        <tr>
+                            <td>Building Number </td>
+                            <td>{{propertyData.building_number}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Sadnika/Dukan Number </td>
+                            <td>{{propertyData.sadnika_number}}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Property Area </td>
+                            <td>{{propertyData.property_area}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Special Land Acquition Officer Number </td>
+                            <td>{{propertyData.special_land_acquition_officer_number}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Award Number </td>
+                            <td>{{propertyData.award_number}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Award Date </td>
+                            <td>{{propertyData.award_date}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Award Land Possession Date </td>
+                            <td>{{propertyData.award_land_possession_date}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Leasedeed Registration Number Haveli Number </td>
+                            <td>{{propertyData.leasedeed_registration_number_haveli_number}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Leasedeed Registration Date </td>
+                            <td>{{propertyData.leasedeed_registration_date}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Original Plot Holder </td>
+                            <td>{{propertyData.original_plot_holder}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Shop Premium </td>
+                            <td>{{propertyData.shop_premium}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Ready Reckoner Square Meter Rate</td>
+                            <td>{{propertyData.ready_reckoner_square_meter_rate}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Building Permission Number</td>
+                            <td>{{propertyData.building_permission_number}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Building Permission Date </td>
+                            <td>{{propertyData.building_permission_date}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Completion Certificate Number </td>
+                            <td>{{propertyData.completion_certificate_number}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Completion Date </td>
+                            <td>{{propertyData.completion_date}}
+                            </td>
+                        </tr>
+                        <!-- <form [formGroup]="propertyData"> -->
+                        <!-- <div class="flex-auto grid grid-cols-4 gap-4 mt-6">
+                          <div class="col-span-3 flex flex-col items-left justify-left">
+                              <mat-form-field>
+                                  <td>Property Area</td>
+                                  <input matInput [formControlName]="'property_area'">
+                              </mat-form-field>
+                          </div>
+                      
+                      
+                          <div class="col-span-3 flex flex-col items-left justify-left">
+                              <mat-form-field>
+                                  <td>Special Land Acquition Officer Number</td>
+                                  <input matInput [formControlName]="'special_land_acquition_officer_number'">
+                              </mat-form-field>
+                          </div>
+                      
+                     
+                          <div class="col-span-3 flex flex-col items-left justify-left">
+                              <mat-form-field>
+                                  <td>Award Number</td>
+                                  <input matInput [formControlName]="'award_number'">
+                              </mat-form-field>
+                          </div>
+                      
+                      
+                          <div class="col-span-3 flex flex-col items-left justify-left">
+                              <mat-form-field>
+                                  <td>Award Date</td>
+                                  <input matInput [formControlName]="'award_date'">
+                              </mat-form-field>
+                          </div>
+                     
+                      
+                          <div class="col-span-3 flex flex-col items-left justify-left">
+                              <mat-form-field>
+                                  <td>Award Land Possession Date</td>
+                                  <input matInput [formControlName]="'award_land_possession_date'">
+                              </mat-form-field>
+                          </div>
+                     
+                          <div class="col-span-3 flex flex-col items-left justify-left">
+                              <mat-form-field>
+                                  <td>Leasedeed Registration Number Haveli Number</td>
+                                  <input matInput [formControlName]="'leasedeed_registration_number_haveli_number'">
+                              </mat-form-field>
+                          </div>
+                      
+                          <div class="col-span-3 flex flex-col items-left justify-left">
+                              <mat-form-field>
+                                  <td>Leasedeed Registration Date</td>
+                                  <input matInput [formControlName]="'leasedeed_registration_date'">
+                              </mat-form-field>
+                          </div>
+                      
+                          <div class="col-span-3 flex flex-col items-left justify-left">
+                              <mat-form-field>
+                                  <td>Original Plot Holder</td>
+                                  <input matInput [formControlName]="'original_plot_holder'">
+                              </mat-form-field>
+                          </div>
+                      
+                          <div class="col-span-3 flex flex-col items-left justify-left">
+                              <mat-form-field>
+                                  <td>Shop Premium</td>
+                                  <input matInput [formControlName]="'shop_premium'">
+                              </mat-form-field>
+                          </div>
+                     
+                          <div class="col-span-3 flex flex-col items-left justify-left">
+                              <mat-form-field>
+                                  <td>Ready Reckoner Square Meter Rate</td>
+                                  <input matInput [formControlName]="'ready_reckoner_square_meter_rate'">
+                              </mat-form-field>
+                          </div>
+                      
+                          <div class="col-span-3 flex flex-col items-left justify-left">
+                              <mat-form-field>
+                                  <td>building Permission Number</td>
+                                  <input matInput [formControlName]="'building_permission_number'">
+                              </mat-form-field>
+                          </div>
+                      
+                          <div class="col-span-3 flex flex-col items-left justify-left">
+                              <mat-form-field>
+                                  <td>building Permission Date</td>
+                                  <input matInput [formControlName]="'building_permission_date'">
+                              </mat-form-field>
+                          </div>
+                     
+                          <div class="col-span-3 flex flex-col items-left justify-left">
+                              <mat-form-field>
+                                  <td>Completion Certificate Number</td>
+                                  <input matInput [formControlName]="'completion_certificate_number'">
+                              </mat-form-field>
+                          </div>
+                    
+                          <div class="col-span-3 flex flex-col items-left justify-left">
+                              <mat-form-field>
+                                  <td>Completion Date</td>
+                                  <input matInput [formControlName]="'completion_date'">
+                              </mat-form-field>
+                          </div>-->
+                    </table>
+                </div>
+                <!-- <div class="flex-auto grid grid-cols-1">
+
+                    <button class="px-8 mx-2" mat-flat-button [color]="'primary'" type="button"
+                        [routerLink]="['/admin/properties/list']">
+                        Back
+                    </button>
+                </div> -->
+                <!-- </form> -->
+                <!-- </div> -->
+            </div>
+        </div>
+    </div>
+</div>

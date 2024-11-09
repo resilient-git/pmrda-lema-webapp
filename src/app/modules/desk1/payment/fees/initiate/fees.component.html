@@ -1,0 +1,215 @@
+<div class="flex flex-col flex-auto w-full">
+
+    <div class="flex flex-wrap w-full max-w-screen-xl mx-auto p-6 md:p-8">
+        <div class="flex items-center justify-between w-full">
+            <div>
+                <h2 class="text-3xl font-semibold tracking-tight leading-8">Payment</h2>
+
+            </div>
+           
+        </div>
+  <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 w-full mt-8">
+     <div class="grid gap-8 sm:grid-flow-col xl:grid-flow-row">
+            <!--statement -->
+        <div class="relative flex flex-col flex-auto p-6 pr-3 pb-3 bg-card rounded-2xl shadow overflow-hidden">   
+
+       <form
+            [formGroup]="feesForm">
+    
+            <div class="flex flex-col gt-xs:flex-row">
+              
+                <div> 
+                    <!-- <div class="text-lg font-medium tracking-tight leading-6 truncate">
+                        PAY ₹ 300
+                    </div> -->
+                    <p class="my-6 font-medium">
+                        Pay your Application Fee Payment through Online Gateway by using Debit Card / Credit Card / Net Banking / UPI.
+                    </p>
+                    <p class="my-6 font-medium">
+                        Application fees - Rs. 300
+                    </p>
+    
+                </div>
+                <div class="mt-2 mb-2 "></div>
+                <div> 
+                    <div class="text-lg font-medium tracking-tight leading-6 truncate">
+                        Payee Details
+                    </div>
+                </div>
+                <div class="mt-2 mb-2 "></div>
+                
+                <mat-form-field class="flex-auto gt-xs:pr-3" >
+                    <mat-label> Name </mat-label>
+                    <input
+                        matInput
+                        [formControlName]="'name'"
+                        [placeholder]="'Name'"
+                        >
+                        <mat-icon
+                        class="icon-size-5"
+                        [svgIcon]="'heroicons_solid:user'"
+                        matPrefix></mat-icon>
+                </mat-form-field> 
+                
+                <div class="flex">
+                <mat-form-field class="fuse-mat-no-subscript w-1/2 pr-2">
+                    <mat-label> Phone Number </mat-label>
+                    <input
+                        matInput
+                        maxlength="10"
+                        minlength="10"
+                        [formControlName]="'phoneNumber'"
+                        (keypress)="keyPress($event)"
+                        [placeholder]="'Enter Phone Number '"
+                        >
+                        <mat-error *ngIf="feesForm.get('phoneNumber').hasError('required')">
+                            Mobile number is required
+                        </mat-error>
+                        <mat-error *ngIf="feesForm.get('phoneNumber').hasError('number')">
+                            Please enter a valid Mobile number
+                        </mat-error>
+                        <mat-icon
+                        class="icon-size-5"
+                        [svgIcon]="'heroicons_solid:phone'"
+                        matPrefix></mat-icon>
+                </mat-form-field>
+                
+              <mat-form-field class="fuse-mat-no-subscript w-1/2 px-2">
+                <mat-label>Email Id</mat-label>
+                        <mat-icon
+                        class="icon-size-5"
+                        [svgIcon]="'heroicons_solid:mail'"
+                        matPrefix></mat-icon>
+                        <input
+                           
+                            id="email"
+                            matInput
+                            [formControlName]="'email'"> 
+                         <mat-error *ngIf="feesForm.get('email').hasError('required')">
+                            Email address is required
+                        </mat-error>
+                        <mat-error *ngIf="feesForm.get('email').hasError('email')">
+                            Please enter a valid email address
+                        </mat-error>
+                        <!-- <input matInput formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                       
+                        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                            <mat-error *ngIf="f.email.errors.required">Email is required</mat-error>
+                            <mat-error *ngIf="f.email.errors.email">Email must be a valid email address</mat-error>
+                        </div>
+                        </div> -->
+              </mat-form-field>
+                </div>
+              <div class="mt-2 mb-2 "></div>
+
+              <div> 
+                <div class="text-lg font-medium tracking-tight leading-6 truncate">
+                    Card Details
+                </div>
+            </div>
+            <div class="mt-2 mb-2 "></div>
+
+                <mat-form-field class="flex-auto gt-xs:pr-3">
+                    <mat-label> Card Number</mat-label>
+                    <input
+                       matInput
+                        [formControlName]="'cardNumber'"
+                        [placeholder]="'Card Number'"
+                        >
+                        <mat-icon
+                        class="icon-size-5"
+                        [svgIcon]="'heroicons_solid:credit-card'"
+                        matPrefix></mat-icon>
+                </mat-form-field>
+
+                <div class="flex" >
+                <mat-form-field class="fuse-mat-no-subscript w-1/2 pr-2"
+                [floatLabel]="'always'">
+                    <mat-label> Expairy Date</mat-label>
+                    <input
+                       matInput
+                        [formControlName]="'expairyDate'"
+                        [placeholder]="'MM / YY'"
+                        >
+                        <mat-icon
+                        class="icon-size-5"
+                        [svgIcon]="'heroicons_solid:calendar'"
+                        matPrefix></mat-icon>
+                </mat-form-field>
+                
+                <mat-form-field class="fuse-mat-no-subscript w-1/2 px-2">
+                    <mat-label> CVV</mat-label>
+                    <input
+                    matInput
+                     [formControlName]="'cardCVC'"
+                     [placeholder]="'CVV'"
+                     >
+                     <mat-icon
+                     class="icon-size-5"
+                     [svgIcon]="'heroicons_solid:lock-closed'"
+                     matPrefix></mat-icon>
+                </mat-form-field>
+                </div>
+
+                <div class="mt-2 mb-2 "></div>
+                <div class="inline-flex items-end w-full mt-1.5">
+                    <mat-checkbox
+                        [color]="'primary'"
+                        [formControlName]="'agreements'">
+                        <span> I have read and agree to PMRDA Payment Policy, tearms and conditions and Privacy policy
+                        </span>
+                        <a
+                            class="ml-1 text-primary-500 hover:underline"
+                            [routerLink]="['./']">Terms of Service
+                        </a>
+                        <span>and</span>
+                        <a
+                            class="ml-1 text-primary-500 hover:underline"
+                            [routerLink]="['./']">Privacy Policy
+                        </a>
+                    </mat-checkbox>
+                </div>
+                     
+            </div>
+
+            <div class="mt-4 mb-4 "></div>
+
+            <div class="flex items-center">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button
+                    class="px-8"
+                    mat-flat-button
+                    [color]="'primary'"
+                    type="button"
+                    (click)="proceedToPay()"
+                    >
+                     Proceed to Pay
+                </button>
+            </div>
+
+            <div class="mt-4 mb-4 "></div>
+
+            <!-- <div >
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span> By clicking continue, i am agree with 
+                </span>
+                <a
+                    class="ml-1 text-primary-500 hover:underline"
+                    [routerLink]="['./']">Terms & Policy
+                </a>
+            </div> -->
+            <div class="mt-4 mb-4 "></div>
+
+          </form>
+          </div>
+     </div>
+    </div>
+  </div>
+</div>

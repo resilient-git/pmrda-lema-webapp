@@ -1,0 +1,23 @@
+mat-grid-tile {
+  background: lightblue;
+}
+.actionBtn {
+  margin-top: 5px;
+  margin-bottom: 2px;
+  font-size: 1.2em;
+}
+
+.snapshot {
+  text-align: center;
+  
+  width: 100%;
+  padding-left:20px; ;
+  img {
+    max-width: 800px;
+    max-height: 800px;
+  }
+}
+
+ul.links {
+  padding-bottom: 20px;
+}

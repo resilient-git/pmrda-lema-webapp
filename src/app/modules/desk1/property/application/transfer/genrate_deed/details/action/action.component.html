@@ -1,0 +1,134 @@
+<div class="grid grid-cols-1 xl:grid-cols-2 w-full">
+    <div class="grid sm:grid-flow-col xl:grid-flow-row">
+        <div class="relative flex flex-col flex-auto bg-card shadow overflow-hidden">
+            <div style="text-align: center;background: #c1c1c1;" class="text-3xl font-semibold tracking-tight leading-8">Deed Generator
+            </div>       
+            <div class="timeline-steps aos-init aos-animate" data-aos="fade-up">
+                <div class="timeline-step timeline-step-done" style="margin-top: 3px;">
+                    <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2003">
+                        <p class="h6 mt-2 mt-lg-3 mb-2 mb-lg-3">01. Application</p>
+                    </div>
+                </div>
+                <div class="timeline-step  timeline-step-done"  style="margin-top: 3px;">
+                    <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2004">
+                        <p class="h6 mt-2 mt-lg-3 mb-2 mb-lg-3">02. Documents</p>
+                    </div>
+                </div>
+                <!--<div class="timeline-step timeline-step-done"  style="margin-top: 3px;">
+                    <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2005">
+                        <p class="h6 mt-2 mt-lg-3 mb-2 mb-lg-3">03. Receipts</p>
+                    </div>
+                </div>-->
+                <div class="timeline-step timeline-step-active mb-0"  style="margin-top: 3px;">
+                    <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2020">
+                        <p class="h6 mt-2 mt-lg-3 mb-2 mb-lg-3">03. Generate Deed</p>
+                    </div>
+                </div>
+            </div>
+            <div style="border: 3px solid #ad2331;padding:0px;">
+
+                <mat-grid-list cols="3" rowHeight="6:1">
+                    <mat-grid-tile>
+                        Property ID&nbsp;-&nbsp;<b>{{pta.uprn}}</b>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        Application Number&nbsp;-&nbsp;<b>{{pta.application_number}}</b>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        Application Date&nbsp;-&nbsp;<b>{{pta.application_date}}</b>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        Owner Name&nbsp;-&nbsp;<b>{{pta.owner_name}}</b>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        Owner Mobile&nbsp;-&nbsp;<b>{{pta.owner_mobile}}</b>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        Appointment Date&nbsp;:&nbsp;<b>{{pta.appointment_date}}</b>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        Appointment Time Slot&nbsp;:&nbsp;<b>{{pta.appointment_time}}</b>
+                    </mat-grid-tile>
+                </mat-grid-list>
+
+                <div class="mt-1 "></div>
+                
+                        <div style="padding:10px;border:20px solid #2565a6;">
+                            <form [formGroup]="approveForm">
+                                <div class="mt-2 mb-2 "></div>
+
+                                <div class="flex flex-col sm:flex-row  w-full max-w-xs sm:max-w-none">
+                                    
+
+                                   
+                                </div>
+                                <div class="mt-4 mb-4 "></div>
+
+                                <div class="flex flex-col sm:flex-row  w-full max-w-xs sm:max-w-none">
+                                    <mat-form-field class="fuse-mat-no-subscript w-1/2 pr-2 " >
+                                        <mat-label>ON OR TOWARDS EAST </mat-label>
+                                        <input #namedElement
+                                            matInput
+                                            [formControlName]="'towards_east'"
+                                            [placeholder]="'Enter ON OR TOWARDS EAST'" 
+                                            required>                    
+                                    </mat-form-field> 
+
+                                    <mat-form-field class="fuse-mat-no-subscript w-1/2 px-2">
+                                        <mat-label>ON OR TOWARDS WEST </mat-label>
+                                        <input
+                                            matInput
+                                            [formControlName]="'towards_west'"
+                                            [placeholder]="'Enter ON OR TOWARDS WEST'" 
+                                            required>
+                                    </mat-form-field> 
+                                    <mat-form-field class="fuse-mat-no-subscript w-1/2 px-2">
+                                        <mat-label>ON OR TOWARDS SOUTH </mat-label>
+                                        <input
+                                            matInput
+                                            [formControlName]="'towards_south'"
+                                            [placeholder]="'Enter ON OR TOWARDS SOUTH'" 
+                                            required>
+                                    </mat-form-field> 
+                                    <mat-form-field class="fuse-mat-no-subscript w-1/2 px-2">
+                                        <mat-label>ON OR TOWARDS NORTH </mat-label>
+                                        <input
+                                            matInput
+                                            [formControlName]="'towards_north'"
+                                            [placeholder]="'Enter ON OR TOWARDS NORTH'" 
+                                            required>
+                                    </mat-form-field> 
+                                </div>
+                              
+                               
+                        
+                                
+                                <div class="flex mt-6 ">
+                                    <button class="px-8" mat-flat-button [color]="'primary'" type="button"
+                                    (click)="sendApproval()" >
+                                    <!-- [disabled]="approveForm.invalid"  -->
+                                        Generate Deed
+                                    </button>
+                                   
+                    
+                                </div>
+                  
+                             </form>
+                  
+                              
+                          </div>
+                    
+                       
+                <div class="mt-4 mb-4 "></div>   
+                <div> 
+                    <button style="float: left;" class="px-8 mx-2" mat-flat-button [color]="'primary'" type="button"
+                    [routerLink]="['/clerk/view-deed-generation-transfer-document/'+ application_id]">
+                    &lArr; Documents 
+                    </button>
+                </div>
+                <div style="clear:both;">&nbsp;</div>
+            </div>
+            
+        </div>
+    </div>
+</div>

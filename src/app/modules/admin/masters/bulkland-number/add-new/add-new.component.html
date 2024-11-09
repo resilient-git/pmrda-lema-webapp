@@ -1,0 +1,313 @@
+<div class="flex flex-col flex-auto w-full">
+
+    <div class="flex flex-wrap w-full max-w-screen-xl mx-auto p-6 md:p-8">
+        <div class="flex items-center justify-between w-full">
+            <div>
+                <h2 class="text-3xl font-semibold tracking-tight leading-8">Add Gat/CTS/Survey</h2>
+
+            </div>
+           
+        </div>
+  <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 w-full mt-8">
+     <div class="grid gap-8 sm:grid-flow-col xl:grid-flow-row">
+            <!--statement -->
+        <div class="relative flex flex-col flex-auto p-6 pr-3 pb-3 bg-card rounded-2xl shadow overflow-hidden">   
+ 
+       <form
+            [formGroup]="bulklandForm"  >
+            <div class="flex-auto grid grid-cols-4 gap-4 mt-6">
+                <div class="col-span-3 flex flex-col items-left justify-left">
+                    <mat-form-field>
+                        <mat-label>Taluka </mat-label>
+                        <mat-select (selectionChange)="updateVillage($event)" [formControlName]="'taluka_code'" [placeholder]="'Select Taluka'" required>
+                            <mat-option *ngFor="let taluka of talukaData" [value]="taluka.code">
+                                {{taluka.name_en}} ({{taluka.name_mr}})</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="bulklandForm.get('taluka_code').hasError('required')">
+                            Taluka is required
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-span-3 flex flex-col items-left justify-left">
+                    <mat-form-field>
+                        <mat-label>Village </mat-label>
+                        <mat-select  [formControlName]="'village_code'" [placeholder]="'Select Village'" required>
+                            <mat-option *ngFor="let village of villageData" [value]="village.code">
+                                {{village.name_en}} ({{village.name_mr}})</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="bulklandForm.get('village_code').hasError('required')">
+                            Village is required
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-span-3 flex flex-col items-left justify-left">
+                    <mat-form-field>
+                        <mat-label>Gut/CTS/Survey/Plot Number</mat-label>
+                        <input
+                            matInput
+                            [formControlName]="'gpsc_number'">   
+                            <mat-error *ngIf="bulklandForm.get('gpsc_number').hasError('required')">
+                                Gut/CTS/Survey/Plot Number is required
+                            </mat-error>
+                     </mat-form-field>        
+                </div>
+                <div class="col-span-3 flex flex-col items-left justify-left">
+                    <mat-form-field class="flex-auto gt-xs:pr-3">
+                            <mat-label>Area in Square meter</mat-label>
+                            <input
+                                matInput
+                                [formControlName]="'area_in_sq_m'">
+                                <mat-error *ngIf="bulklandForm.get('area_in_sq_m').hasError('required')">
+                                    Area in Square meter is required
+                                </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-span-3 flex flex-col items-left justify-left">
+                    <span class="font-medium mb-1">Main Category</span> &nbsp;
+                        <mat-radio-group (change)="updateLandCategory($event)"
+                        [color]="'primary'"
+                        [formControlName]="'land_category'">
+                        <mat-radio-button
+                            class="mb-4"
+                            value="1">
+                            Housing Society (गृहनिर्माण संस्था)
+                        </mat-radio-button>
+                        &nbsp;&nbsp;&nbsp;
+                        <mat-radio-button
+                            class="mb-4"
+                            value="2">
+                            Row House (रो हाउस)
+                        </mat-radio-button> 
+                        &nbsp;&nbsp;&nbsp; 
+                        <mat-radio-button
+                            class="mb-4"
+                            value="3">
+                            Plots (भूखंड)
+                        </mat-radio-button>  
+                    </mat-radio-group>
+                </div>
+
+                <div class="col-span-3 flex flex-col items-left justify-left" *ngIf="isSubCategory">
+                    <mat-form-field appearance="fill" >
+                        <mat-label>Sub Category</mat-label>
+                        <mat-select 
+                           [formControlName]="'land_category_code'" [placeholder]="'Select Land Category'"> 
+                            <mat-option *ngFor="let category of categoryData" [value]="category.code">
+                                {{category.name_en}} ({{category.name_mr}})</mat-option> 
+                        </mat-select>
+                        <mat-error *ngIf="bulklandForm.get('land_category_code').hasError('required')">
+                            Land Category is required
+                        </mat-error>
+                      </mat-form-field>
+                </div>
+
+                <div class="col-span-3 flex flex-col items-left justify-left">
+                    <mat-form-field appearance="fill" >
+                        <mat-label>Land Purpose</mat-label>
+                        <mat-select 
+                           [formControlName]="'land_purpose_code'" [placeholder]="'Select Purpose'"> 
+                            <mat-option *ngFor="let purpose of purposeData" [value]="purpose.code">
+                                {{purpose.name_en}}</mat-option> 
+                        </mat-select>
+                        <mat-error *ngIf="bulklandForm.get('land_purpose_code').hasError('required')">
+                            Land Purpose is required
+                        </mat-error>
+                      </mat-form-field>
+                </div>
+
+                <div class="col-span-3 flex flex-col items-left justify-left">
+                    <mat-form-field appearance="fill" >
+                        <mat-label>Source</mat-label>
+                        <mat-select 
+                           [formControlName]="'source_code'" [placeholder]="'Select Source'" 
+                            (selectionChange)="otherSource($event)"  [(ngModel)]="statusFlag"> 
+                            <mat-option *ngFor="let source of sourceData | keyvalue" [value]="source.key">
+                                {{source.value}}</mat-option> 
+                        </mat-select>
+                        <mat-error *ngIf="bulklandForm.get('source_code').hasError('required')">
+                            Source is required
+                        </mat-error>
+                      </mat-form-field>
+                </div>
+
+
+                <div class="col-span-3 flex flex-col items-left justify-left" *ngIf="statusFlag == '99'">
+                    <mat-form-field class="flex-auto gt-xs:pr-3">
+                            <mat-label>Other Source</mat-label>
+                            <input
+                                matInput
+                                [formControlName]="'other_source'">
+                                <mat-error *ngIf="bulklandForm.get('other_source').hasError('required')">
+                                    Other Source is required
+                                </mat-error>          
+                    </mat-form-field>
+                </div>
+
+
+                <div class="col-span-2 flex flex-col items-left justify-left" *ngIf="statusFlag == '5'">
+                    <mat-form-field class="flex-auto gt-xs:pr-3">
+                        <mat-label>Sepecial Land Acquation Officer Designation</mat-label>
+                        <input
+                            matInput
+                            (keypress)="keyPress($event)"
+                            [formControlName]="'special_land_acquition_officer_number'">
+                            <mat-error *ngIf="bulklandForm.get('special_land_acquition_officer_number').hasError('required')">
+                                Sepecial Land Acquation Officer Designation is required
+                            </mat-error>
+                    </mat-form-field>
+                </div>
+
+
+                <div class="col-span-2 flex flex-col items-left justify-left" *ngIf="statusFlag == '5'">
+                    <mat-form-field class="flex-auto gt-xs:pr-3">
+                        <mat-label>Award Number</mat-label>
+                        <input
+                            matInput
+                            [formControlName]="'award_number'">
+                            <mat-error *ngIf="bulklandForm.get('award_number').hasError('required')">
+                                Award Number is required
+                            </mat-error>     
+                    </mat-form-field>
+                </div>
+
+
+                <div class="col-span-2 flex flex-col items-left justify-left" *ngIf="statusFlag == '5'">    
+                    <mat-form-field class="flex-auto gt-xs:pr-3">
+                        <mat-label>Date Of Award</mat-label>
+                        <input
+                        matInput [matDatepicker]="dp3" disabled
+                        [formControlName]="'date_of_award'"
+                        [placeholder]="'Select Date Of Award'">
+                       
+                        <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+                        <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+                        <mat-error *ngIf="bulklandForm.get('date_of_award').hasError('required')">
+                            Date Of Award is required
+                        </mat-error>
+                    </mat-form-field>  
+                </div>
+
+
+                <div class="col-span-2 flex flex-col items-left justify-left" *ngIf="statusFlag == '5'">    
+                    <mat-form-field class="flex-auto gt-xs:pr-3">
+                        <mat-label>As per Award, Date Of Possession Of Land</mat-label>
+                        <input
+                        matInput [matDatepicker]="dp4" disabled
+                        [formControlName]="'date_of_possession'"
+                        [placeholder]="'Select  Date Of Possession Of Land'" >
+                       
+                        <mat-datepicker-toggle matSuffix [for]="dp4"></mat-datepicker-toggle>
+                        <mat-datepicker #dp4 disabled="false"></mat-datepicker>
+                        <mat-error *ngIf="bulklandForm.get('date_of_possession').hasError('required')">
+                            Date Of Possession is required
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+
+                <div class="col-span-3 flex flex-col items-left justify-left" *ngIf="statusFlag  != '5' && statusFlag" >    
+                    <mat-form-field class="flex-auto gt-xs:pr-3">
+                        <mat-label>Date Of Possession</mat-label>
+                        <input
+                        matInput [matDatepicker]="dp5" disabled
+                        [formControlName]="'date_of_possession'"
+                        [placeholder]="'Select Date Of Possession Of Land'" >
+                       
+                        <mat-datepicker-toggle matSuffix [for]="dp5"></mat-datepicker-toggle>
+                        <mat-datepicker #dp5 disabled="false"></mat-datepicker>
+                        <mat-error *ngIf="bulklandForm.get('date_of_possession').hasError('required')">
+                            Date Of Possession is required
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+               
+                <div class="col-span-3 flex flex-col items-left justify-left">
+                    <span class="font-medium mb-1">Land Status</span> &nbsp;
+                        <mat-radio-group
+                        [color]="'primary'"
+                        [formControlName]="'is_developed'" [(ngModel)]="developmentStatus">
+                        <mat-radio-button
+                            class="mb-4"
+                            value="1">
+                           Developed
+                        </mat-radio-button>
+                        &nbsp;&nbsp;&nbsp;
+                        <mat-radio-button
+                            class="mb-4"
+                            value="0">
+                            Undeveloped
+                        </mat-radio-button>  
+                    </mat-radio-group>
+                </div>
+
+
+                <div class="col-span-3 flex flex-col items-left justify-left"   *ngIf="developmentStatus == '0'">
+                    <mat-form-field appearance="fill">
+                        <mat-label>List Of Amenities</mat-label>
+                        <mat-select  [formControlName]="'aminity_code'" [placeholder]="'Select Amenities'" 
+                           [(ngModel)]="aminitiesVal" required>
+                         <mat-option *ngFor="let amenity of amenityData | keyvalue" [value]="amenity.key">
+                                {{amenity.value}}
+                         </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="bulklandForm.get('aminity_code').hasError('required')">
+                            Amenities is required
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+
+                <div class="col-span-3 flex flex-col items-left justify-left" *ngIf="aminitiesVal == '99'">
+                    <mat-form-field class="flex-auto gt-xs:pr-3">
+                            <mat-label>Other Amenity</mat-label>
+                            <input
+                                matInput
+                                [formControlName]="'other_aminity'">
+                                <mat-error *ngIf="bulklandForm.get('other_aminity').hasError('required')">
+                                    Other Amenity is required
+                                </mat-error>
+                    </mat-form-field>
+                </div>
+
+
+                <div class="col-span-3 flex flex-col items-left justify-left"  *ngIf="developmentStatus == '0'">
+                    <span class="font-medium mb-1">Allocation Status</span> &nbsp;  
+                        <mat-radio-group
+                        [color]="'primary'"
+                        [formControlName]="'is_aminity_allocated'" >
+                        <mat-radio-button
+                            class="mb-4"
+                            value="1">
+                          Allocated
+                        </mat-radio-button>
+                        &nbsp;&nbsp;&nbsp;
+                        <mat-radio-button
+                            class="mb-4"
+                            value="0">
+                            Unallocated
+                        </mat-radio-button>  
+                    </mat-radio-group>     
+                </div>
+                <div class="mt-2 mb-2 "></div>
+             </div>
+
+
+            <div class="flex ">
+               <button class="px-8 mx-2" mat-flat-button [color]="'primary'" type="button" 
+                (click)="send()">
+                    Submit
+                </button>
+
+                <button class="px-8" mat-flat-button [color]="'primary'" type="button"
+                [routerLink]="['/admin/gat-cts/list']">
+                  Back
+                </button>
+            </div>
+          </form>
+          </div>
+     </div>
+    </div>
+  </div>
+</div>

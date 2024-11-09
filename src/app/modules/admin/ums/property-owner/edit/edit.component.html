@@ -1,0 +1,184 @@
+<div class="flex flex-col flex-auto w-full">
+
+    <div class="flex flex-wrap w-full max-w-screen-xl mx-auto p-6 md:p-8">
+        <div class="flex items-center justify-between w-full">
+            <div>
+                <h2 class="text-3xl font-semibold tracking-tight leading-8">Update Property Owner</h2>
+
+            </div>
+
+        </div>
+        <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 w-full mt-8">
+            <div class="grid gap-8 sm:grid-flow-col xl:grid-flow-row">
+                <!--statement -->
+                <div class="relative flex flex-col flex-auto p-6 pr-3 pb-3 bg-card rounded-2xl shadow overflow-hidden">
+                    
+                    <form [formGroup]="propertyOwnerForm">
+                        <div class="flex-auto grid grid-cols-4 gap-4 mt-6">
+                            <!-- <div class="col-span-3 flex flex-col items-left justify-left mb-2">
+                                <mat-label class="font-medium">Taluka </mat-label>
+                                <mat-label class="p-3 border m-1 rounded bg-gray-100">{{propertyOwnerForm.value.taluka_name_en}}
+                                    ({{propertyOwnerForm.value.taluka_name_mr}})
+                                </mat-label>
+                            </div>
+                            <div class="col-span-3 flex flex-col items-left justify-left mb-2">
+                                <mat-label class="font-medium">Village/Sector </mat-label>
+                                <mat-label class="p-3 border m-1 rounded bg-gray-100">{{propertyOwnerForm.value.village_name_en}}
+                                    ({{propertyOwnerForm.value.village_name_mr}})
+                                </mat-label>
+                            </div>
+                            <div class="col-span-3 flex flex-col items-left justify-left mb-2">
+                                <mat-label class="font-medium">Gat/Plot/CTS/Survey Number </mat-label>
+                                <mat-label class="p-3 border m-1 rounded bg-gray-100">{{propertyOwnerForm.value.gpsc_number}}</mat-label>
+                            </div>
+                            <div class="col-span-3 flex flex-col items-left justify-left mb-2">
+                                <mat-label class="font-medium">Scheme Number </mat-label>
+                                <mat-label class="p-3 border m-1 rounded bg-gray-100">{{propertyOwnerForm.value.scheme_number}}</mat-label>
+                            </div>
+                            <div class="col-span-3 flex flex-col items-left justify-left mb-2">
+                                <mat-label class="font-medium">Scheme Structure Type </mat-label>
+                                <mat-label class="p-3 border m-1 rounded bg-gray-100">{{propertyOwnerForm.value.structure_type_name_en}}
+                                    ({{propertyOwnerForm.value.structure_type_name_mr}})</mat-label>
+                            </div>
+                            <div class="col-span-3 flex flex-col items-left justify-left mb-2">
+                                <mat-label class="font-medium">Society </mat-label>
+                                <mat-label class="p-3 border m-1 rounded bg-gray-100">{{propertyOwnerForm.value.society_name_en}}
+                                    ({{propertyOwnerForm.value.society_name_mr}})</mat-label>
+                            </div>
+                            <div class="col-span-3 flex flex-col items-left justify-left mb-2">
+                                <mat-label class="font-medium">Building Number </mat-label>
+                                <mat-label class="p-3 border m-1 rounded bg-gray-100">{{propertyOwnerForm.value.building_number}}
+                                   </mat-label>
+                            </div>
+                            <div class="col-span-3 flex flex-col items-left justify-left mb-2">
+                                <mat-label class="font-medium">Sadnika/Dukan Number </mat-label>
+                                <mat-label class="p-3 border m-1 rounded bg-gray-100">{{propertyOwnerForm.value.sadnika_number}}
+                                   </mat-label>
+                            </div> -->
+                            <!-- <div class="col-span-2 flex flex-col items-left justify-left">
+                                <mat-form-field class="flex-auto gt-xs:pr-3">
+                                    <mat-label>Parent Owner Id </mat-label>
+                                    <input
+                                        matInput
+                                        [formControlName]="'parent_owner_id'">
+                                </mat-form-field>
+                            </div> -->
+            
+                            <!-- <div class="col-span-2 flex flex-col items-left justify-left">
+                                <mat-form-field class="flex-auto gt-xs:pr-3">
+                                    <mat-label>Property Code </mat-label>
+                                    <input disabled="true"
+                                        matInput
+                                        [formControlName]="'parent_owner_name'">
+                                </mat-form-field>
+                            </div> -->
+                
+                            <div class="col-span-2 flex flex-col items-left justify-left">    
+                                <mat-form-field class="flex-auto gt-xs:pr-3">
+                                    <mat-label>Transfer Date </mat-label>
+                                    <input matInput [formControlName]="'transfer_date'">
+                                </mat-form-field>
+                            </div> 
+                            
+                            <div class="col-span-2 flex flex-col items-left justify-left">    
+                                <mat-form-field class="flex-auto gt-xs:pr-3">
+                                    <mat-label>Transfer/Assignment deed Registration Number And Haveli Number </mat-label>
+                                    <input
+                                        matInput
+                                        [formControlName]="'transfer_deed_registration_number_haveli_number'">
+                                </mat-form-field>
+                            </div>
+            
+                            <div class="col-span-2 flex flex-col items-left justify-left">
+                                <mat-form-field class="flex-auto gt-xs:pr-3">
+                                    <mat-label>Type of Transfer </mat-label>
+                                    <input
+                                        matInput
+                                        [formControlName]="'type_of_transfer'">
+                                </mat-form-field>
+                            </div>
+            
+                            <div class="col-span-2 flex flex-col items-left justify-left">
+                                <mat-form-field class="flex-auto gt-xs:pr-3">
+                                    <mat-label>Owner Name</mat-label>
+                                    <input
+                                        matInput
+                                        [formControlName]="'owner_name'">
+                                </mat-form-field>
+                            </div>
+            
+                            <div class="col-span-2 flex flex-col items-left justify-left">
+                                <mat-form-field class="flex-auto gt-xs:pr-3">
+                                    <mat-label>Owner Mobile Number</mat-label>
+                                    <input
+                                        matInput
+                                        maxlength="10"
+                                        minlength="10"
+                                       
+                                        [formControlName]="'owner_mobile'">
+                                </mat-form-field>
+                            </div>
+            
+                            <div class="col-span-1 flex flex-col items-left justify-left">
+                                <mat-form-field class="flex-auto gt-xs:pr-3">
+                                    <mat-label>Premium Of Flat </mat-label>
+                                    <input
+                                        matInput
+                                        [formControlName]="'premium_of_flat'">
+                                </mat-form-field>
+                            </div>
+            
+                            <div class="col-span-1 flex flex-col items-left justify-left">
+                                <mat-form-field class="flex-auto gt-xs:pr-3">
+                                    <mat-label>Transfer Fee </mat-label>
+                                    <input
+                                        matInput
+                                        [formControlName]="'transfer_fee'">
+                                </mat-form-field>
+                            </div>
+            
+                            <div class="col-span-2 flex flex-col items-left justify-left">
+                                <mat-form-field class="flex-auto gt-xs:pr-3">
+                                    <mat-label>Rate per Square meter , As per Ready Reackoner of that year</mat-label>
+                                    <input
+                                        matInput
+                                        [formControlName]="'ready_reackoner_rate_per_square_meter'">
+                                </mat-form-field>
+                            </div>
+            
+                            <div class="col-span-4 flex flex-col items-left justify-left">
+                                <mat-form-field class="flex-auto gt-xs:pr-3">
+                                    <mat-label>Remarks </mat-label>
+                                    <textarea
+                                    matInput
+                                    [formControlName]="'remarks'">
+                                    </textarea>
+                                </mat-form-field>
+                            </div>
+                           
+                            <div class="col-span-4 flex flex-col items-left justify-left">
+                                <mat-form-field class="flex-auto gt-xs:pr-3">
+                                    <mat-label>Court Cases </mat-label>
+                                    <textarea
+                                    matInput
+                                    [formControlName]="'court_cases'">
+                                  </textarea>  
+                                </mat-form-field>
+                            </div>
+
+                        </div>
+                        <div class="flex ">
+                            <button class="px-8" mat-flat-button [color]="'primary'" type="button" (click)="send()" >
+                                Submit
+                            </button>
+                            <button class="px-8 mx-2" mat-flat-button [color]="'primary'" type="button"
+                                [routerLink]="['/admin/property-owner/list', getCode()]">
+                                Back
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,96 @@
+<div class="flex flex-col flex-auto w-full">
+
+    <div class="flex flex-wrap w-full max-w-screen-xl mx-auto p-6 md:p-8">
+        <div class="flex items-center justify-between w-full">
+            <div>
+                <h2 class="text-3xl font-semibold tracking-tight leading-8">Add Scheme</h2>
+
+            </div>
+
+        </div>
+        <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 w-full mt-8">
+            <div class="grid gap-8 sm:grid-flow-col xl:grid-flow-row">
+                <!--statement -->
+                <div class="relative flex flex-col flex-auto p-6 pr-3 pb-3 bg-card rounded-2xl shadow overflow-hidden">
+
+                    <form [formGroup]="schemeForm">
+                        <div class="flex-auto grid grid-cols-4 gap-4 mt-6">
+
+                            <div class="col-span-3 flex flex-col items-left justify-left">
+
+                                <mat-form-field>
+                                    <mat-label>Taluka </mat-label>
+                                    <mat-select [formControlName]="'taluka_code'" [placeholder]="'Select Taluka'"
+                                        required (selectionChange)="getVillageList($event.value)">
+                                        <!-- <ng-container *ngIf="talukaData"> -->
+                                            <mat-option *ngFor="let taluka of talukaData" [value]="taluka.code">
+                                                {{taluka.name_en}} ({{taluka.name_mr}})</mat-option>
+                                        <!-- </ng-container> -->
+                                    </mat-select>
+                                    <mat-error *ngIf="schemeForm.get('taluka_code').hasError('required')">
+                                        Taluka is required
+                                    </mat-error> 
+                                </mat-form-field>
+                            </div>
+                            <div class="col-span-3 flex flex-col items-left justify-left">
+                                <mat-form-field>
+                                    <mat-label>Village/Sector </mat-label>
+                                    <mat-select [formControlName]="'village_code'" [placeholder]="'Select Village'"
+                                        required (selectionChange)="getBulklandList($event.value)">
+                                        <!-- <ng-container *ngIf="villageData"> -->
+                                            <mat-option *ngFor="let village of villageData" [value]="village.code">
+                                                {{village.name_en}} ({{village.name_mr}})</mat-option>
+                                        <!-- </ng-container> -->
+                                    </mat-select>
+                                    <mat-error *ngIf="schemeForm.get('village_code').hasError('required')">
+                                        Village is required
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-span-3 flex flex-col items-left justify-left">
+                                <mat-form-field>
+                                    <mat-label>Gat/Plot/CTS/Survey Number </mat-label>
+                                    <mat-select [formControlName]="'gpsc_code'" [placeholder]="'Select Bulkland Number'"
+                                        required>
+                                        <!-- <ng-container *ngIf="gpscData"> -->
+                                            <mat-option *ngFor="let opt of gpscData" [value]="opt.code">
+                                                {{opt.gpsc_number}} </mat-option>
+                                        <!-- </ng-container> -->
+                                    </mat-select>
+                                    <mat-error *ngIf="schemeForm.get('gpsc_code').hasError('required')">
+                                        Gat/Plot/CTS/Survey Number is required
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+
+
+                            <div class="col-span-3 flex flex-col items-left justify-left">
+
+                                <mat-form-field>
+                                    <mat-label>Scheme Number</mat-label>
+                                    <input matInput [formControlName]="'scheme_number'">
+                                    <mat-error *ngIf="schemeForm.get('scheme_number').hasError('required')">
+                                        Scheme Number is required
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+
+                        </div>
+                        <div class="flex ">
+                            <button class="px-8" mat-flat-button [color]="'primary'" type="button" (click)="send()">
+                                Submit
+                            </button>
+                            <button class="px-8 mx-2" mat-flat-button [color]="'primary'" type="button"
+                                [routerLink]="['/admin/schemes/list']">
+                                Back
+                            </button>
+                        </div>
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

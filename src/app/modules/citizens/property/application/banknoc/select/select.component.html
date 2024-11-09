@@ -1,0 +1,265 @@
+
+<div class="grid grid-cols-1 xl:grid-cols-2 w-full">
+    <div class="grid sm:grid-flow-col xl:grid-flow-row">
+        <div class="relative flex flex-col flex-auto bg-card shadow overflow-hidden">
+            <div style="text-align: center;background: #c1c1c1;" class="text-3xl font-semibold tracking-tight leading-8">BankNoc Transfer Application
+            </div>       
+            <div class="timeline-steps aos-init aos-animate" data-aos="fade-up">
+                <div class="timeline-step timeline-step-active" style="margin-top: 3px;">
+                    <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2003">
+                        <p class="h6 mt-2 mt-lg-3 mb-2 mb-lg-3">01. Select Property</p>
+                    </div>
+                </div>
+                <div class="timeline-step"  style="margin-top: 3px;">
+                    <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2004">
+                        <p class="h6 mt-2 mt-lg-3 mb-2 mb-lg-3">02. Application</p>
+                    </div>
+                </div>
+                <div class="timeline-step"  style="margin-top: 3px;">
+                    <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2005">
+                        <p class="h6 mt-2 mt-lg-3 mb-2 mb-lg-3">03. Fee Payment</p>
+                    </div>
+                </div>
+                <div class="timeline-step"  style="margin-top: 3px;">
+                    <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2010">
+                        <p class="h6 mt-2 mt-lg-3 mb-2 mb-lg-3">04. Reciept</p>
+                    </div>
+                </div>
+
+                <div class="timeline-step mb-0"  style="margin-top: 3px;">
+                    <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2020">
+                        <p class="h6 mt-2 mt-lg-3 mb-2 mb-lg-3">05. Status</p>
+                    </div>
+                </div>
+            </div>
+            <div style="border: 3px solid #ad2331;padding:10px;">
+                <form
+                        [formGroup]="horizontalStepperForm">
+                        <div class="flex-auto grid grid-cols-4 gap-4 mt-6">
+                            <div class="col-span-2 flex flex-col items-left justify-left">
+                                <mat-form-field class="flex-auto gt-xs:pr-3">
+                                    <mat-label> Taluka</mat-label> 
+                                    <mat-select [formControlName]="'taluka_code'" [placeholder]="'Select Taluka'"
+                                        required (selectionChange)="getVillageList($event.value)">
+                                        <mat-option *ngFor="let taluka of talukaData" [value]="taluka.code">
+                                    {{taluka.name_en}} ({{taluka.name_mr}})</mat-option>              
+                                    </mat-select>
+                                    <mat-icon
+                                        class="icon-size-5"
+                                        matPrefix
+                                        [svgIcon]="'heroicons_solid:location-marker'"></mat-icon>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-span-2 flex flex-col items-left justify-left">
+                                <mat-form-field class="flex-auto gt-xs:pr-3">
+                                    <mat-label> Village/Sector</mat-label>
+                                    <mat-select [formControlName]="'village_code'" [placeholder]="'Select Village'"
+                                    required (selectionChange)="getSchemesListByVillage($event.value)">   
+                                    <mat-option *ngFor="let village of villageData" [value]="village.code">
+                                        {{village.name_en}} ({{village.name_mr}})</mat-option>     
+                                </mat-select>
+                                    <mat-icon
+                                        class="icon-size-5"
+                                        matPrefix
+                                        [svgIcon]="'heroicons_solid:location-marker'"></mat-icon>
+                                </mat-form-field>
+                            </div>
+
+                            <!--<div class="col-span-2 flex flex-col items-left justify-left">
+                                <mat-form-field class="flex-auto gt-xs:pr-3">
+                                    <mat-label>Gat/Plot/CTS/Survey Number </mat-label>
+                                    <mat-select [formControlName]="'gpsc_code'"
+                                        [placeholder]="'Select Gat/Plot/CTS/Survey Number'" required
+                                        (selectionChange)="getSchemesList($event.value)">
+                                        <mat-option *ngFor="let opt of gpscData" [value]="opt.code">
+                                            {{opt.gpsc_number}} </mat-option>
+                                    </mat-select>
+                                    <mat-icon
+                                        class="icon-size-5"
+                                        matPrefix
+                                        [svgIcon]="'heroicons_solid:location-marker'"></mat-icon>
+                                </mat-form-field>    
+                            </div>-->
+
+                        
+                            <div class="col-span-2 flex flex-col items-left justify-left">
+                                <mat-form-field class="flex-auto gt-xs:pr-3">
+                                    <mat-label> Scheme Number</mat-label>
+                                    <mat-select [formControlName]="'scheme_number'"
+                                    [placeholder]="'Select Scheme Number '" required
+                                    (selectionChange)="getSchemesStructureList($event.value)">
+                                <mat-option *ngFor="let opt of schemesData" [value]="opt.code">
+                                    {{opt.scheme_number}} </mat-option>
+                                    </mat-select>
+                                    <mat-icon
+                                        class="icon-size-5"
+                                        matPrefix
+                                        [svgIcon]="'heroicons_solid:location-marker'"></mat-icon>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-span-2 flex flex-col items-left justify-left">
+                                <mat-form-field class="flex-auto gt-xs:pr-3">
+                                    <mat-label>Scheme Structure Type </mat-label>
+                                    <mat-select [formControlName]="'scheme_structure_code'"
+                                        [placeholder]="'Select Scheme Number '" required
+                                        (selectionChange)="getSocietyList($event.value)">
+                                        <mat-option *ngFor="let opt of schemeStructureData"
+                                            [value]="opt.structure_code">
+                                            {{opt.structure_type_name_en}} ({{opt.structure_type_name_mr}})</mat-option>
+                                    </mat-select>
+                                    <mat-icon
+                                        class="icon-size-5"
+                                        matPrefix
+                                        [svgIcon]="'heroicons_solid:location-marker'"></mat-icon>
+                                </mat-form-field>
+                            </div>
+
+                        
+                            <div class="col-span-2 flex flex-col items-left justify-left">
+                                <mat-form-field class="flex-auto gt-xs:pr-3">
+                                    <mat-label> Society Name</mat-label>
+                                    <mat-select [formControlName]="'society_code'" [placeholder]="'Select Society Name'"
+                                    required (selectionChange)="getBuildingList($event.value)">
+                                    <mat-option *ngFor="let opt of societyData" [value]="opt.code">
+                                        {{opt.name_en}} ({{opt.name_mr}})</mat-option>
+                                </mat-select>
+                                    <mat-icon
+                                        class="icon-size-5"
+                                        matPrefix
+                                        [svgIcon]="'heroicons_solid:location-marker'"></mat-icon>
+                                </mat-form-field>
+                            </div>
+
+
+                            <div class="col-span-2 flex flex-col items-left justify-left">
+                                <mat-form-field class="flex-auto gt-xs:pr-3">
+                                    <mat-label> Building Number</mat-label>
+                                    <mat-select [formControlName]="'building_code'"
+                                        [placeholder]="'Select Building Number'" required
+                                        (selectionChange)="getSadnikaList($event.value)">
+                                        <mat-option *ngFor="let opt of buildingData" [value]="opt.code">
+                                        {{opt.building_number}}</mat-option>
+                                    </mat-select>
+                                    <mat-icon
+                                        class="icon-size-5"
+                                        matPrefix
+                                        [svgIcon]="'heroicons_solid:location-marker'"></mat-icon>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-span-2 flex flex-col items-left justify-left">
+                                <mat-form-field class="flex-auto gt-xs:pr-3">
+                                    <mat-label> Sadnika/Dukan Number</mat-label>
+                                    <mat-select [formControlName]="'sadnika_code'"
+                                    [placeholder]="'Select Sadnika/Dukan Number'" required
+                                    (selectionChange)="getOwnerList($event.value)">
+                                    <mat-option *ngFor="let sadnika of sadnikaData" [value]="sadnika.code">
+                                    {{sadnika.sadnika_number}}</mat-option>
+                                </mat-select>
+                                    <mat-icon
+                                        class="icon-size-5"
+                                        matPrefix
+                                        [svgIcon]="'heroicons_solid:location-marker'"></mat-icon>
+                                </mat-form-field>
+                            </div>
+
+                            <!-- <div class="col-span-2 flex flex-col items-left justify-left">
+                                <mat-form-field class="flex-auto gt-xs:pr-3">
+                                    <mat-label> Owner Name</mat-label>
+                                    <mat-select [formControlName]="'ownerName'"
+                                    [placeholder]="'Select  Owner Name'" required>
+                                    <mat-option *ngFor="let opt of ownerData" [value]="opt.code">
+                                    {{opt.ownerName}}</mat-option>
+                                </mat-select>
+                                    <mat-icon
+                                        class="icon-size-5"
+                                        matPrefix
+                                        [svgIcon]="'heroicons_solid:location-marker'"></mat-icon>
+                                </mat-form-field>
+                            </div> -->
+
+
+                            <div class="col-span-2 flex flex-col items-left justify-left">
+                                <mat-form-field class="flex-auto gt-xs:pr-3">
+                                        <mat-label>Owner Name (In Marathi)</mat-label>  
+                                        <!-- <ng-content *ngIf="(owner_name | async) as ownerData">
+                                        
+                                        </ng-content>  -->
+                                        <!-- <mat-option *ngFor="let opt of ownerData" [value]="opt.code">
+                                            {{opt.owner_name}}</mat-option> -->
+                                        <mat-icon
+                                        class="icon-size-5"
+                                        [svgIcon]="'heroicons_solid:user'"
+                                        matPrefix></mat-icon>
+                                        <input
+                                            matInput
+                                            [formControlName]="'owner_name_mr'"
+                                            readonly
+                                            required>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-span-2 flex flex-col items-left justify-left" *ngIf="isPropertyOK" >
+                                <mat-form-field class="flex-auto gt-xs:pr-3">
+                                        <mat-label>Owner Name (in English)</mat-label>   
+                                        <mat-icon
+                                        class="icon-size-5"
+                                        [svgIcon]="'heroicons_solid:user'"
+                                        matPrefix></mat-icon>
+                                        <input
+                                            matInput
+                                            [formControlName]="'owner_name_en'"
+                                            [placeholder]="'Enter Owner Name (In English)'"
+                                            required>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-span-2 flex flex-col items-left justify-left" *ngIf="isPropertyOK" >
+                                <mat-form-field class="flex-auto gt-xs:pr-3">
+                                        <mat-label>Owner Mobile Number</mat-label>   
+                                        <mat-icon
+                                        class="icon-size-5"
+                                        [svgIcon]="'heroicons_solid:phone'"
+                                        matPrefix></mat-icon>
+                                        <input
+                                            matInput
+                                            maxlength="10"
+                                            minlength="10"
+                                            (keypress)="keyPress($event)"
+                                            [formControlName]="'owner_mobile'"
+                                            [placeholder]="'Enter Owner Mobile Number'"
+                                            required>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-span-2 flex flex-col items-left justify-left" *ngIf="isPropertyOK" >
+                                <mat-form-field class="flex-auto gt-xs:pr-3">
+                                        <mat-label>Owner Email Address</mat-label>   
+                                        <mat-icon
+                                        class="icon-size-5"
+                                        [svgIcon]="'heroicons_solid:mail'"
+                                        matPrefix></mat-icon>
+                                        <input
+                                            matInput
+                                            [formControlName]="'owner_email'"
+                                            [placeholder]="'Enter Owner Email Address'"
+                                            required>
+                                </mat-form-field>
+                            </div>
+                                
+                        </div>
+
+                        <div class="mt-1 mb-1 "></div>
+                        <div class="flex" *ngIf="!isPropertyOK" style="color: red;font-size: 18px;font-weight: 800;">
+                            या सदनिकेसाठी/दुकानासाठी आपणास अर्ज करता येणार नाही. आपण कार्यालयात संपर्क करावा.
+                        </div>
+                        <div class="flex" *ngIf="isPropertyOK">
+                            <button class="px-8" mat-flat-button  [color]="'primary'" type="button"
+                            (click)="send()" >
+                                Get OTP
+                            </button>
+                        </div>
+
+                
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

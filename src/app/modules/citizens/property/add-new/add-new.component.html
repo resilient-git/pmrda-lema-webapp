@@ -1,0 +1,218 @@
+<div class="flex flex-col flex-auto w-full">
+
+    <div class="flex flex-wrap w-full max-w-screen-xl mx-auto p-6 md:p-8">
+        <div class="flex items-center justify-between w-full">
+            <div>
+                <h2 class="text-3xl font-semibold tracking-tight leading-8">Add New Property</h2>
+
+            </div>
+           
+        </div>
+  <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 w-full mt-8">
+     <div class="grid gap-8 sm:grid-flow-col xl:grid-flow-row">
+            <!--statement -->
+     
+        <div class="relative flex flex-col flex-auto p-6 pr-3 pb-3 bg-card rounded-2xl shadow overflow-hidden">   
+            <!-- {{horizontalStepperForm.value | json}}  -->
+       <form
+            [formGroup]="horizontalStepperForm">
+            <div class="flex-auto grid grid-cols-4 gap-4 mt-6">
+                <div class="col-span-2 flex flex-col items-left justify-left">
+                    <mat-form-field class="flex-auto gt-xs:pr-3">
+                        <mat-label> Taluka</mat-label>
+                        <mat-select [formControlName]="'taluka_code'" [placeholder]="'Select Taluka'"
+                            required (selectionChange)="getVillageList($event.value)">
+                            <mat-option *ngFor="let taluka of talukaData" [value]="taluka.code">
+                           {{taluka.name_en}} ({{taluka.name_mr}})</mat-option>              
+                          </mat-select>
+                        <mat-icon
+                            class="icon-size-5"
+                            matPrefix
+                            [svgIcon]="'heroicons_solid:location-marker'"></mat-icon>
+                    </mat-form-field>
+                </div>
+                <div class="col-span-2 flex flex-col items-left justify-left">
+                    <mat-form-field class="flex-auto gt-xs:pr-3">
+                        <mat-label> Village/Sector</mat-label>
+                        <mat-select [formControlName]="'village_code'" [placeholder]="'Select Village'"
+                        required (selectionChange)="getGPSCList($event.value)">   
+                        <mat-option *ngFor="let village of villageData" [value]="village.code">
+                            {{village.name_en}} ({{village.name_mr}})</mat-option>     
+                      </mat-select>
+                        <mat-icon
+                            class="icon-size-5"
+                            matPrefix
+                            [svgIcon]="'heroicons_solid:location-marker'"></mat-icon>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-span-2 flex flex-col items-left justify-left">
+                    <mat-form-field class="flex-auto gt-xs:pr-3">
+                        <mat-label>Gat/Plot/CTS/Survey Number </mat-label>
+                        <mat-select [formControlName]="'gpsc_code'"
+                            [placeholder]="'Select Gat/Plot/CTS/Survey Number'" required
+                            (selectionChange)="getSchemesList($event.value)">
+                            <mat-option *ngFor="let opt of gpscData" [value]="opt.code">
+                                {{opt.gpsc_number}} </mat-option>
+                        </mat-select>
+                        <mat-icon
+                            class="icon-size-5"
+                            matPrefix
+                            [svgIcon]="'heroicons_solid:location-marker'"></mat-icon>
+                    </mat-form-field>    
+                </div>
+
+               
+                <div class="col-span-2 flex flex-col items-left justify-left">
+                    <mat-form-field class="flex-auto gt-xs:pr-3">
+                        <mat-label> Scheme Number</mat-label>
+                        <mat-select [formControlName]="'scheme_number'"
+                        [placeholder]="'Select Scheme Number '" required
+                        (selectionChange)="getSchemesStructureList($event.value)">
+                       <mat-option *ngFor="let opt of schemesData" [value]="opt.code">
+                        {{opt.scheme_number}} </mat-option>
+                        </mat-select>
+                        <mat-icon
+                            class="icon-size-5"
+                            matPrefix
+                            [svgIcon]="'heroicons_solid:location-marker'"></mat-icon>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-span-2 flex flex-col items-left justify-left">
+                    <mat-form-field class="flex-auto gt-xs:pr-3">
+                        <mat-label>Scheme Structure Type </mat-label>
+                        <mat-select [formControlName]="'scheme_structure_code'"
+                            [placeholder]="'Select Scheme Number '" required
+                            (selectionChange)="getSocietyList($event.value)">
+                            <mat-option *ngFor="let opt of schemeStructureData"
+                                [value]="opt.structure_code">
+                                {{opt.structure_type_name_en}} ({{opt.structure_type_name_mr}})</mat-option>
+                        </mat-select>
+                        <mat-icon
+                            class="icon-size-5"
+                            matPrefix
+                            [svgIcon]="'heroicons_solid:location-marker'"></mat-icon>
+                    </mat-form-field>
+                </div>
+
+               
+                <div class="col-span-2 flex flex-col items-left justify-left">
+                    <mat-form-field class="flex-auto gt-xs:pr-3">
+                        <mat-label> Society Name</mat-label>
+                        <mat-select [formControlName]="'society_code'" [placeholder]="'Select Society Name'"
+                        required (selectionChange)="getBuildingList($event.value)">
+                        <mat-option *ngFor="let opt of societyData" [value]="opt.code">
+                            {{opt.name_en}} ({{opt.name_mr}})</mat-option>
+                    </mat-select>
+                        <mat-icon
+                            class="icon-size-5"
+                            matPrefix
+                            [svgIcon]="'heroicons_solid:location-marker'"></mat-icon>
+                    </mat-form-field>
+                </div>
+
+
+                <div class="col-span-2 flex flex-col items-left justify-left">
+                    <mat-form-field class="flex-auto gt-xs:pr-3">
+                        <mat-label> Building Number</mat-label>
+                        <mat-select [formControlName]="'building_code'"
+                            [placeholder]="'Select Building Number'" required
+                            (selectionChange)="getSadnikaList($event.value)">
+                            <mat-option *ngFor="let opt of buildingData" [value]="opt.code">
+                            {{opt.building_number}}</mat-option>
+                         </mat-select>
+                        <mat-icon
+                            class="icon-size-5"
+                            matPrefix
+                            [svgIcon]="'heroicons_solid:location-marker'"></mat-icon>
+                    </mat-form-field>
+                </div>
+                <div class="col-span-2 flex flex-col items-left justify-left">
+                    <mat-form-field class="flex-auto gt-xs:pr-3">
+                        <mat-label> Sadnika/Dukan Number</mat-label>
+                        <mat-select [formControlName]="'sadnika_code'"
+                        [placeholder]="'Select Sadnika/Dukan Number'" required
+                        (selectionChange)="getOwnerList($event.value)">
+                        <mat-option *ngFor="let sadnika of sadnikaData" [value]="sadnika.code">
+                        {{sadnika.sadnika_number}}</mat-option>
+                     </mat-select>
+                        <mat-icon
+                            class="icon-size-5"
+                            matPrefix
+                            [svgIcon]="'heroicons_solid:location-marker'"></mat-icon>
+                    </mat-form-field>
+                </div>
+
+                <!-- <div class="col-span-2 flex flex-col items-left justify-left">
+                    <mat-form-field class="flex-auto gt-xs:pr-3">
+                        <mat-label> Owner Name</mat-label>
+                        <mat-select [formControlName]="'ownerName'"
+                        [placeholder]="'Select  Owner Name'" required>
+                        <mat-option *ngFor="let opt of ownerData" [value]="opt.code">
+                        {{opt.ownerName}}</mat-option>
+                     </mat-select>
+                        <mat-icon
+                            class="icon-size-5"
+                            matPrefix
+                            [svgIcon]="'heroicons_solid:location-marker'"></mat-icon>
+                    </mat-form-field>
+                </div> -->
+
+
+                <div class="col-span-2 flex flex-col items-left justify-left">
+                    <mat-form-field class="flex-auto gt-xs:pr-3">
+                            <mat-label>Owner Name</mat-label>  
+                            <!-- <ng-content *ngIf="(owner_name | async) as ownerData">
+                              
+                            </ng-content>  -->
+                            <!-- <mat-option *ngFor="let opt of ownerData" [value]="opt.code">
+                                {{opt.owner_name}}</mat-option> -->
+                            <mat-icon
+                            class="icon-size-5"
+                            [svgIcon]="'heroicons_solid:user'"
+                            matPrefix></mat-icon>
+                            <input
+                                matInput
+                                [formControlName]="'owner_name'"
+                                  
+                                required>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-span-2 flex flex-col items-left justify-left">
+                    <mat-form-field class="flex-auto gt-xs:pr-3">
+                            <mat-label>Owner Mobile Number</mat-label>   
+                            <mat-icon
+                            class="icon-size-5"
+                            [svgIcon]="'heroicons_solid:phone'"
+                            matPrefix></mat-icon>
+                            <input
+                                matInput
+                                maxlength="10"
+                                minlength="10"
+                                (keypress)="keyPress($event)"
+                                [formControlName]="'owner_mobile'"
+                                [placeholder]="'Enter Owner Mobile Number'"
+                                required>
+                    </mat-form-field>
+                </div>
+                      
+            </div>
+
+            <div class="mt-1 mb-1 "></div>
+
+            <div class="flex">
+                <button class="px-8" mat-flat-button  [color]="'primary'" type="button"
+                  (click)="send()" >
+                    Get OTP
+                </button>
+            </div>
+
+       
+       </form>
+          </div>
+     </div>
+    </div>
+  </div>
+</div>

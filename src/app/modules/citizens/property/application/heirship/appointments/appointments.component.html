@@ -1,0 +1,115 @@
+<div class="flex flex-col flex-auto w-full">
+
+  <div class="flex flex-wrap w-full max-w-screen-xl mx-auto p-6 md:p-8">
+    <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 w-full mt-6">
+      <div class="grid gap-8 sm:grid-flow-col xl:grid-flow-row">
+        <!--statement -->
+        <div class="relative flex flex-col flex-auto p-6 pr-3 pb-3 bg-card rounded-2xl shadow overflow-hidden">
+
+
+
+          <div class="grid gap-8 sm:grid-flow-col xl:grid-flow-row">
+
+            <div class="relative flex flex-col flex-auto">
+              <h2 class="text-3xl font-semibold tracking-tight leading-8">Appointments</h2>
+
+            </div>
+
+           
+          </div>
+        
+          <!-- Alert -->
+          <fuse-alert class="mt-8 -mb-4 " *ngIf="showAlert" [appearance]="'outline'" [showIcon]="false"
+            [type]="alert.type" [@shake]="alert.type === 'error'">
+            {{alert.message}}
+          </fuse-alert>
+
+          <mat-form-field appearance="standard">
+            <mat-label>Search In:</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Start typing ..." #input>
+          </mat-form-field>
+          <div class="mt-2 mb-2 "></div>
+
+         
+          <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 mt-3" matSort>
+            <div class="mt-4 mb-4 "></div>
+            <ng-container matColumnDef="uprn">
+              <th mat-header-cell *matHeaderCellDef>UPRN </th>
+              <td mat-cell *matCellDef="let element"> {{element.uprn}} </td>
+            </ng-container> 
+            <ng-container matColumnDef="owner_details">
+              <th mat-header-cell *matHeaderCellDef>Owner Details</th>
+              <td mat-cell *matCellDef="let element">{{element.owner_name}}<br/>{{element.owner_mobile}}</td>
+            </ng-container>
+            <ng-container matColumnDef="transferee_details">
+              <th mat-header-cell *matHeaderCellDef>Transferee Details</th>
+              <td mat-cell *matCellDef="let element">
+                  {{element.transferee_first_name}} {{element.transferee_middle_name}}  {{element.transferee_last_name}} 
+                  <br/>{{element.transferee_mobile}}
+              </td>
+            </ng-container> 
+          <!--
+          <ng-container matColumnDef="transferee_email">
+            <th mat-header-cell *matHeaderCellDef>Transferee Email</th>
+            <td mat-cell *matCellDef="let element"> {{element.transferee_email}} </td>
+          </ng-container>--> 
+          <ng-container matColumnDef="status_text">
+            <th mat-header-cell *matHeaderCellDef>Action</th>
+            <td mat-cell *matCellDef="let element"> 
+              <button mat-icon-button class="iconbutton" [routerLink]="['/citizens/schedule-applications/'+ element.code]">
+                <mat-icon>schedule</mat-icon>
+              </button>
+            </td>
+          </ng-container> 
+
+            
+            <!-- Action Column-->
+
+            <!--<ng-container matColumnDef="actions">
+              <th mat-header-cell *matHeaderCellDef> Actions </th>
+              <td mat-cell *matCellDef="let element"> 
+                <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+              </td>
+             <td mat-cell *matCellDef="let element">
+               
+                <button mat-icon-button class="iconbutton" (click)="openComposeDialogView(element.code)">
+                  <mat-icon>visibility</mat-icon>
+                </button>
+                <button *ngIf="element.status == 0" mat-icon-button class="iconbutton" (click)="openComposeDialogDelete(element.code)">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button *ngIf="element.status == 0" mat-icon-button class="iconbutton" [routerLink]="['/citizens/new-transfer-application/'+ element.code]">
+                  <mat-icon>payment</mat-icon>
+                </button>
+                <button *ngIf="element.status == 1" mat-icon-button class="iconbutton" [routerLink]="['/citizens/fees/'+ element.code]">
+                  <mat-icon>payment</mat-icon>
+                </button>
+                <button *ngIf="element.status == 2" mat-icon-button class="iconbutton" [routerLink]="['/citizens/schedule-applications/'+ element.code]">
+                  <mat-icon>schedule</mat-icon>
+                </button>
+                <button mat-icon-button class="iconbutton" (click)="openComposeDialogDelete(element.code)" color="warn">
+                  <mat-icon>delete</mat-icon>
+                </button>
+             
+              
+               
+              </td>
+            </ng-container>-->
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+    
+
+
+          <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+            aria-label="Select page of periodic elements">
+          </mat-paginator>
+
+          <div class="mt-2 mb-2 "></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

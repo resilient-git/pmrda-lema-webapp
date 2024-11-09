@@ -1,0 +1,156 @@
+<div class="grid grid-cols-1 xl:grid-cols-2 w-full">
+    <div class="grid sm:grid-flow-col xl:grid-flow-row">
+        <div class="relative flex flex-col flex-auto bg-card shadow overflow-hidden">
+            <div style="text-align: center;background: #c1c1c1;" class="text-3xl font-semibold tracking-tight leading-8">Property Transfer Application
+            </div>       
+            <div class="timeline-steps aos-init aos-animate" data-aos="fade-up">
+                <div class="timeline-step timeline-step-done" style="margin-top: 3px;">
+                    <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2003">
+                        <p class="h6 mt-2 mt-lg-3 mb-2 mb-lg-3">01. Application</p>
+                    </div>
+                </div>
+                <div class="timeline-step timeline-step-done"  style="margin-top: 3px;">
+                    <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2004">
+                        <p class="h6 mt-2 mt-lg-3 mb-2 mb-lg-3">02. Payment Receipts</p>
+                    </div>
+                </div>
+                               
+                <div class="timeline-step timeline-step-active mb-0"  style="margin-top: 3px;">
+                    <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2010">
+                        <p class="h6 mt-2 mt-lg-3 mb-2 mb-lg-3">03. Data Entry</p>
+                    </div>
+                </div>
+
+                
+            </div>
+            <div style="border: 3px solid #ad2331;padding:10px;">
+                <form 
+                [formGroup]="initiateForm">
+        <!--
+
+                <input matInput hidden="true" [formControlName]="'tid'" required>
+                
+                <input matInput hidden="true" [formControlName]="'order_id'" required>
+                <input matInput hidden="true" [formControlName]="'amount'" required>
+                
+                    <input matInput hidden="true" [formControlName]="'merchant_id'" required><input matInput hidden="true" [formControlName]="'currency'" required>
+                <input matInput hidden="true" [formControlName]="'redirect_url'" required>
+                <input matInput hidden="true" [formControlName]="'cancel_url'" required>
+                <input matInput hidden="true" [formControlName]="'language'" required>
+                -->
+                
+
+                <div class="mt-2 mb-2 "></div>
+
+                <div class="flex flex-col sm:flex-row  w-full max-w-xs sm:max-w-none">
+                    <mat-form-field class="fuse-mat-no-subscript w-1/2 pr-2 " >
+                        <mat-label>Sales Amount (Rs.) </mat-label>
+                        <input style="text-transform:uppercase"
+                            matInput
+                            [formControlName]="'pancard'"
+                            [placeholder]="'Enter Sales Amount in Rs'" 
+                            maxlength="10" minlength="4" (keypress)="keyPress($event)" 
+                            required>                    
+                    </mat-form-field> 
+
+                    <mat-form-field class="fuse-mat-no-subscript w-1/2 px-2">
+                        <mat-label>Market Value (Rs.)</mat-label>
+                        <input
+                            matInput
+                            [formControlName]="'age'"
+                            [placeholder]="'Enter Market value in Rs'" 
+                            maxlength="10" minlength="4" (keypress)="keyPress($event)" 
+                            required>
+                    </mat-form-field> 
+                </div>
+                <div class="mt-4 mb-4 "></div>
+
+                <div class="flex flex-col sm:flex-row  w-full max-w-xs sm:max-w-none">
+                    <mat-form-field class="fuse-mat-no-subscript w-1/2 pr-2 " >
+                        <mat-label>ON OR TOWARDS EAST </mat-label>
+                        <input style="text-transform:uppercase"
+                            matInput
+                            [formControlName]="'pancard'"
+                            [placeholder]="'Enter ON OR TOWARDS EAST'" 
+                            required>                    
+                    </mat-form-field> 
+
+                    <mat-form-field class="fuse-mat-no-subscript w-1/2 px-2">
+                        <mat-label>ON OR TOWARDS WEST </mat-label>
+                        <input
+                            matInput
+                            [formControlName]="'age'"
+                            [placeholder]="'Enter ON OR TOWARDS WEST'" 
+                            required>
+                    </mat-form-field> 
+                    <mat-form-field class="fuse-mat-no-subscript w-1/2 px-2">
+                        <mat-label>ON OR TOWARDS SOUTH </mat-label>
+                        <input
+                            matInput
+                            [formControlName]="'age'"
+                            [placeholder]="'Enter ON OR TOWARDS SOUTH'" 
+                            required>
+                    </mat-form-field> 
+                    <mat-form-field class="fuse-mat-no-subscript w-1/2 px-2">
+                        <mat-label>ON OR TOWARDS NORTH </mat-label>
+                        <input
+                            matInput
+                            [formControlName]="'age'"
+                            [placeholder]="'Enter ON OR TOWARDS NORTH'" 
+                            required>
+                    </mat-form-field> 
+                </div>
+
+
+                
+
+                <div class="mt-4 mb-4 "></div>
+
+                <div class="flex items-center">
+                        <button
+                        class="px-8"
+                        mat-flat-button
+                        [color]="'primary'"
+                        type="submit"
+                        (click)="proceedToPay()"
+                        >
+                        Submit
+                    </button>
+                </div>
+<!--
+
+                Village name
+                society lease deed and sale deed
+                Sr. No and date
+
+
+               
+
+                desk 1
+                desk 2
+                desk 4
+                desk 5
+
+                Citizen Application 
+
+-->
+                <div class="mt-4 mb-4 "></div>
+
+                <!-- <div >
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span> By clicking continue, i am agree with 
+                    </span>
+                    <a
+                        class="ml-1 text-primary-500 hover:underline"
+                        [routerLink]="['./']">Terms & Policy
+                    </a>
+                </div> -->
+                <div class="mt-4 mb-4 "></div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

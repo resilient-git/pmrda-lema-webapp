@@ -1,0 +1,195 @@
+<div class="flex flex-col flex-auto w-full">
+
+    <div class="flex flex-wrap w-full max-w-screen-xl mx-auto p-6 md:p-8">
+        <div class="flex items-center justify-between w-full">
+            <div>
+                <h2 class="text-3xl font-semibold tracking-tight leading-8">Update Properties</h2>
+
+            </div>
+
+        </div>
+        <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 w-full mt-8">
+            <div class="grid gap-8 sm:grid-flow-col xl:grid-flow-row">
+                <!--statement -->
+                <div class="relative flex flex-col flex-auto p-6 pr-3 pb-3 bg-card rounded-2xl shadow overflow-hidden">
+                    <div class="col-span-3 flex flex-col items-left justify-left mb-2">
+                        <mat-label class="font-medium">Taluka </mat-label>
+                        <mat-label class="p-3 border m-1 rounded bg-gray-100">{{propertiesForm.value.taluka_name_en}}
+                            ({{propertiesForm.value.taluka_name_mr}})
+                        </mat-label>
+                    </div>
+                    <div class="col-span-3 flex flex-col items-left justify-left mb-2">
+                        <mat-label class="font-medium">Village/Sector </mat-label>
+                        <mat-label class="p-3 border m-1 rounded bg-gray-100">{{propertiesForm.value.village_name_en}}
+                            ({{propertiesForm.value.village_name_mr}})
+                        </mat-label>
+                    </div>
+                    <div class="col-span-3 flex flex-col items-left justify-left mb-2">
+                        <mat-label class="font-medium">Gat/Plot/CTS/Survey Number </mat-label>
+                        <mat-label class="p-3 border m-1 rounded bg-gray-100">{{propertiesForm.value.gpsc_number}}</mat-label>
+                    </div>
+                    <div class="col-span-3 flex flex-col items-left justify-left mb-2">
+                        <mat-label class="font-medium">Scheme Number </mat-label>
+                        <mat-label class="p-3 border m-1 rounded bg-gray-100">{{propertiesForm.value.scheme_number}}</mat-label>
+                    </div>
+                    <div class="col-span-3 flex flex-col items-left justify-left mb-2">
+                        <mat-label class="font-medium">Scheme Structure Type </mat-label>
+                        <mat-label class="p-3 border m-1 rounded bg-gray-100">{{propertiesForm.value.structure_type_name_en}}
+                            ({{propertiesForm.value.structure_type_name_mr}})</mat-label>
+                    </div>
+                    <div class="col-span-3 flex flex-col items-left justify-left mb-2">
+                        <mat-label class="font-medium">Society </mat-label>
+                        <mat-label class="p-3 border m-1 rounded bg-gray-100">{{propertiesForm.value.society_name_en}}
+                            ({{propertiesForm.value.society_name_mr}})</mat-label>
+                    </div>
+                    <div class="col-span-3 flex flex-col items-left justify-left mb-2">
+                        <mat-label class="font-medium">Building Number </mat-label>
+                        <mat-label class="p-3 border m-1 rounded bg-gray-100">{{propertiesForm.value.building_number}}
+                           </mat-label>
+                    </div>
+                    <div class="col-span-3 flex flex-col items-left justify-left mb-2">
+                        <mat-label class="font-medium">Sadnika/Dukan Number </mat-label>
+                        <mat-label class="p-3 border m-1 rounded bg-gray-100">{{propertiesForm.value.sadnika_number}}
+                           </mat-label>
+                    </div>
+                    <form [formGroup]="propertiesForm">
+                        <div class="flex-auto grid grid-cols-4 gap-4 mt-6">
+                            <div class="col-span-3 flex flex-col items-left justify-left">
+                                <mat-form-field>
+                                    <mat-label>Property Area</mat-label>
+                                    <input matInput [formControlName]="'property_area'">
+                                </mat-form-field>
+                            </div>
+                        
+                        
+                            <div class="col-span-3 flex flex-col items-left justify-left">
+                                <mat-form-field>
+                                    <mat-label>Special Land Acquition Officer Number</mat-label>
+                                    <input matInput [formControlName]="'special_land_acquition_officer_number'">
+                                </mat-form-field>
+                            </div>
+                        
+                       
+                            <div class="col-span-3 flex flex-col items-left justify-left">
+                                <mat-form-field>
+                                    <mat-label>Award Number</mat-label>
+                                    <input matInput [formControlName]="'award_number'">
+                                </mat-form-field>
+                            </div>
+                        
+                        
+                            <div class="col-span-3 flex flex-col items-left justify-left">
+                                <mat-form-field>
+                                    <mat-label>Award Date</mat-label>
+                                    <input matInput [matDatepicker]="dp8" disabled [formControlName]="'award_date'"
+                                    [placeholder]="'Select Award Date'">
+                                <mat-datepicker-toggle matSuffix [for]="dp8"></mat-datepicker-toggle>
+                                <mat-datepicker #dp8 disabled="false"></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                       
+                        
+                            <div class="col-span-3 flex flex-col items-left justify-left">
+                                <mat-form-field>
+                                    <mat-label>Award Land Possession Date</mat-label>
+                                    <input matInput [matDatepicker]="dp9" disabled [formControlName]="'award_land_possession_date'"
+                                    [placeholder]="'Select Award Land Possession Date'">
+                                <mat-datepicker-toggle matSuffix [for]="dp9"></mat-datepicker-toggle>
+                                <mat-datepicker #dp9 disabled="false"></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                       
+                            <div class="col-span-3 flex flex-col items-left justify-left">
+                                <mat-form-field>
+                                    <mat-label>Leasedeed Registration Number Haveli Number</mat-label>
+                                    <input matInput [formControlName]="'leasedeed_registration_number_haveli_number'">
+                                </mat-form-field>
+                            </div>
+                        
+                            <div class="col-span-3 flex flex-col items-left justify-left">
+                                <mat-form-field>
+                                    <mat-label>Leasedeed Registration Date</mat-label>
+                                    <input matInput [matDatepicker]="dp10" disabled [formControlName]="'leasedeed_registration_date'"
+                                    [placeholder]="'Select Leasedeed Registration Date'">
+                                <mat-datepicker-toggle matSuffix [for]="dp10"></mat-datepicker-toggle>
+                                <mat-datepicker #dp10 disabled="false"></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                        
+                            <div class="col-span-3 flex flex-col items-left justify-left">
+                                <mat-form-field>
+                                    <mat-label>Original Plot Holder</mat-label>
+                                    <input matInput [formControlName]="'original_plot_holder'">
+                                </mat-form-field>
+                            </div>
+                        
+                            <div class="col-span-3 flex flex-col items-left justify-left">
+                                <mat-form-field>
+                                    <mat-label>Shop Premium</mat-label>
+                                    <input matInput [formControlName]="'shop_premium'">
+                                </mat-form-field>
+                            </div>
+                       
+                            <div class="col-span-3 flex flex-col items-left justify-left">
+                                <mat-form-field>
+                                    <mat-label>Ready Reckoner Square Meter Rate</mat-label>
+                                    <input matInput [formControlName]="'ready_reckoner_square_meter_rate'">
+                                </mat-form-field>
+                            </div>
+                        
+                            <div class="col-span-3 flex flex-col items-left justify-left">
+                                <mat-form-field>
+                                    <mat-label>Building Permission Number</mat-label>
+                                    <input matInput [formControlName]="'building_permission_number'">
+                                </mat-form-field>
+                            </div>
+                        
+                            <div class="col-span-3 flex flex-col items-left justify-left">
+                                <mat-form-field>
+                                    <mat-label>Building Permission Date</mat-label>
+                                    <input matInput [matDatepicker]="dp11" disabled [formControlName]="'building_permission_date'"
+                                    [placeholder]="'Select Building Permission Date'">
+                                <mat-datepicker-toggle matSuffix [for]="dp11"></mat-datepicker-toggle>
+                                <mat-datepicker #dp11 disabled="false"></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                       
+                            <div class="col-span-3 flex flex-col items-left justify-left">
+                                <mat-form-field>
+                                    <mat-label>Completion Certificate Number</mat-label>
+                                    <input matInput [formControlName]="'completion_certificate_number'">
+                                </mat-form-field>
+                            </div>
+                      
+                            <div class="col-span-3 flex flex-col items-left justify-left">
+                                <mat-form-field>
+                                    <mat-label>Completion Date</mat-label>
+                                    <!-- <input matInput [formControlName]="'completion_date'"> -->
+                                    <input matInput [matDatepicker]="dp12" disabled [formControlName]="'completion_date'"
+                                    [placeholder]="'Select Completion  Date'">
+                                <mat-datepicker-toggle matSuffix [for]="dp12"></mat-datepicker-toggle>
+                                <mat-datepicker #dp12 disabled="false"></mat-datepicker>
+                                <!-- <input matInput [matDatepicker]="dp" disabled [formControlName]="'completion_date'"
+                                        [placeholder]="'Select Transfer Date'">
+                                    <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                                    <mat-datepicker #dp disabled="false"></mat-datepicker> -->
+                                </mat-form-field>
+                                
+                            </div>
+
+                        </div>
+                        <div class="flex ">
+                            <button class="px-8" mat-flat-button [color]="'primary'" type="button" (click)="send()">
+                                Submit
+                            </button>
+                            <button class="px-8 mx-2" mat-flat-button [color]="'primary'" type="button"
+                                [routerLink]="['/admin/properties/list']">
+                                Back
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,63 @@
+<div class="flex flex-col flex-auto w-full">
+
+    <div class="flex flex-wrap w-full max-w-screen-xl mx-auto p-6 md:p-8" style="background-color: rgb(190, 229, 239);">
+        <div class="flex items-center justify-between w-full">
+            <div>
+                <h2 class="text-3xl font-semibold tracking-tight leading-8" >Download Documents</h2>
+            </div>      
+        </div>
+
+        <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 w-full mt-6">
+            <div style="border: 3px solid #ad2331;padding:0px;">
+                <!-- table -->
+                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" >
+
+                    <ng-container matColumnDef="document">
+                      <th mat-header-cell *matHeaderCellDef style=" font-size:15px; color: #ad2331;" > Document</th>
+                      <td mat-cell *matCellDef="let element">{{element.document}}  </td>
+                    </ng-container>
+                  
+                    <ng-container matColumnDef="download">
+                      <th mat-header-cell *matHeaderCellDef style=" font-size:15px; color: #ad2331;"> Download Here </th>
+                      <td mat-cell *matCellDef="let element"> 
+                        <a routerLink=" ">{{element.download}}</a>
+                    </td>
+                     </ng-container>
+                  
+                    <!-- <ng-container matColumnDef="weight">
+                      <th mat-header-cell *matHeaderCellDef> Weight </th>
+                      <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+                    </ng-container>
+                  
+                    <ng-container matColumnDef="symbol">
+                      <th mat-header-cell *matHeaderCellDef> Symbol </th>
+                      <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+                    </ng-container> -->
+                  
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                  </table>
+                  
+                  
+                
+
+                                    
+               </div>
+                <div style="clear:both;">&nbsp;</div>
+        </div>
+    </div>
+</div>
+              
+
+
+
+
+
+
+
+          
+           
+            
+       
+  
+

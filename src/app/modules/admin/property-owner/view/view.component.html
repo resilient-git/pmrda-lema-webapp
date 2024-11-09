@@ -1,0 +1,97 @@
+<div class="flex flex-col flex-auto w-full">
+
+    <div class="flex flex-wrap w-full max-w-screen-xl mx-auto">
+        <div class="flex items-center justify-between w-full">
+            <div>
+                <h2 class="text-3xl font-semibold tracking-tight leading-8">View Property Owner</h2>
+
+            </div>
+
+        </div>
+        <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 w-full mt-4">
+            <div class="flex-auto grid grid-cols-1">
+                <!--statement -->
+                <!-- <div class="relative flex flex-col flex-auto p-6 pr-3 pb-3 bg-card rounded-2xl shadow overflow-hidden"> -->
+                <!-- {{propertyData|keyvalue|json}} -->
+                <!-- <form [formGroup]="propertyData">  -->
+                  
+                <div class="flex-auto grid grid-cols-1">
+                    <table class="tbl">
+                        <!-- <tr>
+                            <td>Parent Owner Id </td>
+                            <td>{{propertyData.parent_owner_id}}
+                            </td>
+                        </tr> -->
+
+                        <tr>
+                            <td>Property Code </td>
+                            <td>{{propertyData.property_code}}
+                               
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Transfer Date </td>
+                            <td>{{propertyData.transfer_date}}</td>
+                        </tr>
+                        <tr>
+                            <td>Transfer Deed Registration Number Haveli Number </td>
+                            <td>{{propertyData.transfer_deed_registration_number_haveli_number}}</td>
+                        </tr>
+                        <tr>
+                            <td>Type Of Transfer </td>
+                            <td>{{propertyData.type_of_transfer}}
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>Owner Name </td>
+                            <td>{{propertyData.owner_name}}
+                               </td>
+                        </tr>
+                        <tr>
+                            <td>Owner Mobile Number </td>
+                            <td>{{propertyData.owner_mobile}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Premium Of Flat </td>
+                            <td>{{propertyData.premium_of_flat}}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Transfer Fee</td>
+                            <td>{{propertyData.transfer_fee}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Ready Reackoner Rate Per Square Meter </td>
+                            <td>{{propertyData.ready_reackoner_rate_per_square_meter}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Remarks </td>
+                            <td>{{propertyData.remarks}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>court_cases </td>
+                            <td>{{propertyData.court_cases}}
+                            </td>
+                        </tr>
+                        
+                      
+                    </table>
+                </div>
+                <!-- <div class="flex-auto grid grid-cols-1">
+
+                    <button class="px-8 mx-2" mat-flat-button [color]="'primary'" type="button"
+                        [routerLink]="['/admin/properties/list']">
+                        Back
+                    </button>
+                </div> -->
+                <!-- </form> -->
+                <!-- </div> -->
+            </div>
+        </div>
+    </div>
+</div>

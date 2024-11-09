@@ -1,0 +1,471 @@
+<div class="grid grid-cols-1 xl:grid-cols-2 w-full">
+    <div class="grid sm:grid-flow-col xl:grid-flow-row">
+        <div class="relative flex flex-col flex-auto bg-card shadow overflow-hidden">
+            <div style="text-align: center;background: #c1c1c1;" class="text-3xl font-semibold tracking-tight leading-8">Property Transfer Application
+            </div>       
+            <div class="timeline-steps aos-init aos-animate" data-aos="fade-up">
+                <div class="timeline-step timeline-step-done" style="margin-top: 3px;">
+                    <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2003">
+                        <p class="h6 mt-2 mt-lg-3 mb-2 mb-lg-3">01. Select Property</p>
+                    </div>
+                </div>
+                <div class="timeline-step-active"  style="margin-top: 3px;">
+                    <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2004">
+                        <p class="h6 mt-2 mt-lg-3 mb-2 mb-lg-3">02. Application</p>
+                    </div>
+                </div>
+                <div class="timeline-step"  style="margin-top: 3px;">
+                    <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2005">
+                        <p class="h6 mt-2 mt-lg-3 mb-2 mb-lg-3">03. Fee Payment</p>
+                    </div>
+                </div>
+                <div class="timeline-step"  style="margin-top: 3px;">
+                    <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2010">
+                        <p class="h6 mt-2 mt-lg-3 mb-2 mb-lg-3">04. Reciept</p>
+                    </div>
+                </div>
+                <div class="timeline-step mb-0"  style="margin-top: 3px;">
+                    <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2020">
+                        <p class="h6 mt-2 mt-lg-3 mb-2 mb-lg-3">05. Status</p>
+                    </div>
+                </div>
+            </div>
+            <div style="border: 3px solid #ad2331;padding:0px;">
+                <input
+                matInput  hidden="true"
+                [formControlName]="'user_property_code'"
+                [placeholder]="'Enter Property Code'"
+                required>
+                        <form [formGroup]="bankNocTransferForm">
+                            <div class="flex flex-col px-8 py-2 pb-1" style="min-height: 900px;">
+                            
+                            
+
+                                <div class="text-xl font-semibold">Property Details/मिळकतीची माहिती</div>
+                                
+
+                                <div class="grid grid-cols-1 xl:grid-cols-2 w-full" >
+                                    <div class="flex flex-row flex-wrap -mx-6">
+                                        
+                                        <div class="flex flex-col box_border_3">
+                                            <div class="text-sm font-medium leading-none text-secondary">&darr; Taluka</div>
+                                            <div class="mt-2 font-medium leading-none">
+                                                {{pd.taluka_name_en}} ({{pd.taluka_name_mr}})
+                                            </div>
+                                        </div>  
+                                        
+                                        <div class="flex flex-col box_border_3">
+                                            <div class="text-sm font-medium leading-none text-secondary">&darr; Village</div>
+                                            <div class="mt-2 font-medium leading-none">
+                                                {{pd.village_name_en}} ({{pd.village_name_mr}})
+                                            </div>
+                                        </div>  
+
+                                        <div class="flex flex-col box_border_3">
+                                            <div class="text-sm font-medium leading-none text-secondary">&darr; UPRN</div>
+                                            <div class="mt-2 font-medium leading-none">
+                                                {{pd.uprn}}
+                                            </div>
+                                        </div>  
+                                        <div class="flex flex-col box_border_3">
+                                            <div class="text-sm font-medium leading-none text-secondary">&darr; Owner Name</div>
+                                            <div class="mt-2 font-medium leading-none">
+                                                {{pd.owner_name}}
+                                            </div>
+                                        </div>
+                                        <div class="flex flex-col box_border_3">
+                                            <div class="text-sm font-medium leading-none text-secondary">&darr; Owner Mobile</div>
+                                            <div class="mt-2 font-medium leading-none">
+                                                {{pd.owner_mobile}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-2 mb-2"></div>
+
+                                <div class="text-xl font-semibold">Bank Details/बँकेची माहिती</div>
+                                    <div class="mt-4 mb-4"></div>
+                                    <mat-form-field class="fuse-mat-no-subscript pr-2 " >
+                                        <mat-label>Bank Name </mat-label>
+                                        <input
+                                            matInput
+                                            [formControlName]="'bank_name'"
+                                            [placeholder]="'Enter bank name'"
+                                            required>
+                                        <mat-icon
+                                            class="icon-size-5"
+                                            matPrefix
+                                            [svgIcon]="'heroicons_solid:home'"></mat-icon>
+                                    </mat-form-field> 
+                                    <div class="mt-4 mb-4"></div>
+                                    <mat-form-field class="fuse-mat-no-subscript pr-2 " >
+                                        <mat-label>Loan Purpose *</mat-label>
+                                        <mat-select [formControlName]="'loan_purpose'"
+                                        [placeholder]="'Select Loan Purpose'" required>
+                                            <mat-option
+                                                *ngFor="let Purpose of purposes" [value]="Purpose.value">
+                                                {{Purpose.viewValue}}
+                                            </mat-option>
+                                        </mat-select><mat-icon
+                                        class="icon-size-5"
+                                        matPrefix
+                                        [svgIcon]="'heroicons_solid:arrow-right'"></mat-icon>
+                                    </mat-form-field> 
+
+                                    <!--<mat-form-field class="fuse-mat-no-subscript w-1/3 px-2 " >
+                                        <mat-label>Reason For Loan </mat-label>
+                                        <input
+                                            matInput
+                                            [formControlName]="'loan_reason'"
+                                            [placeholder]="'provide reason for loan'"
+                                            >
+                                        <mat-icon
+                                            class="icon-size-5"
+                                            matPrefix
+                                            [svgIcon]="'heroicons_solid:pencil'"></mat-icon>
+                                    </mat-form-field>--> 
+                                    <div class="mt-4 mb-4"></div>
+                                    <mat-form-field class="fuse-mat-textarea flex-auto fuse-mat-no-subscript px-2">
+                                        <mat-label>Note </mat-label>
+                                        <textarea
+                                            matInput
+                                            [formControlName]="'loan_note'"
+                                            [placeholder]="'Enter Notes'"
+                                            [rows]="2"></textarea>
+                                        <mat-icon
+                                            class="icon-size-5"
+                                            matPrefix
+                                            [svgIcon]="'heroicons_solid:location-pencil'"></mat-icon>
+                                    </mat-form-field>
+
+                                    <div class="mt-4 mb-4"></div>
+                                <div class="text-xl font-semibold">Upload Documents/कागदपत्रे </div>
+                                <mat-grid-list cols="3" rowHeight="4:1">
+                                    <mat-grid-tile>
+                                        <div class="flex flex-col mx-2 box_border_2">
+                                            
+                                            <div class="text-sm font-medium leading-none text-secondary">
+                                                Lease Agreement/मूळ भाडे पट्टा करार *
+                                            </div>
+                                            <div class="mt-2 font-medium leading-none">
+                                                <input  class="flex flex-row" type="file"  
+                                                [formControlName]="'lease_agreement'" (change)="onSelect($event,'lease_agreement')" 
+                                                    accept=".pdf" required/>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                    </mat-grid-tile>
+                                    <mat-grid-tile>
+                                        <div class="flex flex-col mx-2 box_border_2">
+                                            <div class="text-sm font-medium leading-none text-secondary">
+                                                Sanction Letter/मंजुरी पत्र *
+                                            </div>
+                                            <div class="mt-2 font-medium leading-none">
+                                                <input  class="flex flex-row" type="file"  
+                                                [formControlName]="'sanction_letter'" (change)="onSelect($event,'sanction_letter')"
+                                                    accept="image/*,.pdf" required/>
+                                            </div>
+                                        </div>
+                                    </mat-grid-tile>                                    
+                                    <mat-grid-tile>
+                                        <div class="flex flex-col mx-2 box_border_2">
+                                            <div class="text-sm font-medium leading-none text-secondary">
+                                                Reason for Raising the Loan/कर्ज उभारावयाचे कारणाची प्रत *
+                                            </div>
+                                            <div class="mt-2 font-medium leading-none">
+                                                <input  class="flex flex-row" type="file"  
+                                                [formControlName]="'loan_rason_letter'" (change)="onSelect($event,'loan_rason_letter')"
+                                                    accept="image/*,.pdf" required/>
+                                            </div>
+                                        </div>
+                                    </mat-grid-tile>
+                                    <div class="mt-4 mb-4"></div>
+                                    <mat-grid-tile>
+                                        <div class="flex flex-col mx-2 box_border_2">
+                                            <div class="text-sm font-medium leading-none text-secondary">
+                                                Letter of Consent of the Society/सोसायटीचे संमतीपत्र
+                                                 
+                                            </div>
+                                            <div class="mt-2 font-medium leading-none">
+                                                <input  class="flex flex-row" type="file"  
+                                                [formControlName]="'society_consent_letter'" (change)="onSelect($event,'society_consent_letter')"
+                                                    accept="image/*,.pdf"/>
+                                            </div>
+                                        </div>
+                                    </mat-grid-tile>
+                                    <mat-grid-tile>
+                                        <div class="flex flex-col mx-2 box_border_2">
+                                            <div class="text-sm font-medium leading-none text-secondary">
+                                                Share Certificate/शेअर सर्टिफिकेट
+                                            </div>
+                                            <div class="mt-2 font-medium leading-none">
+                                                <input  class="flex flex-row" type="file"  
+                                                [formControlName]="'share_certificate'" (change)="onSelect($event,'share_certificate')" 
+                                                    accept="image/*,.pdf"/>
+                                            </div>
+                                        </div>
+                                    </mat-grid-tile>                                    
+                                    <mat-grid-tile>
+                                        <div class="flex flex-col mx-2 box_border_2">
+                                            <div class="text-sm font-medium leading-none text-secondary">
+                                                List of Members/सभासद यादी 
+                                            </div>
+                                            <div class="mt-2 font-medium leading-none">
+                                                <input  class="flex flex-row" type="file"  
+                                                [formControlName]="'socienty_member_list'" (change)="onSelect($event,'socienty_member_list')" 
+                                                    accept="image/*,.pdf"/>
+                                            </div>
+                                        </div>
+                                    </mat-grid-tile>
+                                    <div class="mt-4 mb-4"></div>
+                                    <mat-grid-tile>
+                                        <div class="flex flex-col mx-2 box_border_2">
+                                            <div class="text-sm font-medium leading-none text-secondary">
+                                                Approved Map/मंजूर नकाशाची प्रत 
+                                            </div>
+                                            <div class="mt-2 font-medium leading-none">
+                                                <input  class="flex flex-row" type="file"  
+                                                [formControlName]="'approved_map'" (change)="onSelect($event,'approved_map')" 
+                                                    accept="image/*,.pdf"/>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                        
+                                        
+                                    </mat-grid-tile>
+                                    <mat-grid-tile>
+                                        <div class="flex flex-col mx-2 box_border_2">
+                                            <div class="text-sm font-medium leading-none text-secondary">
+                                                Affidavit of No Debt/कर्ज/बोजा नसल्याचे प्रतिज्ञापत्र *
+                                            </div>
+                                            <div class="mt-2 font-medium leading-none">
+                                                <input  class="flex flex-row" type="file"  
+                                                [formControlName]="'affidavit_letter'" (change)="onSelect($event,'affidavit_letter')"
+                                                    accept="image/*,.pdf" required/>
+                                            </div>
+                                        </div>
+                                    </mat-grid-tile>
+                                    
+                                    <mat-grid-tile>
+                                        <div class="flex flex-col mx-2 box_border_2">
+                                            <div class="text-sm font-medium leading-none text-secondary">
+                                                Loan Repayment from previous Financial Institution<br/>पूर्वीचे वित्त संस्थेचे कर्ज परतफेड केल्याबाबतचे पत्र
+                                            </div>
+                                            <div class="mt-2 font-medium leading-none">
+                                                <input  class="flex flex-row" type="file"  
+                                                [formControlName]="'no_dues'" (change)="onSelect($event,'no_dues')"
+                                                    accept="image/*,.pdf"/>
+                                            </div>
+                                        </div>
+                                    </mat-grid-tile> 
+                                    <div class="mt-4 mb-4"></div>                                       
+                                    <mat-grid-tile>
+                                        <div class="flex flex-col mx-2 box_border_2">
+                                            <div class="text-sm font-medium leading-none text-secondary">
+                                                Aadhaar card of Owner/मालमत्तेचा मालकाचे आधार कार्ड *
+                                            </div>
+                                            <div class="mt-2 font-medium leading-none">
+                                                <input  class="flex flex-row" type="file"  
+                                                [formControlName]="'lezy_aadhar_card'" (change)="onSelect($event,'lezy_aadhar_card')"
+                                                    accept="image/*,.pdf" required/>
+                                            </div>
+                                        </div> 
+                                    </mat-grid-tile>
+                                
+                                    <mat-grid-tile>
+                                        <div class="flex flex-col mx-2 box_border_2">
+                                            <div class="text-sm font-medium leading-none text-secondary">
+                                                Pan card of Owner/मालमत्तेचा मालकाचे  पॅन कार्ड *
+                                            </div>
+                                            <div class="mt-2 font-medium leading-none">
+                                                <input  class="flex flex-row" type="file"  
+                                                [formControlName]="'lezy_pan_card'" (change)="onSelect($event,'lezy_pan_card')"
+                                                    accept="image/*,.pdf" required/>
+                                            </div>
+                                        </div>
+                                    </mat-grid-tile>
+                                
+                                    <mat-grid-tile>
+                                        <div class="flex flex-col mx-2 box_border_2">
+                                            <div class="text-sm font-medium leading-none text-secondary">
+                                                Photo of Owner/मालमत्तेचा मालकाचे  फोटो *
+                                            </div>
+                                            <div class="mt-2 font-medium leading-none">
+                                                <input  class="flex flex-row" type="file"  
+                                                [formControlName]="'lezy_photo'" (change)="onSelect($event,'lezy_photo')" 
+                                                    accept="image/*" required/>
+                                            </div>
+                                        </div>
+                                    </mat-grid-tile>
+                                </mat-grid-list>
+                                <div class="grid grid-cols-1 xl:grid-cols-2 w-full">
+                                    
+                                    <div class="mt-4 mb-4" style="clear: both;"></div>
+                                        <div class="flex flex-col mx-2 box_border_2">
+
+                                            <div style="float: left;width:40%;">
+                                                <div>Applied for Bank Noc before/यापूर्वी बँक एनओसीसाठी अर्ज केला होता? *</div>
+                        
+                                                      <mat-radio-group
+                                                        [color]="'primary'"                                                        
+                                                        [formControlName]="'is_old_noc'" required>
+                                                        <mat-radio-button (change)="setOldNoCOptions(1)"
+                                                            class="mb-4"
+                                                            value="1">
+                                                            Yes
+                                                        </mat-radio-button>
+                                                        &nbsp;&nbsp;&nbsp;
+                                                        <mat-radio-button (change)="setOldNoCOptions(2)"
+                                                            class="mb-4"
+                                                            value="2">
+                                                            No
+                                                        </mat-radio-button>  
+                                                        
+                                                    </mat-radio-group>   
+                        
+                                                
+                                            </div>
+
+                                           
+                                            <div style="float: right;width:40%;" *ngIf="hasOldNoC">
+                                                    <div class="mt-4 mb-4" style="clear: both;"></div>
+                                                    <div class="text-sm font-medium leading-none text-secondary">
+                                                    Upload Origin NoC/यापूर्वी मूळ बँक एनओसी
+                                                    </div>
+                                                    <div class="mt-2 font-medium leading-none">
+                                                    <input class="flex flex-row" type="file" [formControlName]="'origin_noc'" (change)="onSelect($event, 'origin_noc')" accept="image/*,.pdf" />
+                                                    </div>
+                                                    <div class="mt-4 mb-4"></div>
+                                                   
+                                            </div>
+                                              
+                                        </div>
+                                </div>   
+                                
+
+                                 <!--       
+                                <div class="mt-2 mb-2 "></div>
+
+                                <div class="text-xl font-semibold">Upload Property Documents/मिळकतीची कागदपत्रे</div>
+                                <div class="grid grid-cols-1 xl:grid-cols-2 w-full">
+                                    <div class="flex flex-row flex-wrap -mx-6">
+                                                                                        
+                                        <div class="flex flex-col mx-2 box_border_2">
+                                            <div class="text-sm font-medium leading-none text-secondary">
+                                                Lease Agreement/मूळ भाडे पट्टा करार
+                                            </div>
+                                            <div class="mt-2 font-medium leading-none">
+                                                <input  class="flex flex-row" type="file"  
+                                                [formControlName]="'lease_agreement'" (change)="onSelect($event,'lease_agreement')" 
+                                                    accept="image/*,.pdf" required/>
+                                            </div>
+                                        </div>
+
+                                        <div class="flex flex-col mx-2 box_border_2">
+                                            <div class="text-sm font-medium leading-none text-secondary">
+                                                Guarantee Letter/हमीपत्र
+                                            </div>
+                                            <div class="mt-2 font-medium leading-none">
+                                                <input  class="flex flex-row" type="file"  
+                                                [formControlName]="'guarantee_letter'" (change)="onSelect($event,'guarantee_letter')" 
+                                                    accept="image/*,.pdf" required/>
+                                            </div>
+                                        </div>
+
+                                        <div class="flex flex-col mx-2 box_border_2">
+                                            <div class="text-sm font-medium leading-none text-secondary">
+                                                Allotment Certificate/नियत वाटप पत्र
+                                            </div>
+                                            <div class="mt-2 font-medium leading-none">
+                                                <input  class="flex flex-row" type="file"  
+                                                [formControlName]="'allotment_certificate'" (change)="onSelect($event,'allotment_certificate')"
+                                                    accept="image/*,.pdf" required/>
+                                            </div>
+                                        </div>   
+                                        
+                                        <div class="flex flex-col mx-2 box_border_2">
+                                            <div class="text-sm font-medium leading-none text-secondary">
+                                                Transfer Letter/हस्तान्तरण पत्र
+                                            </div>
+                                            <div class="mt-2 font-medium leading-none">
+                                                <input  class="flex flex-row" type="file"  
+                                                [formControlName]="'transfer_letter'" (change)="onSelect($event,'transfer_letter')"
+                                                    accept="image/*,.pdf" required/>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="flex flex-col mx-2 box_border_2">
+                                            <div class="text-sm font-medium leading-none text-secondary">
+                                                MOU/विक्रेता आणि खरेदीदार यांच्यात सामंजस्य करार
+                                            </div>
+                                            <div class="mt-2 font-medium leading-none">
+                                                <input  class="flex flex-row" type="file"  
+                                                [formControlName]="'mou_document'" (change)="onSelect($event,'mou_document')" 
+                                                    accept="image/*,.pdf" required/>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="flex flex-col mx-2 box_border_2">
+                                            <div class="text-sm font-medium leading-none text-secondary">
+                                                Society NOC/सोसायटी ना हरकत प्रमाणपत्र
+                                            </div>
+                                            <div class="mt-2 font-medium leading-none">
+                                                <input  class="flex flex-row" type="file"  
+                                                [formControlName]="'society_noc'" (change)="onSelect($event,'society_noc')"
+                                                    accept="image/*,.pdf" required/>
+                                            </div>
+                                        </div>
+                                        <div class="flex flex-col mx-2 box_border_2">
+                                            <div class="text-sm font-medium leading-none text-secondary">
+                                                Bank NOC/बँक ना हरकत प्रमाणपत्र
+                                            </div>
+                                            <div class="mt-2 font-medium leading-none">
+                                                <input  class="flex flex-row" type="file"  
+                                                [formControlName]="'bank_noc'" (change)="onSelect($event,'bank_noc')" 
+                                                    accept="image/*,.pdf" required/>
+                                            </div>
+                                        </div>
+                                        <div class="flex flex-col mx-2 box_border_2">
+                                            <div class="text-sm font-medium leading-none text-secondary">
+                                                Loan/Mortgage NOC/कर्ज,तारण ना हरकत प्रमाणपत्र
+                                            </div>
+                                            <div class="mt-2 font-medium leading-none">
+                                                <input  class="flex flex-row" type="file"  
+                                                [formControlName]="'loan_noc'" (change)="onSelect($event,'loan_noc')"
+                                                    accept="image/*,.pdf" required/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>-->
+
+                                
+                                <div class="mt-2 mb-2 "></div>
+
+                                
+                                
+                                <div class="mt-3 -mx-3"> 
+                                    <button class="px-8 mx-2" mat-flat-button [color]="'primary'" type="button"
+                                        (click)="submit()">
+                                        Submit Application
+                                    </button>
+                                    
+                                    <!-- <button class="px-8 mx-2" mat-flat-button [color]="'primary'" type="button"
+                                    (click)="fuseCard.face = 'back'">
+                                    Proceed to Add New Purchaser
+                                    </button> -->
+                                </div>
+
+                                
+                            
+                            </div>
+                        </form>
+                        
+
+
+            
+            </div>
+        </div>
+    </div>
+</div>

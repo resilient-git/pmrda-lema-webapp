@@ -1,0 +1,175 @@
+<div class="flex flex-col flex-auto w-full">
+
+    <div class="flex flex-wrap w-full max-w-screen-xl mx-auto p-6 md:p-8">
+        <div class="flex items-center justify-between w-full">
+            <div>
+                <h2 class="text-3xl font-semibold tracking-tight leading-8">Add Sadnika</h2>
+
+            </div>
+
+        </div>
+        <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 w-full mt-8">
+            <div class="grid gap-8 sm:grid-flow-col xl:grid-flow-row">
+                <!--statement -->
+                <div class="relative flex flex-col flex-auto p-6 pr-3 pb-3 bg-card rounded-2xl shadow overflow-hidden">
+
+                    <form [formGroup]="sadnikaForm">
+                        <div class="flex-auto grid grid-cols-4 gap-4 mt-6">
+                            <div class="col-span-3 flex flex-col items-left justify-left">
+
+                                <mat-form-field>
+                                    <mat-label>Taluka </mat-label>
+                                    <mat-select [formControlName]="'taluka_code'" [placeholder]="'Select Taluka'"
+                                        required (selectionChange)="getVillageList($event.value)">
+                                        <!-- <ng-container *ngIf="talukaData"> -->
+                                        <mat-option *ngFor="let taluka of talukaData" [value]="taluka.code">
+                                            {{taluka.name_en}} ({{taluka.name_mr}})</mat-option>
+                                        <!-- </ng-container> -->
+                                    </mat-select>
+                                    <mat-error *ngIf="sadnikaForm.get('taluka_code').hasError('required')">
+                                        Taluka is required
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-span-3 flex flex-col items-left justify-left">
+                                <mat-form-field>
+                                    <mat-label>Village/Sector </mat-label>
+                                    <mat-select [formControlName]="'village_code'" [placeholder]="'Select Village'"
+                                        required (selectionChange)="getGPSCList($event.value)">
+                                        <!-- <ng-container *ngIf="villageData"> -->
+                                        <mat-option *ngFor="let village of villageData" [value]="village.code">
+                                            {{village.name_en}} ({{village.name_mr}})</mat-option>
+                                        <!-- </ng-container> -->
+                                    </mat-select>
+                                    <mat-error *ngIf="sadnikaForm.get('village_code').hasError('required')">
+                                        Village is required
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-span-3 flex flex-col items-left justify-left">
+                                <mat-form-field>
+                                    <mat-label>Gat/Plot/CTS/Survey Number </mat-label>
+                                    <mat-select [formControlName]="'gpsc_code'"
+                                        [placeholder]="'Select Gat/Plot/CTS/Survey Number'" required
+                                        (selectionChange)="getSchemesList($event.value)">
+                                        <!-- <ng-container *ngIf="gpscData"> -->
+                                        <mat-option *ngFor="let opt of gpscData" [value]="opt.code">
+                                            {{opt.gpsc_number}} </mat-option>
+                                        <!-- </ng-container> -->
+                                    </mat-select>
+                                    <mat-error *ngIf="sadnikaForm.get('gpsc_code').hasError('required')">
+                                        Gat/Plot/CTS/Survey Number is required
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-span-3 flex flex-col items-left justify-left">
+                                <mat-form-field>
+                                    <mat-label>Scheme Number </mat-label>
+                                    <mat-select [formControlName]="'scheme_number'"
+                                        [placeholder]="'Select Scheme Number '" required
+                                        (selectionChange)="getSchemesStructureList($event.value)">
+                                        <mat-option *ngFor="let opt of schemesData" [value]="opt.code">
+                                            {{opt.scheme_number}} </mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="sadnikaForm.get('scheme_number').hasError('required')">
+                                        Scheme Number is required
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-span-3 flex flex-col items-left justify-left">
+                                <mat-form-field>
+                                    <mat-label>Scheme Structure Type </mat-label>
+                                    <mat-select [formControlName]="'scheme_structure_code'"
+                                        [placeholder]="'Select Scheme Number '" required
+                                        (selectionChange)="getSocietyList($event.value)">
+                                        <mat-option *ngFor="let opt of schemeStructureData"
+                                            [value]="opt.structure_code">
+                                            {{opt.structure_type_name_en}} ({{opt.structure_type_name_mr}})</mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="sadnikaForm.get('scheme_structure_code').hasError('required')">
+                                        Scheme Structure Type is required
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-span-3 flex flex-col items-left justify-left">
+                                <mat-form-field>
+                                    <mat-label>Society Name </mat-label>
+                                    <mat-select [formControlName]="'society_code'" [placeholder]="'Select Society Name'"
+                                        required (selectionChange)="getBuildingList($event.value)">
+                                        <mat-option *ngFor="let opt of societyData" [value]="opt.code">
+                                            {{opt.name_en}} ({{opt.name_mr}})</mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="sadnikaForm.get('society_code').hasError('required')">
+                                        Society Name is required
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-span-3 flex flex-col items-left justify-left">
+                                <mat-form-field>
+                                    <mat-label>Building Number </mat-label>
+                                    <mat-select [formControlName]="'building_code'"
+                                        [placeholder]="'Select Building Number'" required>
+                                        <mat-option *ngFor="let opt of buildingData" [value]="opt.code">
+                                            {{opt.building_number}}</mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="sadnikaForm.get('building_code').hasError('required')">
+                                        Building Number is required
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-span-3 flex flex-col items-left justify-left">
+                                <span class="font-medium mb-1">Type Of Property</span> &nbsp;
+                                    <mat-radio-group
+                                    [color]="'primary'" [(ngModel)]="propertytype"
+                                    [formControlName]="'type_of_property'">
+                                    <mat-radio-button
+                                        class="mb-4"
+                                        value="1">
+                                      Flat (Sadnika)
+                                    </mat-radio-button>
+                                    &nbsp;&nbsp;&nbsp;
+                                    <mat-radio-button
+                                        class="mb-4"
+                                        value="2">
+                                        Shop (Dukan)
+                                    </mat-radio-button>  
+                                </mat-radio-group>
+                                <mat-error *ngIf="sadnikaForm.get('type_of_property').hasError('required')">
+                                    Property is required
+                                </mat-error>     
+                            </div>
+
+                            <div class="col-span-3 flex flex-col items-left justify-left">
+                                <mat-form-field>
+                                    <mat-label>{{propertytype==1?'Flat (Sadnika)':'Shop (Dukan)'}} Number</mat-label>
+                                    <input matInput [formControlName]="'sadnika_number'">
+                                    <mat-error *ngIf="sadnikaForm.get('sadnika_number').hasError('required')">
+                                        Flat/Shop(Sadnika/Dukan) Number is required
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+
+                        </div>
+                        <div class="flex ">
+                            <button class="px-8" mat-flat-button [color]="'primary'" type="button"
+                               (click)="send()">
+                                Submit
+                            </button>
+                            <button class="px-8 mx-2" mat-flat-button [color]="'primary'" type="button"
+                                [routerLink]="['/admin/sadnikas/list']">
+                                Back
+                            </button>
+                        </div>
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

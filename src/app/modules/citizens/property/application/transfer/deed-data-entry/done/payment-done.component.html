@@ -1,0 +1,83 @@
+<div class="grid grid-cols-1 xl:grid-cols-2 w-full">
+    <div class="grid sm:grid-flow-col xl:grid-flow-row">
+        <div class="relative flex flex-col flex-auto bg-card shadow overflow-hidden">
+            <div style="text-align: center;background: #c1c1c1;" class="text-3xl font-semibold tracking-tight leading-8">Property Transfer Application
+            </div>       
+            <div class="timeline-steps aos-init aos-animate" data-aos="fade-up">
+                <div class="timeline-step timeline-step-done" style="margin-top: 3px;">
+                    <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2003">
+                        <p class="h6 mt-2 mt-lg-3 mb-2 mb-lg-3">01. Application</p>
+                    </div>
+                </div>
+                <div class="timeline-step timeline-step-done"  style="margin-top: 3px;">
+                    <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2004">
+                        <p class="h6 mt-2 mt-lg-3 mb-2 mb-lg-3">02. Fee Receipt</p>
+                    </div>
+                </div>
+                <div class="timeline-step timeline-step-done"  style="margin-top: 3px;">
+                    <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2005">
+                        <p class="h6 mt-2 mt-lg-3 mb-2 mb-lg-3">03. Transfer Payment</p>
+                    </div>
+                </div>
+                <div class="timeline-step timeline-step-active"  style="margin-top: 3px;">
+                    <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2010">
+                        <p class="h6 mt-2 mt-lg-3 mb-2 mb-lg-3">04. Transfer Reciept</p>
+                    </div>
+                </div>
+                <div class="timeline-step mb-0"  style="margin-top: 3px;">
+                    <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2010">
+                        <p class="h6 mt-2 mt-lg-3 mb-2 mb-lg-3">05. Transfer Certificate</p>
+                    </div>
+                </div>
+
+                
+            </div>
+            <div class="h-224" style="border: 3px solid #ad2331;padding:30px;">
+                
+                <!-- <mat-icon
+                        class="icon-size-24 opacity-25 text-green-500 dark:text-green-400"
+                        [svgIcon]="'heroicons_outline:check-circle'"></mat-icon> -->
+                <div class="absolute  right-0 w-24 h-24 -m-6">
+            
+                    <mat-icon
+                        class="icon-size-24 opacity-25 text-green-500 dark:text-green-400"
+                        [svgIcon]="'heroicons_outline:check-circle'">
+                    </mat-icon>
+                </div> 
+        
+                <p class="text-xl font-semibold tracking-tight leading-8 truncate">
+                    
+                    Your payment transfer fee(हस्तांतरण शुल्क) for property transfer application has been successfully completed.
+                </p>
+                
+                <p>
+                    Your transfer certificate is generated . You will receive email/sms from PMRDA regarding download transfer certificate once authority verify and approve it.
+                </p>
+                <div class="mt-4 mb-4 "></div>
+                <div class="flex ">
+                        <button
+                        class="px-8"
+                        mat-flat-button
+                        [color]="'primary'"
+                        type="button"
+                        [routerLink]="['/citizens/transfer-application/preview/'+application_code+'/transfer_deed_data_entry']"
+                        >
+                        View/Download Reciept
+                    </button>
+                    &nbsp; &nbsp;
+                    &nbsp; &nbsp;
+                    <button
+                        class="px-8"
+                        mat-flat-button
+                        [color]="'primary'"
+                        type="button"
+                        [routerLink]="['/citizens/transfer-applications']"
+                        >
+                        My Applications
+                    </button>
+                </div>
+                <div class="mt-4 mb-4 "></div>
+            </div>
+        </div>
+    </div>
+</div>

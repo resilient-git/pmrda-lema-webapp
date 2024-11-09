@@ -1,0 +1,105 @@
+<div class="flex flex-col flex-auto w-full">
+
+  <div class="flex flex-wrap w-full max-w-screen-xl mx-auto p-6 md:p-8">
+    <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 w-full mt-6">
+      <div class="grid gap-8 sm:grid-flow-col xl:grid-flow-row">
+        <!--statement -->
+        <div class="relative flex flex-col flex-auto p-6 pr-3 pb-3 bg-card rounded-2xl shadow overflow-hidden">
+
+
+
+          <div class="grid gap-8 sm:grid-flow-col xl:grid-flow-row">
+
+            <div class="relative flex flex-col flex-auto">
+              <h2 class="text-3xl font-semibold tracking-tight leading-8">Flat/Shop(Sadnika/Dukan) Details</h2>
+            </div>
+
+            <div class="relative flex flex-col flex-auto ">
+              <button class="px-4" mat-raised-button [color]="'primary'" [routerLink]="['/admin/sadnikas/add-new']"> Add Sadnika/Dukan</button>
+            </div>
+          </div>
+
+          <mat-form-field appearance="standard">
+            <mat-label>Search In:</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Start typing ..." #input>
+          </mat-form-field>
+          <div class="mt-2 mb-2 "></div>
+
+          <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+            <div class="mt-4 mb-4 "></div>
+            <!-- Taluka Column -->
+            <ng-container matColumnDef="taluka_code">
+              <th mat-header-cell *matHeaderCellDef>Taluka Code</th>
+              <td mat-cell *matCellDef="let element"> {{element.taluka_code}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="taluka">
+              <th mat-header-cell *matHeaderCellDef>Taluka </th>
+              <td mat-cell *matCellDef="let element"> {{element.taluka_name_en}} ({{element.taluka_name_mr}}) </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="village_code">
+              <th mat-header-cell *matHeaderCellDef>Sector/Village Code</th>
+              <td mat-cell *matCellDef="let element"> {{element.village_code}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="village">
+              <th mat-header-cell *matHeaderCellDef>Sector/Village </th>
+              <td mat-cell *matCellDef="let element"> {{element.village_name_en}} ({{element.village_name_mr}}) </td>
+            </ng-container>
+
+            <ng-container matColumnDef="gpsc_number">
+              <th mat-header-cell *matHeaderCellDef>Gat/Plot/<br />CTS/Survey</th>
+              <td mat-cell *matCellDef="let element"> {{element.gpsc_number}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="scheme_number">
+              <th mat-header-cell *matHeaderCellDef>Scheme</th>
+              <td mat-cell *matCellDef="let element"> {{element.scheme_number}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="society">
+              <th mat-header-cell *matHeaderCellDef>Society</th>
+              <td mat-cell *matCellDef="let element">{{element.society_name_en}} ({{element.society_name_mr}}) </td>
+            </ng-container>
+
+            <ng-container matColumnDef="building_number">
+              <th mat-header-cell *matHeaderCellDef>Building Number</th>
+              <td mat-cell *matCellDef="let element"> {{element.building_number}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="sadnika_number">
+              <th mat-header-cell *matHeaderCellDef> Flat/Shop(Sadnika/Dukan) Number </th>
+              <td mat-cell *matCellDef="let element"> {{element.sadnika_number}} </td>
+            </ng-container>
+
+            <!-- Action Column-->
+            <ng-container matColumnDef="actions">
+              <th mat-header-cell *matHeaderCellDef> Actions </th>
+              <td mat-cell *matCellDef="let row">
+                <!-- <button mat-icon-button class="iconbutton" (click)="openComposeDialogView()">
+                        <mat-icon>visibility</mat-icon>
+                      </button> -->
+                <button mat-icon-button class="iconbutton">
+                  <mat-icon [routerLink]="['/admin/sadnikas/edit', row.code]">edit</mat-icon>
+                </button>
+                <button mat-icon-button class="iconbutton" (click)="openComposeDialogDelete(row.code)" color="warn">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+          <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+            aria-label="Select page of periodic elements">
+          </mat-paginator>
+
+          <div class="mt-2 mb-2 "></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

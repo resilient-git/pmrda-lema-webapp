@@ -1,0 +1,62 @@
+<div class="flex flex-col flex-auto w-full">
+
+    <div class="flex flex-wrap w-full max-w-screen-xl mx-auto p-6 md:p-8">
+      <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 w-full mt-6">
+        <div class="grid gap-8 sm:grid-flow-col xl:grid-flow-row">
+          <div class="relative flex flex-col flex-auto p-6 pr-3 pb-3 bg-card rounded-2xl shadow overflow-hidden">
+            <div class="grid gap-8 sm:grid-flow-col xl:grid-flow-row">
+                 <div class="relative flex flex-col flex-auto">
+                    <h2 class="text-3xl font-semibold tracking-tight leading-8">Property Transfer Certificates</h2>
+                  </div>
+            </div>
+          
+            <div class="mt-2 mb-2 "></div>
+  
+           
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 mt-3" matSort>
+              <div class="mt-4 mb-4 "></div>
+              <ng-container matColumnDef="uprn">
+                <th mat-header-cell *matHeaderCellDef>UPRN </th>
+                <td mat-cell *matCellDef="let element"> {{element.uprn}} </td>
+              </ng-container> 
+              <ng-container matColumnDef="owner_details">
+                <th mat-header-cell *matHeaderCellDef>Owner Details</th>
+                <td mat-cell *matCellDef="let element">{{element.owner_name}}<br/>{{element.owner_mobile}}</td>
+              </ng-container>
+              <!--Sector 1, Scheme 2, Building 4, Shop 6.-->
+              <ng-container matColumnDef="created_at">
+                <th mat-header-cell *matHeaderCellDef>Application Date</th>
+                <td mat-cell *matCellDef="let element">
+                    {{element.created_at}}
+                </td>
+              </ng-container> 
+            <ng-container matColumnDef="status_text">
+              <th mat-header-cell *matHeaderCellDef>Download</th>
+              <td mat-cell *matCellDef="let element">
+                <a href="http://pmrda.potents.in/api/public/uploads/transfer/certificates_signed/{{element.signed_certificates_file_name}}"> 
+                    <button mat-raised-button [color]="'primary'" type="button">
+                        Download
+                        <mat-icon>arrow_down_alt</mat-icon>
+                    </button>
+                <br>
+                  <mat-progress-bar *ngIf="element.status == 21" color="accent" mode="buffer" value="60" bufferValue="25"></mat-progress-bar>
+                  </a>
+                </td>
+            </ng-container> 
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+      
+  
+  
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+              aria-label="Select page of periodic elements">
+            </mat-paginator>
+  
+            <div class="mt-2 mb-2 "></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+                        

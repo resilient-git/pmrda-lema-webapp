@@ -1,0 +1,131 @@
+<div class="flex flex-col flex-auto w-full">
+
+    <div class="flex flex-wrap w-full max-w-screen-xl mx-auto p-6 md:p-8">
+        <div class="flex items-center justify-between w-full">
+            <div>
+                <h2 class="text-3xl font-semibold tracking-tight leading-8">Add Society</h2>
+
+            </div>
+           
+        </div>
+  <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 w-full mt-8">
+     <div class="grid gap-8 sm:grid-flow-col xl:grid-flow-row">
+            <!--statement -->
+        <div class="relative flex flex-col flex-auto p-6 pr-3 pb-3 bg-card rounded-2xl shadow overflow-hidden">   
+ 
+       <form
+            [formGroup]="societyForm">
+            <div class="flex-auto grid grid-cols-4 gap-4 mt-6">
+               
+                <div class="col-span-3 flex flex-col items-left justify-left">
+                  
+                    <mat-form-field>
+                        <mat-label>Taluka </mat-label>
+                        <mat-select (selectionChange)="updateVillage($event)" [formControlName]="'taluka'" [placeholder]="'Select Taluka'" required>
+                            <mat-option *ngFor="let taluka of talukaData" [value]="taluka.code">
+                                {{taluka.name_en}} ({{taluka.name_mr}})</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="societyForm.get('taluka').hasError('required')">
+                            Taluka is required
+                        </mat-error>
+                    </mat-form-field> 
+                </div>
+
+                <div class="col-span-3 flex flex-col items-left justify-left">
+                    <mat-form-field>
+                        <mat-label>Village/Sector Name</mat-label>
+                       <mat-select  (selectionChange)="updateGatNumber($event)"  [formControlName]="'village'" [placeholder]="'Select Village'" required>
+                            <mat-option *ngFor="let village of villageData" [value]="village.code">
+                                {{village.name_en}} ({{village.name_mr}})</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="societyForm.get('village').hasError('required')">
+                            Village is required
+                        </mat-error>
+                    </mat-form-field>        
+                </div>
+
+                <div class="col-span-3 flex flex-col items-left justify-left">
+                    <mat-form-field>
+                        <mat-label>Gat/Plot/CTS/Survey Number</mat-label>
+                        
+                        <mat-select  (selectionChange)="updateScheme($event)" [formControlName]="'gpsc_number'" [placeholder]="'Select Bulkland Number'" required>
+                            <mat-option *ngFor="let bulkland of bulklandData" [value]="bulkland.code">
+                                {{bulkland.gpsc_number}} </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="societyForm.get('gpsc_number').hasError('required')">
+                            Gat/Plot/CTS/Survey Number is required
+                        </mat-error>
+                    </mat-form-field>        
+                </div>
+
+                <div class="col-span-3 flex flex-col items-left justify-left">
+                    <mat-form-field>
+                        <mat-label>Scheme Number</mat-label>
+                       
+                        <mat-select (selectionChange)="updateSchemeStructure($event)" [formControlName]="'scheme_number'" [placeholder]="'Select Scheme Number'" required>
+                            <mat-option *ngFor="let scheme of schemeData" [value]="scheme.code">
+                                {{scheme.scheme_number}} </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="societyForm.get('scheme_number').hasError('required')">
+                            Scheme Number is required
+                        </mat-error>
+                    </mat-form-field>        
+                </div>
+
+                <div class="col-span-3 flex flex-col items-left justify-left">
+                    <mat-form-field >
+                        <mat-label>Scheme Structure Type</mat-label>
+                        
+                            <mat-select   [formControlName]="'scheme_structure_code'" [placeholder]="'Select Scheme Structure code'" required>
+                                <mat-option *ngFor="let schemeStructure of schemeStructureData" [value]="schemeStructure.structure_code">
+                                    {{schemeStructure.structure_type_name_en}} ({{schemeStructure.structure_type_name_mr}})</mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="societyForm.get('scheme_structure_code').hasError('required')">
+                                Scheme Structure Type is required
+                            </mat-error>
+                    </mat-form-field>
+            </div>
+
+            <div class="col-span-3 flex flex-col items-left justify-left">
+                <mat-form-field >
+                    <mat-label>Society Name(English)</mat-label>
+                    <input
+                        matInput
+                        [formControlName]="'name_en'"> 
+                        <mat-error *ngIf="societyForm.get('name_en').hasError('required')">
+                            Society Name(English) is required
+                        </mat-error>
+                </mat-form-field>
+           </div>
+                <div class="col-span-3 flex flex-col items-left justify-left">
+                        <mat-form-field >
+                            <mat-label>Society Name(Marathi)</mat-label>
+                            <input
+                                matInput
+                                [formControlName]="'name_mr'"> 
+                                <mat-error *ngIf="societyForm.get('name_mr').hasError('required')">
+                                    Society Name(Marathi) is required
+                                </mat-error>
+                        </mat-form-field>
+                </div>
+
+            </div>
+            <div class="flex ">
+                <button class="px-8 mx-2" mat-flat-button [color]="'primary'" type="button"
+                    (click)="send()">
+                    Submit
+                </button>
+
+                <button class="px-8" mat-flat-button [color]="'primary'" type="button"
+                    [routerLink]="['/admin/societies/list']">
+                    Back
+            </button>
+            </div>
+
+       
+       </form>
+          </div>
+     </div>
+    </div>
+  </div>
+</div>

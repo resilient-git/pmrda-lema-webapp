@@ -1,0 +1,256 @@
+<div class="flex flex-col flex-auto w-full">
+
+    <div class="flex flex-wrap w-full max-w-screen-xl mx-auto p-6 md:p-8">
+        <div class="flex items-center justify-between w-full">
+            <div>
+                <h2 class="text-3xl font-semibold tracking-tight leading-8">Add New Property</h2>
+
+            </div>
+
+        </div>
+        <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 w-full mt-8">
+            <div class="grid gap-8 sm:grid-flow-col xl:grid-flow-row">
+                <!--statement -->
+                <div class="relative flex flex-col flex-auto p-6 pr-3 pb-3 bg-card rounded-2xl shadow overflow-hidden">
+
+                    <form [formGroup]="horizontalStepperForm">
+                        <div class="flex-auto grid grid-cols-4 gap-4 mt-6">
+                            <div class="col-span-2 flex flex-col items-left justify-left">
+                                <mat-form-field class="flex-auto gt-xs:pr-3">
+                                    <mat-label>Taluka </mat-label>
+                                    <mat-select [formControlName]="'taluka_code'" [placeholder]="'Select Taluka'"
+                                        required (selectionChange)="getVillageList($event.value)">
+                                        <mat-option *ngFor="let taluka of talukaData" [value]="taluka.code">
+                                            {{taluka.name_en}} ({{taluka.name_mr}})</mat-option>
+                                    </mat-select>
+                                    <mat-icon class="icon-size-5" matPrefix
+                                        [svgIcon]="'heroicons_solid:location-marker'"></mat-icon>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-span-2 flex flex-col items-left justify-left">
+                                <mat-form-field class="flex-auto gt-xs:pr-3">
+                                    <mat-label> Village/Sector</mat-label>
+                                    <mat-select [formControlName]="'village_code'" [placeholder]="'Select Village'"
+                                        required (selectionChange)="getGPSCList($event.value)">
+                                        <mat-option *ngFor="let village of villageData" [value]="village.code">
+                                            {{village.name_en}} ({{village.name_mr}})</mat-option>
+                                    </mat-select>
+                                    <mat-icon class="icon-size-5" matPrefix
+                                        [svgIcon]="'heroicons_solid:location-marker'"></mat-icon>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-span-2 flex flex-col items-left justify-left">
+                                <mat-form-field class="flex-auto gt-xs:pr-3" #gpscSelect>
+                                    <mat-label>Gat/Plot/CTS/Survey Number </mat-label>
+                                    <mat-select [formControlName]="'gpsc_code'"
+                                        [placeholder]="'Select Gat/Plot/CTS/Survey Number'" required
+                                        (selectionChange)="getSchemesList($event.value)" [(ngModel)]="selectedGpsc">
+                                        <mat-option *ngFor="let opt of gpscData" [value]="opt.code">
+                                            {{opt.gpsc_number}} </mat-option>
+                                    </mat-select>
+                                    <mat-icon class="icon-size-5" matPrefix
+                                        [svgIcon]="'heroicons_solid:location-marker'"></mat-icon>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-span-4 " *ngIf="(plotData | async | keyvalue)?.length">
+                                <table class="table-auto">
+                                    <tr>
+                                        <td class="border bg-indigo-50 px-4 py-2">Area in Square meter</td><td class="border bg-indigo-50 px-4 py-2">{{(plotData | async).area_in_sq_m}}</td>
+                                        <td class="border bg-indigo-50 px-4 py-2">Source</td><td class="border bg-indigo-50 px-4 py-2">{{(plotData | async).source_name}}</td>
+                                        <td class="border bg-indigo-50 px-4 py-2">Other Source</td><td class="border bg-indigo-50 px-4 py-2">{{(plotData | async).other_source?(plotData | async).other_source:'NA'}}</td>
+                                    </tr>
+                                    <tr *ngIf="(plotData | async).source_code==5">
+                                        <td class="border bg-indigo-50 px-4 py-2">Special land Acquition Officer Number</td><td class="border bg-indigo-50 px-4 py-2">{{(plotData | async).special_land_acquition_officer_number?(plotData | async).special_land_acquition_officer_number:'NA'}}</td>
+                                        <td class="border bg-indigo-50 px-4 py-2">Award Number</td><td class="border bg-indigo-50 px-4 py-2">{{(plotData | async).award_number?(plotData | async).award_number:'NA'}}</td>
+                                        <td class="border bg-indigo-50 px-4 py-2">Date Of Award</td><td class="border bg-indigo-50 px-4 py-2">{{(plotData | async).date_of_award?(plotData | async).date_of_award:'NA'}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border bg-indigo-50 px-4 py-2">Date Of Possession Of Land</td><td class="border bg-indigo-50 px-4 py-2">{{(plotData | async).date_of_possession?(plotData | async).date_of_possession:'NA'}}</td>
+                                        <td class="border bg-indigo-50 px-4 py-2">Land Status</td><td class="border bg-indigo-50 px-4 py-2">{{(plotData | async).is_developed==1?'Developed':'Undeveloped'}}</td>
+                                        <td *ngIf="(plotData | async).is_developed==0" class="border bg-indigo-50 px-4 py-2">Land Aminity</td><td *ngIf="(plotData | async).is_developed==0" class="border bg-indigo-50 px-4 py-2">{{(plotData | async).aminity_name}}</td>
+                                    </tr>
+                                    <tr *ngIf="(plotData | async).is_developed==0" >
+                                        <td class="border bg-indigo-50 px-4 py-2">Other Land Aminity</td><td class="border bg-indigo-50 px-4 py-2">{{(plotData | async).other_aminity?(plotData | async).other_aminity:'NA'}}</td>
+                                        <td class="border bg-indigo-50 px-4 py-2">Is Allocated</td><td class="border bg-indigo-50 px-4 py-2">{{(plotData | async).is_aminity_allocated==0?'Unallocated':'Allocated'}}</td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div class="col-span-2 flex flex-col items-left justify-left" *ngIf="(plotData | async).is_developed==1 && selectedGpsc">
+                                <mat-form-field class="flex-auto gt-xs:pr-3">
+                                    <mat-label>Scheme Number </mat-label>
+                                    <mat-select [formControlName]="'scheme_code'"
+                                        [placeholder]="'Select Scheme Number '" required
+                                        (selectionChange)="getSchemesStructureList($event.value)">
+                                        <mat-option *ngFor="let opt of schemesData" [value]="opt.code">
+                                            {{opt.scheme_number}} </mat-option>
+                                    </mat-select>
+                                    <mat-icon class="icon-size-5" matPrefix
+                                        [svgIcon]="'heroicons_solid:location-marker'"></mat-icon>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-span-2 flex flex-col items-left justify-left" *ngIf="(plotData | async).is_developed==1 && selectedGpsc">
+                                <mat-form-field class="flex-auto gt-xs:pr-3">
+                                    <mat-label>Scheme Structure Type </mat-label>
+                                    <mat-select [formControlName]="'scheme_structure_code'"
+                                        [placeholder]="'Select Scheme Number '" required
+                                        (selectionChange)="getSocietyList($event.value)">
+                                        <mat-option *ngFor="let opt of schemeStructureData"
+                                            [value]="opt.structure_code">
+                                            {{opt.structure_type_name_en}} ({{opt.structure_type_name_mr}})</mat-option>
+                                    </mat-select>
+                                    <mat-icon class="icon-size-5" matPrefix
+                                        [svgIcon]="'heroicons_solid:location-marker'"></mat-icon>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-span-2 flex flex-col items-left justify-left" *ngIf="(plotData | async).is_developed==1 && selectedGpsc">
+                                <mat-form-field class="flex-auto gt-xs:pr-3">
+                                    <mat-label>Society Name </mat-label>
+                                    <mat-select [formControlName]="'society_code'" [placeholder]="'Select Society Name'"
+                                        required (selectionChange)="getBuildingList($event.value)">
+                                        <mat-option *ngFor="let opt of societyData" [value]="opt.code">
+                                            {{opt.name_en}} ({{opt.name_mr}})</mat-option>
+                                    </mat-select>
+                                    <mat-icon class="icon-size-5" matPrefix
+                                        [svgIcon]="'heroicons_solid:location-marker'"></mat-icon>
+                                </mat-form-field>
+                            </div>
+
+
+                            <div class="col-span-2 flex flex-col items-left justify-left" *ngIf="(plotData | async).is_developed==1 && selectedGpsc">
+                                <mat-form-field class="flex-auto gt-xs:pr-3">
+                                    <mat-label>Building Number </mat-label>
+                                    <mat-select [formControlName]="'building_code'"
+                                        [placeholder]="'Select Building Number'" required
+                                        (selectionChange)="getSadnikaList($event.value)">
+                                        <mat-option *ngFor="let opt of buildingData" [value]="opt.code">
+                                            {{opt.building_number}}</mat-option>
+                                    </mat-select>
+                                    <mat-icon class="icon-size-5" matPrefix
+                                        [svgIcon]="'heroicons_solid:location-marker'"></mat-icon>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-span-2 flex flex-col items-left justify-left" *ngIf="(plotData | async).is_developed==1 && selectedGpsc">
+                                <mat-form-field class="flex-auto gt-xs:pr-3">
+                                    <mat-label> Flat/Shop (Sadnika/Dukan) Number</mat-label>
+                                    <mat-select [formControlName]="'sadnika_code'"
+                                        [placeholder]="'Select Sadnika/Dukan Number'" required
+                                        (selectionChange)="getProperty($event.value)" [(ngModel)]="isSadnikaSelected">
+                                        <mat-option *ngFor="let sadnika of sadnikaData" [value]="sadnika.code">
+                                            {{sadnika.type_of_property==1?'Flat':'Shop'}} - {{sadnika.sadnika_number}}</mat-option>
+                                    </mat-select>
+                                    <mat-icon class="icon-size-5" matPrefix
+                                        [svgIcon]="'heroicons_solid:location-marker'"></mat-icon>
+                                </mat-form-field>
+                            </div>
+
+                            <div *ngIf="(propertyData$| async) && isSadnikaSelected"
+                                class="col-span-4 text-orange-500 bg-red-100 p-4 mb-4 ng-star-inserted">Proprty details
+                                already added for selected Flat(Sadnika).
+                                <a [routerLink]="['/admin/properties/edit', (propertyData$| async)]"
+                                    class="underline">Click here</a> to update
+                            </div>
+
+
+                            <ng-container
+                                *ngIf="((plotData | async).is_developed==0 && selectedGpsc) || (!(propertyData$| async) && isSadnikaSelected)">
+                                <div class="col-span-2 flex flex-col items-left justify-left">
+                                    <mat-form-field class="flex-auto gt-xs:pr-3">
+                                        <mat-label>Area in Square meter</mat-label>
+                                        <input matInput [formControlName]="'property_area'">
+                                    </mat-form-field>
+                                </div>
+                                
+                                <div class="col-span-2 flex flex-col items-left justify-left">
+                                    <mat-form-field class="flex-auto gt-xs:pr-3">
+                                        <mat-label>Leasedeed Registration Number and SRO Number</mat-label>
+                                        <input matInput
+                                            [formControlName]="'leasedeed_registration_number_haveli_number'">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-span-2 flex flex-col items-left justify-left">
+                                    <mat-form-field class="flex-auto gt-xs:pr-3">
+                                        <mat-label>Date Of Leasedeed Registration</mat-label>
+                                        <input matInput [matDatepicker]="dp5" disabled
+                                            [formControlName]="'leasedeed_registration_date'"
+                                            [placeholder]="'Select  Date Of Leasedeed Registration'">
+                                        <mat-datepicker-toggle matSuffix [for]="dp5"></mat-datepicker-toggle>
+                                        <mat-datepicker #dp5 disabled="false"></mat-datepicker>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-span-2 flex flex-col items-left justify-left">
+                                    <mat-form-field class="flex-auto gt-xs:pr-3">
+                                        <mat-label>Name of original {{(plotData | async).is_developed==0? 'plot':'flat'}} Holder</mat-label>
+                                        <input matInput [formControlName]="'original_plot_holder'">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-span-2 flex flex-col items-left justify-left">
+                                    <mat-form-field class="flex-auto gt-xs:pr-3">
+                                        <mat-label>Premium amount in Rs.</mat-label>
+                                        <input matInput [formControlName]="'shop_premium'">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-span-2 flex flex-col items-left justify-left">
+                                    <mat-form-field class="flex-auto gt-xs:pr-3">
+                                        <mat-label>Rate per Square meter, As per Ready Reckoner of that year</mat-label>
+                                        <input matInput [formControlName]="'ready_reckoner_square_meter_rate'">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-span-2 flex flex-col items-left justify-left" *ngIf="(plotData | async).is_developed==1 && selectedGpsc">
+                                    <mat-form-field class="flex-auto gt-xs:pr-3">
+                                        <mat-label>Building permission Number</mat-label>
+                                        <input matInput [formControlName]="'building_permission_number'">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-span-2 flex flex-col items-left justify-left" *ngIf="(plotData | async).is_developed==1 && selectedGpsc">
+                                    <mat-form-field class="flex-auto gt-xs:pr-3">
+                                        <mat-label>Building Permission Date</mat-label>
+                                        <input matInput [matDatepicker]="dp6" disabled
+                                            [formControlName]="'building_permission_date'"
+                                            [placeholder]="'Select  Building Permission Date'">
+                                        <mat-datepicker-toggle matSuffix [for]="dp6"></mat-datepicker-toggle>
+                                        <mat-datepicker #dp6 disabled="false"></mat-datepicker>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-span-2 flex flex-col items-left justify-left" *ngIf="(plotData | async).is_developed==1 && selectedGpsc">
+                                    <mat-form-field class="flex-auto gt-xs:pr-3">
+                                        <mat-label>Completion certificate Number</mat-label>
+                                        <input matInput [formControlName]="'completion_certificate_number'">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-span-2 flex flex-col items-left justify-left" *ngIf="(plotData | async).is_developed==1 && selectedGpsc">
+                                    <mat-form-field class="flex-auto gt-xs:pr-3">
+                                        <mat-label>Date of Completion </mat-label>
+                                        <input matInput [matDatepicker]="dp7" disabled
+                                            [formControlName]="'completion_date'"
+                                            [placeholder]="'Select  Date of Completion '">
+                                        <mat-datepicker-toggle matSuffix [for]="dp7"></mat-datepicker-toggle>
+                                        <mat-datepicker #dp7 disabled="false"></mat-datepicker>
+                                    </mat-form-field>
+                                </div>
+                            </ng-container>
+
+                        </div>
+                        <div class="flex justify-end">
+                            <button *ngIf="((plotData | async).is_developed==0 && selectedGpsc) || (!(propertyData$| async) && isSadnikaSelected)" class="px-8" mat-flat-button
+                                [color]="'primary'" type="button" (click)="send()">
+                                Submit
+                            </button>
+
+                            <button class="px-8 mx-2" mat-flat-button [color]="'primary'" type="button"
+                                [routerLink]="['/admin/properties/list']">
+                                Back
+                            </button>
+                        </div>
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

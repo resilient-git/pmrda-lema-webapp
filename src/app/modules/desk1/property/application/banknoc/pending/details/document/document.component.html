@@ -1,0 +1,115 @@
+<div class="grid grid-cols-1 xl:grid-cols-2 w-full">
+    <div class="grid sm:grid-flow-col xl:grid-flow-row">
+        <div class="relative flex flex-col flex-auto bg-card shadow overflow-hidden">
+            <div style="text-align: center;background: #c1c1c1;" class="text-3xl font-semibold tracking-tight leading-8">BankNoc Transfer Document
+            </div>       
+            <div class="timeline-steps aos-init aos-animate" data-aos="fade-up">
+                <div class="timeline-step timeline-step-done" style="margin-top: 3px;">
+                    <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2003">
+                        <p class="h6 mt-2 mt-lg-3 mb-2 mb-lg-3">01. Application</p>
+                    </div>
+                </div>
+                <div class="timeline-step  timeline-step-active"  style="margin-top: 3px;">
+                    <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2004">
+                        <p class="h6 mt-2 mt-lg-3 mb-2 mb-lg-3">02. Documents</p>
+                    </div>
+                </div>
+                <div class="timeline-step"  style="margin-top: 3px;">
+                    <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2005">
+                        <p class="h6 mt-2 mt-lg-3 mb-2 mb-lg-3">03. Receipts</p>
+                    </div>
+                </div>
+                <div class="timeline-step mb-0"  style="margin-top: 3px;">
+                    <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2020">
+                        <p class="h6 mt-2 mt-lg-3 mb-2 mb-lg-3">04. Actions</p>
+                    </div>
+                </div>
+            </div>
+            <div style="border: 3px solid #ad2331;padding:0px;">
+
+                <mat-grid-list cols="3" rowHeight="6:1">
+                    <mat-grid-tile>
+                        Property ID&nbsp;-&nbsp;<b>{{pta.uprn}}</b>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        Application Number&nbsp;-&nbsp;<b>{{pta.application_number}}</b>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        Application Date&nbsp;-&nbsp;<b>{{pta.application_date}}</b>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        Owner Name&nbsp;-&nbsp;<b>{{pta.owner_name}}</b>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        Owner Mobile&nbsp;-&nbsp;<b>{{pta.owner_mobile}}</b>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        Requested Appointment Date&nbsp;-&nbsp;<b>{{pta.appointment_date}}</b>
+                    </mat-grid-tile>
+                </mat-grid-list>
+
+                <div class="mt-4 mb-4 "></div>
+                <div class="text-xl ml-6 font-semibold">Documents/कागदपत्रे </div>
+                <div class="mt-2 mb-2 "></div>
+                <mat-grid-list cols=3 rowHeight=9:1>                    
+                    <mat-grid-tile>
+                        <a href={{pta.lease_agreement}} style=color: blue; target=_blank><b><u>Lease Agreement/मूळ भाडे पट्टा करार</u></b></a>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <a href={{pta.loan_rason_letter}} style=color: blue; target=_blank><b><u>Loan Reason Letter/कर्ज कारण पत्र</u></b></a>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <a href={{pta.society_consent_letter}} style=color: blue; target=_blank><b><u>Society Consent Letter/सोसायटी संमती पत्र</u></b></a>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <a href={{pta.share_certificate}} style=color: blue; target=_blank><b><u>Share Certificate/शेअर प्रमाणपत्र</u></b></a>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <a href={{pta.socienty_member_list}} style=color: blue; target=_blank><b><u>Socienty Member List/सोसायटी सदस्य</u></b></a>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <a href={{pta.approved_map}} style=color: blue; target=_blank><b><u>Approved Map/मंजूर नकाशा</u></b></a>
+                    </mat-grid-tile>                   
+                    <mat-grid-tile>
+                        <a href={{pta.sanction_letter}} style=color: blue; target=_blank><b><u>Sanction Letter/मंजुरी पत्र</u></b></a>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <a href={{pta.affidavit_letter}} style=color: blue; target=_blank><b><u>Affidavit/शपथ पत्र</u></b></a>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <a href={{pta.origin_noc}} style=color: blue; target=_blank><b><u>Origin NoC/मूळ ना हरकत प्रमाणपत्र</u></b></a>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <a href={{pta.no_dues}} style=color: blue; target=_blank><b><u>Bank NoC/कर्ज,तारण ना हरकत प्रमाणपत्र</u></b></a>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <a href={{pta.lezy_aadhar_card}} style=color: blue; target=_blank><b><u>Aadhar Card/आधार कार्ड </u></b></a>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <a href={{pta.lezy_pan_card}} style=color: blue; target=_blank><b><u>Pancard/पॅनकार्ड</u></b></a>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <a href={{pta.lezy_photo}} style=color: blue; target=_blank><b><u>Photo/फोटो</u></b></a>
+                    </mat-grid-tile>                    
+                </mat-grid-list>
+                
+
+                <div class="mt-4 mb-4 "></div>   
+                <div> 
+                    <button style="float: left;" class="px-8 mx-2" mat-flat-button [color]="'primary'" type="button"
+                    [routerLink]="['/desk1/view-pending-transfer-application/'+ application_id]">
+                    &lArr; Application 
+                    </button>
+
+                    <button style="float: right;" class="px-8 mx-2" mat-flat-button [color]="'primary'" type="button"
+                    [routerLink]="['/desk1/view-pending-transfer-receipt/'+ application_id]">
+                        Reciept &rArr;
+                    </button>
+                    
+                </div>
+                <div style="clear:both;">&nbsp;</div>
+            </div>
+            
+        </div>
+    </div>
+</div>

@@ -1,0 +1,709 @@
+<div class="grid grid-cols-1 xl:grid-cols-2 w-full">
+    <div class="grid sm:grid-flow-col xl:grid-flow-row">
+        <div class="relative flex flex-col flex-auto bg-card shadow overflow-hidden">
+            <div style="text-align: center;background: #c1c1c1;" class="text-3xl font-semibold tracking-tight leading-8">Property Heirship Application
+            </div>       
+            <div class="timeline-steps aos-init aos-animate" data-aos="fade-up">
+                <div class="timeline-step timeline-step-done" style="margin-top: 3px;">
+                    <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2003">
+                        <p class="h6 mt-2 mt-lg-3 mb-2 mb-lg-3">01. Select Property</p>
+                    </div>
+                </div>
+                <div class="timeline-step-active"  style="margin-top: 3px;">
+                    <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2004">
+                        <p class="h6 mt-2 mt-lg-3 mb-2 mb-lg-3">02. Application</p>
+                    </div>
+                </div>
+                <div class="timeline-step"  style="margin-top: 3px;">
+                    <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2005">
+                        <p class="h6 mt-2 mt-lg-3 mb-2 mb-lg-3">03. Payment</p>
+                    </div>
+                </div>
+                <div class="timeline-step"  style="margin-top: 3px;">
+                    <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2010">
+                        <p class="h6 mt-2 mt-lg-3 mb-2 mb-lg-3">04. Reciept</p>
+                    </div>
+                </div>
+                <div class="timeline-step"  style="margin-top: 3px;">
+                    <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2010">
+                        <p class="h6 mt-2 mt-lg-3 mb-2 mb-lg-3">05. Schedule</p>
+                    </div>
+                </div>
+
+                <div class="timeline-step mb-0"  style="margin-top: 3px;">
+                    <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2020">
+                        <p class="h6 mt-2 mt-lg-3 mb-2 mb-lg-3">06. Status</p>
+                    </div>
+                </div>
+            </div>
+            <div style="border: 3px solid #ad2331;padding:0px;">
+                <input
+                matInput  hidden="true"
+                [formControlName]="'user_property_code'"
+                [placeholder]="'Enter Property Code'"
+                required>
+                
+                <fuse-card
+                    class="flex flex-col"
+                    [flippable]="true"
+                    #fuseCard>
+                    <!-- Front -->
+                    <ng-container fuseCardFront>
+                        <form [formGroup]="heirshipTransferForm">
+                            <div class="flex flex-col px-8 py-2 pb-1" style="min-height: 900px;">
+                            
+                            
+
+                                <div class="text-xl font-semibold">Property Details/मिळकतीची माहिती</div>
+                                
+
+                                <div class="grid grid-cols-1 xl:grid-cols-2 w-full">
+                                    <div class="flex flex-row flex-wrap -mx-6">
+                                        
+                                        <div class="flex flex-col box_border_3">
+                                            <div class="text-sm font-medium leading-none text-secondary">&darr; Taluka</div>
+                                            <div class="mt-2 font-medium leading-none">
+                                                {{pd.taluka_name_en}} ({{pd.taluka_name_mr}})
+                                            </div>
+                                        </div>  
+                                        
+                                        <div class="flex flex-col box_border_3">
+                                            <div class="text-sm font-medium leading-none text-secondary">&darr; Village</div>
+                                            <div class="mt-2 font-medium leading-none">
+                                                {{pd.village_name_en}} ({{pd.village_name_mr}})
+                                            </div>
+                                        </div>  
+
+                                        <div class="flex flex-col box_border_3">
+                                            <div class="text-sm font-medium leading-none text-secondary">&darr; UPRN</div>
+                                            <div class="mt-2 font-medium leading-none">
+                                                {{pd.uprn}}
+                                            </div>
+                                        </div>  
+                                        <div class="flex flex-col box_border_3">
+                                            <div class="text-sm font-medium leading-none text-secondary">&darr; Owner Name</div>
+                                            <div class="mt-2 font-medium leading-none">
+                                                {{pd.owner_name}}
+                                            </div>
+                                        </div>
+                                        <div class="flex flex-col box_border_3">
+                                            <div class="text-sm font-medium leading-none text-secondary">&darr; Owner Mobile</div>
+                                            <div class="mt-2 font-medium leading-none">
+                                                {{pd.owner_mobile}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                 
+                                <div *ngIf="!showApplicantBox" class="grid grid-cols-1 xl:grid-cols-2 w-full">
+                                    <div class="mt-4 mb-4"></div>
+                                    <mat-form-field class="fuse-mat-no-subscript pr-2 " >
+                                        <mat-label>न्यायालयीन वारस प्रमाण पत्रा नुसार वारसांची संख्या</mat-label>
+                                        <input
+                                            matInput
+                                            [formControlName]="'number_add_nominy'"
+                                            [placeholder]="'Enter Number of Nomination'"
+                                            required>
+                                        <mat-icon
+                                            class="icon-size-5"
+                                            matPrefix
+                                            [svgIcon]="'heroicons_solid:user-circle'"></mat-icon>
+                                    </mat-form-field> 
+                                    <div class="mt-4 mb-4"></div>
+                                    <mat-form-field class="fuse-mat-no-subscript pr-2 " >
+                                        <mat-label>नोंदणीकृत हक्कसोड पत्रानुसार हक्कसोड करून देणाऱ्यांची संख्या </mat-label>
+                                        <input
+                                            matInput
+                                            [formControlName]="'number_remove_nominy'"
+                                            [placeholder]="'Enter Number of Nomination Removal'"
+                                            required>
+                                        <mat-icon
+                                            class="icon-size-5"
+                                            matPrefix
+                                            [svgIcon]="'heroicons_solid:user-circle'"></mat-icon>
+                                    </mat-form-field> 
+                                    <div class="mt-4 mb-4"></div>
+                                    <div class="mt-3 -mx-3"> 
+                                            
+                                        <button class="px-8 mx-2" mat-flat-button [color]="'accent'" type="button"
+                                        (click)="addApplicants()">
+                                        Confirm & Proceed/पुष्टी करा आणि पुढे जा
+                                        </button>
+                                    </div>
+                                    
+                                </div>
+                                 
+                                <div *ngIf="showApplicantBox">
+                                    <div class="mt-4 mb-4"></div>
+                                    <div class="text-xl font-semibold">Heirs   Details/वारसदारांची माहिती</div>
+                                    <mat-label>न्यायालयीन वारस प्रमाणपत्रानुसार वारसांची संख्या - {{c_number_add_nominy}}</mat-label><br>
+                                    <mat-label>नोंदणीकृत हक्कसोड पत्रानुसार हक्कसोड करून देणाऱ्यांची संख्या - {{c_number_remove_nominy}}</mat-label>
+                                    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+                                        <div class="mt-4 mb-4 "></div>
+                                        <ng-container matColumnDef="id">
+                                            <th mat-header-cell *matHeaderCellDef> # </th>
+                                            <td mat-cell *matCellDef="let element; let i = index;">  {{i+1}} </td>
+                                        </ng-container> 
+                                        <!--
+                                        <ng-container matColumnDef="heir_type">
+                                            <th mat-header-cell *matHeaderCellDef>Heir Type</th>
+                                            
+                                            <td mat-cell *matCellDef="let element">
+                                            <span *ngIf="element.heir_type != 2">Add</span>    
+                                            <span *ngIf="element.heir_type == 2">Add+Remove</span>
+                                            </td>
+                                        </ng-container>-->
+
+                                        <ng-container matColumnDef="first_name">
+                                            <th mat-header-cell *matHeaderCellDef>First Name</th>
+                                            <td mat-cell *matCellDef="let element">{{element.first_name}}</td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="middle_name">
+                                            <th mat-header-cell *matHeaderCellDef>Middle Name</th>
+                                            <td mat-cell *matCellDef="let element">{{element.middle_name}}</td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="last_name">
+                                        <th mat-header-cell *matHeaderCellDef>Last Name</th>
+                                        <td mat-cell *matCellDef="let element">{{element.last_name}}</td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="email">
+                                        <th mat-header-cell *matHeaderCellDef>Email</th>
+                                        <td mat-cell *matCellDef="let element">{{element.email}}</td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="mobile">
+                                        <th mat-header-cell *matHeaderCellDef>Mobile</th>
+                                        <td mat-cell *matCellDef="let element">{{element.mobile}}</td>
+                                        </ng-container>
+                                        
+                                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                                    </table>
+
+                                    <div class="mt-3 -mx-3" *ngIf="showAddNewHeirButton"> 
+                                        
+                                        <button class="px-8 mx-2" mat-flat-button [color]="'primary'" type="button"
+                                        (click)="fuseCard.face = 'back'">
+                                        Add New Heir/नवीन वारस जोडा
+                                        </button>
+                                    </div>
+                                
+                                    <div *ngIf="showRemoveHeirBox">
+                                        <div class="mt-4 mb-4"></div>
+
+                                        <div class="text-xl font-semibold">Select Heirship for Remove Documents/हक्कसोड</div>
+                                        
+                                        <div class="grid grid-cols-1 xl:grid-cols-2 w-full">                                            
+                                            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+                                                <div class="mt-4 mb-4 "></div>
+                                                <ng-container matColumnDef="id">
+                                                    <th mat-header-cell *matHeaderCellDef> {{c_number_remove_nominy}} हक्कसोड वारसांच्या नावापुढील चेकबॉक्स टिक करा.  </th>
+                                                    <td mat-cell *matCellDef="let element; let i = index;">  
+                                                        <mat-checkbox                                                         
+                                                        (change)="changeRemoveHireEvent($event, element.id)"
+                                                        class="flex flex-row flex-wrap -mx-6" value="{{element.id}}">
+                                                         {{element.first_name}} {{element.middle_name}} {{element.last_name}}
+                                                        </mat-checkbox>
+                                                    </td>
+                                                </ng-container>                                                 
+                                                <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+                                                <tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
+                                            </table>
+                                        </div>
+
+                                        <div class="mt-3 -mx-3"> 
+                                            
+                                            <button class="px-8 mx-2" mat-flat-button [color]="'accent'" type="button"
+                                            (click)="removeApplicants()">
+                                            Confirm & Proceed/पुष्टी करा आणि पुढे जा
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div *ngIf="showUploadBox">
+                                        <div class="mt-4 mb-4"></div>
+
+                                        <div class="text-xl font-semibold">Upload Property Documents/मिळकतीची कागदपत्रे</div>
+
+
+                                        <div class="grid grid-cols-1 xl:grid-cols-2 w-full">
+                                            <div class="flex flex-row flex-wrap -mx-6">
+                                                                                                
+                                                <div class="flex flex-col mx-2 box_border_2">
+                                                    <div class="text-sm font-medium leading-none text-secondary">
+                                                        Lease Agreement/मूळ भाडे पट्टा करार
+                                                    </div>
+                                                    <div class="mt-2 font-medium leading-none">
+                                                        <input  class="flex flex-row" type="file"  
+                                                        [formControlName]="'lease_agreement'" (change)="onSelect($event,'lease_agreement')" 
+                                                            accept=".pdf" required/>
+                                                    </div>
+                                                </div>
+                                                <!--
+                                                <div class="flex flex-col mx-2 box_border_2">
+                                                    <div class="text-sm font-medium leading-none text-secondary">
+                                                        Guarantee Letter/हमीपत्र
+                                                    </div>
+                                                    <div class="mt-2 font-medium leading-none">
+                                                        <input  class="flex flex-row" type="file"  
+                                                        [formControlName]="'guarantee_letter'" (change)="onSelect($event,'guarantee_letter')" 
+                                                            accept="image/*,.pdf" required/>
+                                                    </div>
+                                                </div>-->
+
+                                                <div class="flex flex-col mx-2 box_border_2">
+                                                    <div class="text-sm font-medium leading-none text-secondary">
+                                                        Allotment Certificate/नियत वाटप पत्र
+                                                    </div>
+                                                    <div class="mt-2 font-medium leading-none">
+                                                        <input  class="flex flex-row" type="file"  
+                                                        [formControlName]="'allotment_certificate'" (change)="onSelect($event,'allotment_certificate')"
+                                                            accept="image/*,.pdf" required/>
+                                                    </div>
+                                                </div>   
+                                                
+                                                <div class="flex flex-col mx-2 box_border_2">
+                                                    <div class="text-sm font-medium leading-none text-secondary">
+                                                        Transfer Letter/हस्तान्तरण पत्र
+                                                    </div>
+                                                    <div class="mt-2 font-medium leading-none">
+                                                        <input  class="flex flex-row" type="file"  
+                                                        [formControlName]="'transfer_letter'" (change)="onSelect($event,'transfer_letter')"
+                                                            accept="image/*,.pdf" required/>
+                                                    </div>
+                                                </div>
+
+                                                <div class="flex flex-col mx-2 box_border_2">
+                                                    <div class="text-sm font-medium leading-none text-secondary">
+                                                        Death Certificate if Lessee is Death<br/>विक्रेत्याचा मृत्यू असल्यास मृत्यू प्रमाणपत्र
+                                                    </div>
+                                                    <div class="mt-2 font-medium leading-none">
+                                                        <input  class="flex flex-row" type="file"  
+                                                        [formControlName]="'death_certificate'" (change)="onSelect($event,'death_certificate')" 
+                                                            accept="image/*" />
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="flex flex-col mx-2 box_border_2">
+                                                    <div class="text-sm font-medium leading-none text-secondary">
+                                                        True copy of court heir certificate<br/>
+                                                        न्यायालयाच्या वारस दाखल्याची सत्य प्रत 
+                                                    </div>
+                                                    <div class="mt-2 font-medium leading-none">
+                                                        <input  class="flex flex-row" type="file"  
+                                                        [formControlName]="'heir_documents'" (change)="onSelect($event,'heir_documents')" 
+                                                            accept="image/*" />
+                                                    </div>
+                                                </div>
+                                                <div class="flex flex-col mx-2 box_border_2">
+                                                    <div class="text-sm font-medium leading-none text-secondary">
+                                                        Registered Letter for Withdrawal of rights<br/>
+                                                        नोंदणीकृत हक्कसोडपत्र
+                                                    </div>
+                                                    <div class="mt-2 font-medium leading-none">
+                                                        <input  class="flex flex-row" type="file"  
+                                                        [formControlName]="'heir_withdrawal_documents'" (change)="onSelect($event,'heir_withdrawal_documents')" 
+                                                            accept="image/*" />
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+
+                                    
+                                        <div class="mt-3 -mx-3"> 
+                                            <button class="px-8 mx-2" mat-flat-button [color]="'primary'" type="button"
+                                                (click)="submit()">
+                                                Submit Application
+                                            </button>
+                                        
+                                        </div>
+                                    </div>
+                                </div>
+                               
+                            </div>
+                        </form>
+                    </ng-container>
+                        
+                    <!-- Back -->
+                    <ng-container fuseCardBack>
+                        <form [formGroup]="heirshipForm">
+                            <div class="flex flex-col flex-auto px-8 py-6 pt-3">
+                                <div class="mb-2 -mx-3">
+                                    <button
+                                        mat-icon-button
+                                        [color]="'primary'"
+                                        (click)="fuseCard.face = 'front'"><span #myDiv>
+                                        <mat-icon
+                                            class="icon-size-5"
+                                            [svgIcon]="'heroicons_outline:arrow-left'"></mat-icon></span>
+                                    </button> <b style="float: right;font-size: 18px;border-bottom:3px solid #ad2331;">Add New Heir/वारसदाराची माहिती</b>
+                                </div>
+                                
+                                
+                                <div class="mt-2 mb-2 "></div>
+                                <div class="flex flex-col sm:flex-row  w-full max-w-xs sm:max-w-none">
+                                    <mat-form-field class="fuse-mat-no-subscript w-1/3 pr-2 " >
+                                        <mat-label>First Name(English) </mat-label>
+                                        <input
+                                            matInput
+                                            [formControlName]="'heir_first_name'"
+                                            [placeholder]="'Enter First name'"
+                                            required>
+                                        <mat-icon
+                                            class="icon-size-5"
+                                            matPrefix
+                                            [svgIcon]="'heroicons_solid:user-circle'"></mat-icon>
+                                    </mat-form-field> 
+
+                                    <mat-form-field class="fuse-mat-no-subscript w-1/3 px-2 " >
+                                        <mat-label>Middle Name(English) </mat-label>
+                                        <input
+                                            matInput
+                                            [formControlName]="'heir_middle_name'"
+                                            [placeholder]="'Enter Middle name'"
+                                            >
+                                        <mat-icon
+                                            class="icon-size-5"
+                                            matPrefix
+                                            [svgIcon]="'heroicons_solid:user-circle'"></mat-icon>
+                                    </mat-form-field> 
+
+                                    <mat-form-field class="fuse-mat-no-subscript w-1/3 px-2 " >
+                                        <mat-label>Last Name(English) </mat-label>
+                                        <input
+                                            matInput
+                                            [formControlName]="'heir_last_name'"
+                                            [placeholder]="'Enter Last name'"
+                                            required>
+                                        <mat-icon
+                                            class="icon-size-5"
+                                            matPrefix
+                                            [svgIcon]="'heroicons_solid:user-circle'"></mat-icon>
+                                    </mat-form-field> 
+                                </div>
+                                <div class="flex flex-col sm:flex-row  w-full max-w-xs sm:max-w-none">
+                                    
+                                    <mat-form-field class="fuse-mat-no-subscript w-1/3 pr-2 " >
+                                       
+                                        <input
+                                            matInput
+                                            [formControlName]="'heir_first_name_mr'"
+                                            [placeholder]="'व्यक्तिनाम (First Name in Marathi)'"
+                                            required>
+                                        <mat-icon
+                                            class="icon-size-5"
+                                            matPrefix
+                                            [svgIcon]="'heroicons_solid:user-circle'"></mat-icon>
+                                    </mat-form-field> 
+
+                                    <mat-form-field class="fuse-mat-no-subscript w-1/3 px-2 " >
+                                        
+                                        <input
+                                            matInput
+                                            [formControlName]="'heir_middle_name_mr'"
+                                            [placeholder]="'वडलांचे किंवा पतीचे नाव (Middle Name in Marathi)'"
+                                            >
+                                        <mat-icon
+                                            class="icon-size-5"
+                                            matPrefix
+                                            [svgIcon]="'heroicons_solid:user-circle'"></mat-icon>
+                                    </mat-form-field> 
+
+                                    <mat-form-field class="fuse-mat-no-subscript w-1/3 px-2 " >
+                                        <input
+                                            matInput
+                                            [formControlName]="'heir_last_name_mr'"
+                                            [placeholder]="'आडनाव (Last Name in Marathi)'"
+                                            required>
+                                        <mat-icon
+                                            class="icon-size-5"
+                                            matPrefix
+                                            [svgIcon]="'heroicons_solid:user-circle'"></mat-icon>
+                                    </mat-form-field>    
+                                </div>
+                                <!--
+                                <div class="mt-2 mb-2 "></div>
+                                <div >
+                                    <span class="font-medium mb-2"><b>Heirship Type *</b></span>  &nbsp;
+                                        <mat-radio-group
+                                        [color]="'primary'"
+                                        [formControlName]="'heir_type'" required>
+                                        <mat-radio-button
+                                            class="mb-4"
+                                            value="1">
+                                            केवळ वारसनोंद (Add Heirship)
+                                        </mat-radio-button>
+                                        &nbsp;
+                                        <mat-radio-button
+                                            class="mb-4"
+                                            value="2">
+                                            वारसनोंद + हक्कसोड (Add and Removal of Heirship)
+                                        </mat-radio-button> 
+                                         
+                                    </mat-radio-group>     
+                                       
+                                </div>
+                                -->
+                                <div class="mt-2 mb-2 "></div>
+
+                                <div class="flex flex-col sm:flex-row  w-full max-w-xs sm:max-w-none">
+                                    <mat-form-field class="fuse-mat-no-subscript w-1/3 pr-2 " >
+                                        <mat-label>Mobile Number </mat-label>
+                                        <input
+                                            matInput
+                                            [formControlName]="'heir_mobile'"
+                                            [placeholder]="'Enter Mobile Number'"
+                                            maxlength="10" minlength="10" (keypress)="keyPress($event)" 
+                                            required>
+                                            <mat-icon
+                                            class="icon-size-5"
+                                            [svgIcon]="'heroicons_solid:phone'"
+                                            matPrefix></mat-icon>
+                                    </mat-form-field> 
+
+                                    <mat-form-field class="fuse-mat-no-subscript w-1/3 px-2 " >
+                                        <mat-label>Email</mat-label>
+                                        <input
+                                            matInput
+                                            [formControlName]="'heir_email'"
+                                            [placeholder]="'Enter Email'" 
+                                            required>
+                                            <mat-icon
+                                            class="icon-size-5"
+                                            [svgIcon]="'heroicons_solid:mail'"
+                                            matPrefix></mat-icon>
+                                    </mat-form-field>
+
+                                    <mat-form-field class="fuse-mat-no-subscript w-1/3 px-2 " >
+                                        <mat-label>Aadhar Number </mat-label>                                       
+                                        <input
+                                            matInput
+                                            [formControlName]="'heir_aadhar'"
+                                            [placeholder]="'Enter Aadhar Number'"                                             
+                                            maxlength="12" minlength="12" (keypress)="keyPress($event)"
+                                            required>          
+                                    </mat-form-field>    
+                                </div>
+
+                                <div class="mt-2 mb-2 "></div>
+
+                                <div class="flex flex-col sm:flex-row  w-full max-w-xs sm:max-w-none">
+                                    <mat-form-field class="fuse-mat-no-subscript w-1/3 pr-2 " >
+                                        <mat-label>PanCard Number </mat-label>
+                                        <input style="text-transform:uppercase"
+                                            matInput
+                                            [formControlName]="'heir_pancard'"
+                                            [placeholder]="'Enter Pancard'"
+                                            maxlength="10" minlength="10"
+                                            required>                                    
+                                    </mat-form-field> 
+
+                                    <mat-form-field class="fuse-mat-no-subscript w-1/3 px-2">
+                                        <mat-label>Age </mat-label>
+                                        <input
+                                            matInput
+                                            [formControlName]="'heir_age'"
+                                            [placeholder]="'Enter Age'" 
+                                            maxlength="2" minlength="2" (keypress)="keyPress($event)" 
+                                            required>
+                                    </mat-form-field> 
+
+                                    <mat-form-field class="fuse-mat-no-subscript w-1/3 px-2 " >
+                                        <mat-label>Place Of birth </mat-label>
+                                        <input
+                                            matInput
+                                            [formControlName]="'heir_birth_place'"
+                                            [placeholder]="'Enter Last name'"
+                                            >
+                                        <mat-icon
+                                            class="icon-size-5"
+                                            matPrefix
+                                            [svgIcon]="'heroicons_solid:user-circle'"></mat-icon>
+                                    </mat-form-field>    
+                                </div>
+
+                                <div class="mt-3 mb-3 "></div>
+
+                                <div >
+                                    <span class="font-medium mb-2"><b>Marrital Status</b></span>  &nbsp;
+                                        <mat-radio-group
+                                        [color]="'primary'"
+                                        [formControlName]="'heir_married_status'" required>
+                                        <mat-radio-button
+                                            class="mb-4"
+                                            value="1">
+                                            Unmarried
+                                        </mat-radio-button>
+                                        &nbsp;
+                                        <mat-radio-button
+                                            class="mb-4"
+                                            value="2">
+                                            Married
+                                        </mat-radio-button>  
+                                        &nbsp;
+                                        <mat-radio-button
+                                            class="mb-4"
+                                            value="3">
+                                            Widowed
+                                        </mat-radio-button>  
+                                        &nbsp;
+                                        <mat-radio-button
+                                            class="mb-4"
+                                            value="4">
+                                            Divorced
+                                        </mat-radio-button>  
+                                    </mat-radio-group>     
+                                    &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+                                    <span class="font-medium mb-2"><b>Gender</b></span> &nbsp;
+                                        <mat-radio-group
+                                        [color]="'primary'"
+                                        [formControlName]="'heir_gender'" required>
+                                        <mat-radio-button
+                                            class="mb-4"
+                                            value="1">
+                                            Male
+                                        </mat-radio-button>
+                                        &nbsp;
+                                        <mat-radio-button
+                                            class="mb-4"
+                                            value="2">
+                                            Female
+                                        </mat-radio-button>
+                                        &nbsp;
+                                        <mat-radio-button
+                                            class="mb-4"
+                                            value="3">
+                                            Other
+                                        </mat-radio-button>  
+                                    </mat-radio-group>     
+                                </div>
+
+                                <div class="flex">
+                                    <mat-form-field class="fuse-mat-textarea flex-auto">
+                                        <mat-label>Current Address </mat-label>
+                                        <textarea
+                                            matInput
+                                            [formControlName]="'heir_current_address'"
+                                            [placeholder]="'Enter Current Address'"
+                                            [rows]="2" required></textarea>
+                                        <mat-icon
+                                            class="icon-size-5"
+                                            matPrefix
+                                            [svgIcon]="'heroicons_solid:location-marker'"></mat-icon>
+                                    </mat-form-field>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <mat-form-field class="fuse-mat-textarea flex-auto">
+                                        <mat-label>Permanent Address </mat-label>
+                                        <textarea
+                                            matInput
+                                            [formControlName]="'heir_permanent_address'"
+                                            [placeholder]="'Enter Permanent Address'"
+                                            [rows]="2" required></textarea>
+                                        <mat-icon
+                                            class="icon-size-5"
+                                            matPrefix
+                                            [svgIcon]="'heroicons_solid:location-marker'"></mat-icon>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="flex flex-col sm:flex-row  w-full max-w-xs sm:max-w-none">
+                                    <mat-form-field class=" flex-auto">
+                                        <mat-label>Job</mat-label>
+                                        <input
+                                            matInput
+                                            [formControlName]="'heir_job_title'"
+                                            [placeholder]="'Enter Job'"
+                                            required>
+                                        <mat-icon
+                                            class="icon-size-5"
+                                            matPrefix
+                                            [svgIcon]="'heroicons_solid:user-circle'"></mat-icon>
+                                    </mat-form-field>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <mat-form-field class="fuse-mat-textarea flex-auto">
+                                        <mat-label>Company Details </mat-label>
+                                        <textarea
+                                            matInput
+                                            [formControlName]="'heir_company_details'"
+                                            [placeholder]="'Enter Company Name with Address'"
+                                            [rows]="2"></textarea>
+                                        <mat-icon
+                                            class="icon-size-5"
+                                            matPrefix
+                                            [svgIcon]="'heroicons_solid:location-marker'"></mat-icon>
+                                    </mat-form-field>
+                                </div>
+
+
+                                
+
+                                <div class="relative flex flex-col flex-auto p-2 pr-3 pb-3 bg-card rounded-2xl shadow overflow-hidden">
+
+                                    <div class="text-xl font-semibold" id="auto_trigger">Upload Heir Documents/वारसदाराची कागतपत्रे </div>
+
+                                    <div class="mt-2 mb-2 "></div>
+                                
+                                
+
+                                    <div class="grid grid-cols-1 xl:grid-cols-2 w-full">
+                                        <div class="flex flex-row flex-wrap -mx-6">
+                                            
+                                            <div class="flex flex-col mx-2 box_border_2">
+                                                <div class="text-sm font-medium leading-none text-secondary">
+                                                    Aadhaar card of Heir<br/>वारसदाराचे आधार कार्ड
+                                                </div>
+                                                <div class="mt-2 font-medium leading-none">
+                                                    <input  class="flex flex-row" type="file"  
+                                                    [formControlName]="'heir_aadhar_card'" (change)="onSelect($event,'heir_aadhar_card')"
+                                                        accept="image/*,.pdf" required/>
+                                                </div>
+                                            </div>
+                                            <div class="flex flex-col mx-2 box_border_2">
+                                                <div class="text-sm font-medium leading-none text-secondary">
+                                                    Pan card of Heir<br/>वारसदाराचे पॅन कार्ड
+                                                </div>
+                                                <div class="mt-2 font-medium leading-none">
+                                                    <input  class="flex flex-row" type="file"  
+                                                    [formControlName]="'heir_pan_card'" (change)="onSelect($event,'heir_pan_card')"
+                                                        accept="image/*,.pdf" required/>
+                                                </div>
+                                            </div>
+                                            <div class="flex flex-col mx-2 box_border_2">
+                                                <div class="text-sm font-medium leading-none text-secondary">
+                                                    Photo of Heir<br/>वारसदाराचे फोटो
+                                                </div>
+                                                <div class="mt-2 font-medium leading-none">
+                                                    <input  class="flex flex-row" type="file"  
+                                                    [formControlName]="'heir_photo'" (change)="onSelect($event,'heir_photo')" 
+                                                        accept="image/*" required/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div> 
+
+                                <div class="flex mt-6 ">
+                                    <button class="px-8" mat-flat-button [color]="'primary'" type="button" 
+                                    [disabled]="heirshipForm.invalid" (click)="send()">
+                                        save
+                                    </button>
+                                    <button class="px-8 mx-2" mat-flat-button [color]="'primary'" type="button"
+                                        (click)="fuseCard.face = 'front'">
+                                        Back
+                                    </button>
+
+                                    <span *ngIf="heir_response" style="color: blue;">{{heir_response}}. Add another Heir or click <a (click)="fuseCard.face = 'front'; heir_response='';"><u>here</u></a> to go to transfer application.</span>
+                                </div>
+                            </div>
+                        </form>
+                    </ng-container>
+                </fuse-card>
+
+            
+        </div>
+    </div>
+</div>
+</div>
+

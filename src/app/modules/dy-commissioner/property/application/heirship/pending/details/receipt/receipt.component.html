@@ -1,0 +1,89 @@
+<div class="grid grid-cols-1 xl:grid-cols-2 w-full">
+    <div class="grid sm:grid-flow-col xl:grid-flow-row">
+        <div class="relative flex flex-col flex-auto bg-card shadow overflow-hidden">
+            <div style="text-align: center;background: #c1c1c1;" class="text-3xl font-semibold tracking-tight leading-8">Property Transfer Document
+            </div>       
+            <div class="timeline-steps aos-init aos-animate" data-aos="fade-up">
+                <div class="timeline-step timeline-step-done" style="margin-top: 3px;">
+                    <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2003">
+                        <p class="h6 mt-2 mt-lg-3 mb-2 mb-lg-3">01. Application</p>
+                    </div>
+                </div>
+                <div class="timeline-step  timeline-step-done"  style="margin-top: 3px;">
+                    <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2004">
+                        <p class="h6 mt-2 mt-lg-3 mb-2 mb-lg-3">02. Documents</p>
+                    </div>
+                </div>
+                <div class="timeline-step timeline-step-active"  style="margin-top: 3px;">
+                    <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2005">
+                        <p class="h6 mt-2 mt-lg-3 mb-2 mb-lg-3">03. Receipts</p>
+                    </div>
+                </div>
+                <div class="timeline-step mb-0"  style="margin-top: 3px;">
+                    <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2020">
+                        <p class="h6 mt-2 mt-lg-3 mb-2 mb-lg-3">04. Actions</p>
+                    </div>
+                </div>
+            </div>
+            <div style="border: 3px solid #ad2331;padding:0px;">
+
+                <mat-grid-list cols="3" rowHeight="6:1">
+                    <mat-grid-tile>
+                        Property ID&nbsp;-&nbsp;<b>{{pta.uprn}}</b>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        Application Number&nbsp;-&nbsp;<b>{{pta.application_number}}</b>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        Application Date&nbsp;-&nbsp;<b>{{pta.application_date}}</b>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        Owner Name&nbsp;-&nbsp;<b>{{pta.owner_name}}</b>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        Owner Mobile&nbsp;-&nbsp;<b>{{pta.owner_mobile}}</b>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        Appointment Date&nbsp;-&nbsp;<b>{{pta.appointment_date}}</b>
+                    </mat-grid-tile>
+                </mat-grid-list>
+
+                <div class="mt-20 mb-4 "></div>
+                <div style="text-align: left;padding-top: 15px;padding-left:30%;padding-bottom: 5px;">
+                
+                    &rarr;  <a href="{{pta.receipt_file_name}}" style="color: rgb(62, 144, 167);;" target="_blank"><b><u>Application Fee Reciept</u></b></a>
+                    
+                    <br/>
+                    &rarr;  <a href="{{pta.transfer_fee_receipt_file_name}}" style="color: rgb(62, 144, 167);;" target="_blank"><b><u>Transfer Fee Reciept</u></b></a>
+                    <br/>
+
+                    &rarr;  <a href="{{pta.transfer_certificate_file_name}}" style="color: rgb(62, 144, 167);;" target="_blank"><b><u>Certificate</u></b></a>
+                    
+                       
+
+
+                       
+
+                  
+                    
+                  </div>
+                
+                <div class="mt-4 mb-4 "></div>   
+                <div> 
+                    <button style="float: left;" class="px-8 mx-2" mat-flat-button [color]="'primary'" type="button"
+                    [routerLink]="['/dy-commissioner/view-pending-transfer-document/'+ application_id]">
+                    &lArr; Documents 
+                    </button>
+
+                    <button style="float: right;" class="px-8 mx-2" mat-flat-button [color]="'primary'" type="button"
+                    [routerLink]="['/dy-commissioner/view-pending-transfer-action/'+ application_id]">
+                        Actions &rArr;
+                    </button>
+                    
+                </div>
+                <div style="clear:both;">&nbsp;</div>
+            </div>
+            
+        </div>
+    </div>
+</div>

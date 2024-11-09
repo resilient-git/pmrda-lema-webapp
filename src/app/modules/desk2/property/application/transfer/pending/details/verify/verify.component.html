@@ -1,0 +1,156 @@
+<div class="grid grid-cols-1 xl:grid-cols-2 w-full">
+    <div class="grid sm:grid-flow-col xl:grid-flow-row">
+        <div class="relative flex flex-col flex-auto bg-card shadow overflow-hidden">
+            <div style="text-align: center;background: #c1c1c1;" class="text-3xl font-semibold tracking-tight leading-8">Property Transfer Document
+            </div>       
+            <div class="timeline-steps aos-init aos-animate" data-aos="fade-up">
+                <div class="timeline-step timeline-step-done" style="margin-top: 3px;">
+                    <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2003">
+                        <p class="h6 mt-2 mt-lg-3 mb-2 mb-lg-3">01. Application</p>
+                    </div>
+                </div>
+                <div class="timeline-step  timeline-step-done"  style="margin-top: 3px;">
+                    <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2004">
+                        <p class="h6 mt-2 mt-lg-3 mb-2 mb-lg-3">02. Documents</p>
+                    </div>
+                </div>
+                <div class="timeline-step timeline-step-done"  style="margin-top: 3px;">
+                    <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2005">
+                        <p class="h6 mt-2 mt-lg-3 mb-2 mb-lg-3">03. Receipts</p>
+                    </div>
+                </div>
+                <div class="timeline-step timeline-step-done"  style="margin-top: 3px;">
+                    <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2020">
+                        <p class="h6 mt-2 mt-lg-3 mb-2 mb-lg-3">04. Actions</p>
+                    </div>
+                </div>
+                <div class="timeline-step timeline-step-active mb-0"  style="margin-top: 3px;">
+                    <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2020">
+                        <p class="h6 mt-2 mt-lg-3 mb-2 mb-lg-3">04-A. Verification</p>
+                    </div>
+                </div>
+            </div>
+            <div style="border: 3px solid #ad2331;padding:0px;">
+
+                <mat-grid-list cols="3" rowHeight="6:1">
+                    <mat-grid-tile>
+                        Property ID&nbsp;-&nbsp;<b>{{pta.uprn}}</b>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        Application Number&nbsp;-&nbsp;<b>{{pta.application_number}}</b>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        Application Date&nbsp;-&nbsp;<b>{{pta.application_date}}</b>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        Owner Name&nbsp;-&nbsp;<b>{{pta.owner_name}}</b>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        Owner Mobile&nbsp;-&nbsp;<b>{{pta.owner_mobile}}</b>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        Appointment Date&nbsp;-&nbsp;<b>{{pta.appointment_date}}</b>
+                    </mat-grid-tile>
+                </mat-grid-list>
+
+                <div class="mt-1 "></div>
+                
+                        <div style="padding: 30px;">
+                            <form [formGroup]="approveForm">
+                              <div class="text-xl font-semibold">Capture Headshot</div>
+                              <div class="flex">
+                                <div style="text-align:left">
+                                    <div style="background:sandybrown;border: 3px solid sandybrown;">
+                                      <webcam [height]="300" [width]="300" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam"
+                                              [allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable"
+                                              [videoOptions]="videoOptions"
+                                              [imageQuality]="1"
+                                              (cameraSwitched)="cameraWasSwitched($event)"
+                                              (initError)="handleInitError($event)"
+                                      ></webcam>
+                                      <br/>
+                                      <div>
+                                        <h3>Place this screenshoot for</h3>
+                                        <button class="px-8" mat-flat-button [color]="'primary'"  class="actionBtn" (click)="triggerSnapshot(0);">Lezy</button>
+                                        
+                                        <span *ngFor="let ptat of pta.transferee; index as i;">
+                                            <br/>
+                                            <button class="px-8" mat-flat-button [color]="'warning'"  class="actionBtn" (click)="triggerSnapshot(ptat.id);">{{ptat.first_name}} {{ptat.last_name}}</button>
+
+                                        </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="snapshot" *ngIf="capturedImg[0]"  style1="width:200px;background:#c1c1c1;">
+                                    <img [src]="capturedImg[0].imageAsDataUrl" style="text-align:center;width:200px;border: 3px solid sandybrown;"/>
+                                    Lazy
+                                    
+                                
+                                </div>
+                                <div class="snapshot" >
+                                    <span *ngFor="let ptat of pta.transferee; index as i;">
+                                        <img [src]="capturedImg[ptat.id].imageAsDataUrl" style="text-align:center;width:200px;border: 3px solid sandybrown;"/>
+                                        {{ptat.first_name}} {{ptat.last_name}}
+                                    </span>
+                                </div>
+
+                                <div class="snapshot"  style="background:#c1c1c1;">
+                                   
+                                    <div class="text-xl font-semibold">Document Verification</div>
+                                    <table>
+                                        <tr><td>                                                
+                                            <mat-checkbox color="accent"> 
+                                                Lessee Documents/भाडेपट्टा धारकाचची कागदपत्रे 
+                                            </mat-checkbox><br/>
+                                        </td></tr>
+                                        <tr><td>                                                    
+                                            <mat-checkbox color="accent"> 
+                                                Property Documents/मिळकतीची कागदपत्रे
+                                            </mat-checkbox>
+                                        </td></tr>
+                                        <tr><td>
+                                            <mat-checkbox color="accent"> 
+                                                Purchaser Documents/खरीददारांची कागदपत्रे
+                                            </mat-checkbox>
+                                        </td></tr>
+                                        <tr><td>
+                                    </table>
+                                    <br/><br/>
+                                  <p>All the documents are ok?.</p><br/><br/>
+                                  <button class="px-8" mat-flat-button [color]="'primary'" type="button"
+                                  (click)="sendApproval()" >
+                                  <!-- [disabled]="approveForm.invalid"  -->
+                                      Confirm
+                                  </button>
+                                
+                                </div>
+                                
+                               
+
+                              </div>
+                  
+                  
+                             
+                  
+                              
+                            </form>
+                          </div>
+                   
+                       
+                
+                <div class="mt-4 mb-4 "></div>   
+                <div> 
+                    <button style="float: left;" class="px-8 mx-2" mat-flat-button [color]="'primary'" type="button"
+                    [routerLink]="['/desk2/view-pending-transfer-action/'+ application_id]">
+                    &lArr; Actions 
+                    </button>
+
+                    
+                </div>
+                <div style="clear:both;">&nbsp;</div>
+            </div>
+            
+        </div>
+    </div>
+</div>

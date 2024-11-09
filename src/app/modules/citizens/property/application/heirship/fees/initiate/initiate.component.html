@@ -1,0 +1,164 @@
+<div class="flex flex-col flex-auto w-full">
+    <div class="flex flex-wrap w-full max-w-screen-xl mx-auto p-6 md:p-8">
+        <div class="flex items-center justify-between w-full">
+            <div>
+                <h2 class="text-3xl font-semibold tracking-tight leading-8">Heirship Transfer Application </h2>
+            </div>    
+        </div>
+        <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 w-full mt-8">
+            <div class="grid gap-8 sm:grid-flow-col xl:grid-flow-row">
+                <div class="relative flex flex-col flex-auto bg-card rounded-2xl shadow overflow-hidden">   
+                    <div class="timeline-steps aos-init aos-animate" data-aos="fade-up">
+                        <div class="timeline-step timeline-step-done">
+                            <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2003">
+                                
+                                <p class="h6 mt-3 mt-lg-3 mb-3 mb-lg-3">Select Property</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step timeline-step-done">
+                            <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2004">
+                                
+                                <p class="h6 mt-3 mt-lg-3 mb-3 mb-lg-3">Application</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step timeline-step-active">
+                            <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2005">
+                                
+                                <p class="h6 mt-3 mt-lg-3 mb-3 mb-lg-3">Payment</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2010">
+                               
+                                <p class="h6 mt-3 mt-lg-3 mb-3 mb-lg-3">Reciept</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step mb-0">
+                            <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2020">
+                                
+                                <p class="h6 mt-3 mt-lg-3 mb-3 mb-lg-3">Status</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="border: 3px solid #ad2331;padding:10px;">
+                        <form
+                        [formGroup]="initiateForm">
+                
+                        <div class="flex flex-col gt-xs:flex-row">
+                        
+                            <div #myDiv (click)="dummyBinding()"> 
+                                <!-- <div class="text-lg font-medium tracking-tight leading-6 truncate">
+                                    PAY ₹ 300
+                                </div> -->
+                                <p class="my-6 font-medium">
+                                    Pay your Application Fee and Heirship Payment through Online Gateway by using Debit Card / Credit Card / Net Banking / UPI.
+                                </p>
+                                <table>
+                                    <tr>
+                                        <th>
+                                            Application Fee
+                                        </th>
+                                        <td>
+                                            Rs. {{feeAmount}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            Addition of Heirship Fee
+                                        </th>
+                                        <td>
+                                            Rs. {{addHeirAmount}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            Removal of Heirship Fee
+                                        </th>
+                                        <td>
+                                            Rs. {{removeHeirAmount}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            Total Payment
+                                        </th>
+                                        <td>
+                                            Rs. {{totalAmount}}
+                                        </td>
+                                    </tr>
+                                </table>
+                
+                            </div>
+                            
+                            <div class="mt-2 mb-2 "></div>
+
+                        
+                       
+
+                            
+
+                            <div class="mt-2 mb-2"></div>
+                            <div class="inline-flex items-end w-full mt-1.5">
+                                
+                                <mat-checkbox 
+                                    [color]="'primary'"
+                                    [formControlName]="'agreements'">
+                                    <span> I have read and agree to PMRDA Payment Policy, tearms and conditions and Privacy policy
+                                    </span>
+                                    <span id="myDiv" class="myDiv">
+                                    <a
+                                        class="ml-1 text-primary-500 hover:underline"
+                                        [routerLink]="['./']">Terms of Service
+                                    </a>
+                                </span>
+                                    <span>and</span>
+                                    <a
+                                        class="ml-1 text-primary-500 hover:underline"
+                                        [routerLink]="['./']">Privacy Policy
+                                    </a>
+                                </mat-checkbox>
+                            </div>
+                                
+                        </div>
+
+                        <div class="mt-4 mb-4 "></div>
+
+                        <div class="flex items-center">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <button
+                                class="px-8"
+                                mat-flat-button
+                                [color]="'primary'"
+                                type="button"
+                                (click)="proceedToPay()"
+                                >
+                                Proceed to Pay
+                            </button>
+                        </div>
+
+                        <div class="mt-4 mb-4 "></div>
+
+                        <!-- <div >
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <span> By clicking continue, i am agree with 
+                            </span>
+                            <a
+                                class="ml-1 text-primary-500 hover:underline"
+                                [routerLink]="['./']">Terms & Policy
+                            </a>
+                        </div> -->
+                        <div class="mt-4 mb-4 "></div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

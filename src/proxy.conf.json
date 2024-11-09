@@ -1,0 +1,15 @@
+{
+    "/apis": {
+      "target": "http://pmrda.potents.in/api/public/",
+      "_local_target": "http://localhost/pmrdaapi/public/",
+      "secure": false,
+      "pathRewrite": {
+        "^/apis": ""
+      },
+      "changeOrigin": true
+    } 
+  }
+
+
+
+

@@ -1,0 +1,188 @@
+<div class="flex flex-col flex-auto w-full">
+    <div class="flex flex-wrap w-full max-w-screen-xl mx-auto p-6 md:p-8">
+     
+        <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 w-full mt-8">
+            <div class="grid gap-8 sm:grid-flow-col xl:grid-flow-row">
+                    <!--statement -->
+            
+                <div class="relative flex flex-col flex-auto p-6 pr-3 pb-3 bg-card rounded-2xl shadow overflow-hidden">   
+                    <!-- {{horizontalStepperForm.value | json}}  -->
+                    <form
+                            [formGroup]="horizontalStepperForm">
+                            <h2 class="text-3xl font-semibold tracking-tight leading-8">Search Property</h2>
+                            <div class="relative flex flex-col p-6 pr-3 pb-3 bg-card rounded-2xl shadow overflow-hidden">
+                                <mat-form-field class="flex-auto gt-xs:pr-3">
+                                    <mat-label>Type Property UPRN and Search</mat-label>  
+                                    <mat-icon
+                                    class="icon-size-5"
+                                    [svgIcon]="'heroicons_solid:search'"
+                                    matPrefix></mat-icon>
+                                    <input
+                                        matInput
+                                        [formControlName]="'property_code'"
+                                        
+                                        required>
+                                        <button type="submit" mat-flat-button
+                                        [color]="'primary'" 
+                                        (click)="getPropertyDetails()">
+                                        &nbsp;&nbsp;Get Property Details &rarr;&nbsp;&nbsp;
+                                        </button>
+                                </mat-form-field>    
+                            </div>
+                
+                        <div class="mt-4 mb-4 "></div>
+
+
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 w-full mt-8" *ngIf="showLoader">
+            <div class="flex flex-row flex-wrap mt-4 -mx-6">
+                <div class="flex flex-col mx-6 my-3 box_border_1">
+                    Loading ...
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 xl:grid-cols-2 w-full border-box" *ngIf="(pd | json) != '{}'">
+            <div class="flex flex-row flex-wrap -mx-6">
+                
+                <div class="flex flex-col mx-6 my-3 box_border_1">
+                    <h2 class="text-3xl font-semibold tracking-tight leading-8">Property Details</h2>
+                    <hr/>
+                    <div class="text-sm font-medium leading-none text-secondary">&darr; Taluka</div>
+                    <div class="mt-2 font-medium leading-none">
+                        {{pd.taluka_name_en}} ({{pd.taluka_name_mr}})
+                    </div>
+                    <br/>
+                    <div class="text-sm font-medium leading-none text-secondary">&darr; Village</div>
+                    <div class="mt-2 font-medium leading-none">
+                        {{pd.village_name_en}} ({{pd.village_name_mr}})
+                    </div>
+                    <br/>
+                    <div class="text-sm font-medium leading-none text-secondary">&darr; Gat/Plot/CTS/Survey Number</div>
+                    <div class="mt-2 font-medium leading-none">
+                        {{pd.gpsc_number}}
+                    </div>
+                    <br/>
+                    <div class="text-sm font-medium leading-none text-secondary">&darr;Scheme</div>
+                    <div class="mt-2 font-medium leading-none">{{pd.scheme_number}}</div>
+                    <br/>
+                    <div class="text-sm font-medium leading-none text-secondary">&darr; Type of Structure</div>
+                    <div class="mt-2 font-medium leading-none">{{pd.structure_type_name_en}} ({{pd.structure_type_name_en}})</div>
+                    <br/>
+                    <div class="text-sm font-medium leading-none text-secondary">&darr; Society</div>
+                    <div class="mt-2 font-medium leading-none">{{pd.society_name_en}} ({{pd.society_name_mr}})</div>
+                    <br/>
+                    <div class="text-sm font-medium leading-none text-secondary">&darr; Building No.</div>
+                    <div class="mt-2 font-medium leading-none">{{pd.building_number}}</div>
+                    <br/>
+                    <div class="text-sm font-medium leading-none text-secondary">&darr; Dukan/Sadnika</div>
+                    <div class="mt-2 font-medium leading-none">{{pd.sadnika_number}}</div>
+                    <br/>
+                    <div class="text-sm font-medium leading-none text-secondary">&darr; Area in Meter</div>
+                    <div class="mt-2 font-medium leading-none">{{pd.property_area}}</div>
+                    <br/>
+                    <div class="text-sm font-medium leading-none text-secondary">&darr; Special Land Acquition Officer</div>
+                    <div class="mt-2 font-medium leading-none">{{pd.special_land_acquition_officer_number}}</div>
+                    <br/>
+                    <div class="text-sm font-medium leading-none text-secondary">&darr; Award Number</div>
+                    <div class="mt-2 font-medium leading-none">{{pd.award_number}}</div>
+                    <br/>
+                    <div class="text-sm font-medium leading-none text-secondary">&darr; Award Date</div>
+                    <div class="mt-2 font-medium leading-none">{{pd.award_date}}</div>
+                    <br/>
+                    <div class="text-sm font-medium leading-none text-secondary">&darr; Award Land Possession Date</div>
+                    <div class="mt-2 font-medium leading-none">{{pd.award_land_possession_date}}</div>
+                    <br/>
+                    <div class="text-sm font-medium leading-none text-secondary">&darr; Original Plot Holder</div>
+                    <div class="mt-2 font-medium leading-none">{{pd.original_plot_holder}}</div>
+                    <br/>
+                    <div class="text-sm font-medium leading-none text-secondary">&darr; Leasedeed Registration Number Haveli Number</div>
+                    <div class="mt-2 font-medium leading-none">{{pd.leasedeed_registration_number_haveli_number}}</div>
+                    <br/>
+                    <div class="text-sm font-medium leading-none text-secondary">&darr; Leasedeed Registration Date</div>
+                    <div class="mt-2 font-medium leading-none">{{pd.leasedeed_registration_date}}</div>
+                    <br/>
+                    <div class="text-sm font-medium leading-none text-secondary">&darr; Shop Premium</div>
+                    <div class="mt-2 font-medium leading-none">{{pd.shop_premium}}</div>
+                    <br/>
+                    <div class="text-sm font-medium leading-none text-secondary">&darr; Ready Reckoner Square Meter Rate</div>
+                    <div class="mt-2 font-medium leading-none">{{pd.ready_reckoner_square_meter_rate}}</div>
+                    <br/>
+                    <div class="text-sm font-medium leading-none text-secondary">&darr; Building Permission Number</div>
+                    <div class="mt-2 font-medium leading-none">{{pd.building_permission_number}}</div>
+                    <br/>
+                    <div class="text-sm font-medium leading-none text-secondary">&darr; Building Permission Date</div>
+                    <div class="mt-2 font-medium leading-none">{{pd.building_permission_date}}</div>
+                    <br/>
+                    <div class="text-sm font-medium leading-none text-secondary">&darr; Completion Certificate Number</div>
+                    <div class="mt-2 font-medium leading-none">{{pd.completion_certificate_number}}</div>
+                    <br/>
+                    <div class="text-sm font-medium leading-none text-secondary">&darr; Completion Date</div>
+                    <div class="mt-2 font-medium leading-none">{{pd.completion_date}}</div>
+                </div>
+                <div class="flex flex-col mx-6 my-3 box_border_1">
+                    <h2 class="text-3xl font-semibold tracking-tight leading-8">Owners Timeline</h2>
+                    <hr/>
+                </div>
+                <div class="flex flex-col mx-6 my-3 box_border_1">
+                    <form
+                            [formGroup]="ownerForm">
+                        <h2 class="text-3xl font-semibold tracking-tight leading-8">Current Owner</h2>
+                        <hr/>
+                        <div class="col-span-2 flex flex-col items-left justify-left">
+                            <mat-form-field class="flex-auto gt-xs:pr-3">
+                                    <mat-label>Owner Name</mat-label>  
+                                    <!-- <ng-content *ngIf="(owner_name | async) as ownerData">
+                                    
+                                    </ng-content>  -->
+                                    <!-- <mat-option *ngFor="let opt of ownerData" [value]="opt.code">
+                                        {{opt.owner_name}}</mat-option> -->
+                                    <mat-icon
+                                    class="icon-size-5"
+                                    [svgIcon]="'heroicons_solid:user'"
+                                    matPrefix></mat-icon>
+                                    <input
+                                        matInput
+                                        [formControlName]="'owner_name'"
+                                        
+                                        required>
+                            </mat-form-field>
+                        </div>
+        
+                        <div class="col-span-2 flex flex-col items-left justify-left">
+                            <mat-form-field class="flex-auto gt-xs:pr-3">
+                                    <mat-label>Owner Mobile Number</mat-label>   
+                                    <mat-icon
+                                    class="icon-size-5"
+                                    [svgIcon]="'heroicons_solid:phone'"
+                                    matPrefix></mat-icon>
+                                    <input
+                                        matInput
+                                        maxlength="10"
+                                        minlength="10"
+                                        (keypress)="keyPress($event)"
+                                        [formControlName]="'owner_mobile'"
+                                        [placeholder]="'Enter Owner Mobile Number'"
+                                        required>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="flex">
+                            <button class="px-8" mat-flat-button  [color]="'primary'" type="button"
+                              (click)="send()" >
+                                Get OTP
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

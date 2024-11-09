@@ -1,0 +1,72 @@
+<div class="flex flex-col flex-auto w-full">
+
+    <div class="flex flex-wrap w-full max-w-screen-xl mx-auto p-6 md:p-8">
+        <div class="flex items-center justify-between w-full">
+            <div>
+                <h2 class="text-3xl font-semibold tracking-tight leading-8">Update Village/Sector</h2>
+
+            </div>
+
+        </div>
+        <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 w-full mt-8">
+            <div class="grid gap-8 sm:grid-flow-col xl:grid-flow-row">
+                <!--statement -->
+                <div class="relative flex flex-col flex-auto p-6 pr-3 pb-3 bg-card rounded-2xl shadow overflow-hidden">
+                    <form [formGroup]="villageForm">
+                        <div class="flex-auto grid grid-cols-4 gap-4 mt-6">
+
+                            <div class="col-span-3 flex flex-col items-left justify-left">
+                                <!-- <mat-form-field>
+                                    <mat-label>Taluka </mat-label>
+                                    <mat-select [formControlName]="'taluka_code'" [placeholder]="'Select Taluka'"
+                                        required>
+                                        <mat-option *ngFor="let taluka of talukaData" [value]="taluka.code">
+                                            {{taluka.name_en}} ({{taluka.name_mr}})</mat-option>
+                                    </mat-select>
+                                </mat-form-field> -->
+                                <div class="col-span-3 flex flex-col items-left justify-left">
+                                    <mat-label>Taluka </mat-label>
+                                    <mat-label class="p-3 border m-1 rounded bg-gray-100">{{villageForm.value.taluka_name_en}}({{villageForm.value.taluka_name_mr}})
+                                    </mat-label>
+                                </div>
+                            </div>
+                            <div class="col-span-3 flex flex-col items-left justify-left">
+                                <mat-form-field>
+                                    <mat-label>Village/Sector Code</mat-label>
+                                    <input matInput [formControlName]="'code'" readonly>
+
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-span-3 flex flex-col items-left justify-left">
+                                <mat-form-field>
+                                    <mat-label>Village/Sector Name (Marathi)</mat-label>
+                                    <input matInput [formControlName]="'name_mr'">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-span-3 flex flex-col items-left justify-left">
+                                <mat-form-field>
+                                    <mat-label>Village/Sector Name (English)</mat-label>
+                                    <input matInput [formControlName]="'name_en'">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="flex ">
+                            <button class="px-8 mx-2" mat-flat-button [color]="'primary'" type="button"
+                                (click)="send()">
+                                Submit
+                            </button>
+
+                            <button class="px-8" mat-flat-button [color]="'primary'" type="button"
+                                [routerLink]="['/admin/villages/list']">
+                                Back
+                            </button>
+                        </div>
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

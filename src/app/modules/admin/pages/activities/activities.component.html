@@ -1,0 +1,629 @@
+
+
+<form
+class="p-4 bg-card shadow rounded overflow-hidden"
+[formGroup]="horizontalStepperForm">
+<div class="text-3xl font-bold"> Property Related</div>
+
+<mat-horizontal-stepper
+    
+    [linear]="true"
+    
+    #horizontalStepper>
+    <mat-step
+        [formGroupName]="'step1'"
+        [stepControl]="horizontalStepperForm.get('step1')"
+        #horizontalStepperStep1>
+        <ng-template matStepLabel>Property</ng-template>
+        
+        <div class=" mt-8">
+           
+                <!--  statement -->
+                <div class="relative flex flex-col flex-auto p-6 pr-3 pb-3 bg-card rounded-2xl shadow overflow-hidden">
+      
+            
+           
+           
+        
+        <div class="flex flex-col gt-xs:flex-row">
+            <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 w-full mt-8">
+                <div class="grid gap-8 sm:grid-flow-col xl:grid-flow-row">
+                    <!-- Previous statement -->
+                    <div class="relative flex flex-col flex-auto p-6 pr-3 pb-3 bg-card rounded-2xl shadow overflow-hidden">
+                        <div class="absolute bottom-0 right-0 w-24 h-24 -m-6">
+                            <mat-icon
+                                class="icon-size-24 opacity-25 text-green-500 dark:text-green-400"
+                                [svgIcon]="'heroicons_outline:check-circle'"></mat-icon>
+                        </div>
+                      
+                        <div class="flex items-center">
+                            <div class="flex flex-col">
+                                <div class="text-lg font-medium tracking-tight leading-6 truncate">
+                                  <mat-radio-button
+                                    class="mb-4"
+                                    [value]="'married'">
+                                    Shree Laxmi Residency
+                                  </mat-radio-button>
+                                </div>
+                                <!-- <div class="text-green-600 font-medium text-sm">
+                                     Status - OK
+                                </div> -->
+                            </div>
+                            
+                        </div>
+                        <div class="flex flex-row flex-wrap mt-4 -mx-6">
+                            <div class="flex flex-col mx-6 my-3">
+                                <div class="text-sm font-medium leading-none text-secondary">&darr; Peth No.</div>
+                                <div class="mt-2 font-medium text-3xl leading-none">01</div>
+                            </div>
+                            <div class="flex flex-col mx-6 my-3">
+                                <div class="text-sm font-medium leading-none text-secondary">&darr; Bulk Land No.</div>
+                                <div class="mt-2 font-medium text-3xl leading-none">678</div>
+                            </div>
+                            
+                            <div class="flex flex-col mx-6 my-3">
+                                <div class="text-sm font-medium leading-none text-secondary">&darr; Grahyojana No.</div>
+                                <div class="mt-2 font-medium text-3xl leading-none">21</div>
+                            </div>
+                        </div>
+    
+                    </div>
+                    <!-- Current statement -->
+                    <div class="relative flex flex-col flex-auto p-6 pr-3 pb-3 bg-card rounded-2xl shadow overflow-hidden">
+                        <div class="absolute bottom-0 right-0 w-24 h-24 -m-6">
+                            <mat-icon
+                                class="icon-size-24 opacity-25 text-green-500 dark:text-green-400"
+                                [svgIcon]="'heroicons_outline:check-circle'"></mat-icon>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="flex flex-col">
+                                <div class="text-lg font-medium tracking-tight leading-6 truncate">
+                                    <mat-radio-button
+                                    class="mb-4"
+                                    [value]="'married'">
+                                    Yerwada Building
+                                    </mat-radio-button>
+                                </div>
+                                <!-- <div class="text-green-600 font-medium text-sm">
+                                    Status - OK
+                                </div> -->
+                            </div>
+                            
+                        </div>
+                       
+                        <div class="flex flex-row flex-wrap mt-4 -mx-6">
+                            <div class="flex flex-col mx-6 my-3">
+                                <div class="text-sm font-medium leading-none text-secondary">&darr; Peth No.</div>
+                                <div class="mt-2 font-medium text-3xl leading-none">201</div>
+                            </div>
+                           
+                            <div class="flex flex-col mx-6 my-3">
+                                <div class="text-sm font-medium leading-none text-secondary">&darr; Bulk Land No.</div>
+                                <div class="mt-2 font-medium text-3xl leading-none">462</div>
+                            </div>
+                            <div class="flex flex-col mx-6 my-3">
+                                <div class="text-sm font-medium leading-none text-secondary">&darr; Grahyojana No.</div>
+                                <div class="mt-2 font-medium text-3xl leading-none">18</div>
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 w-full mt-8">
+            <div class="grid gap-8 sm:grid-flow-col xl:grid-flow-row">
+                <!-- Previous statement -->
+                <div class="relative flex flex-col flex-auto p-6 pr-3 pb-3 bg-card rounded-2xl shadow overflow-hidden">
+                    <div class="absolute bottom-0 right-0 w-24 h-24 -m-6">
+                        <mat-icon
+                            class="icon-size-24 opacity-25 text-green-500 dark:text-green-400"
+                            [svgIcon]="'heroicons_outline:check-circle'"></mat-icon>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="flex flex-col">
+                            <div class="text-lg font-medium tracking-tight leading-6 truncate">
+                                <mat-radio-button
+                                class="mb-4"
+                                [value]="'married'">
+                                Sai Residency
+                                </mat-radio-button>
+                            </div>
+                            <!-- <div class="text-green-600 font-medium text-sm">
+                                 Status - OK
+                            </div> -->
+                        </div>
+                        
+                    </div>
+                    <div class="flex flex-row flex-wrap mt-4 -mx-6">
+                        <div class="flex flex-col mx-6 my-3">
+                            <div class="text-sm font-medium leading-none text-secondary">&darr; Peth No.</div>
+                            <div class="mt-2 font-medium text-3xl leading-none">04</div>
+                        </div>
+                        <div class="flex flex-col mx-6 my-3">
+                            <div class="text-sm font-medium leading-none text-secondary">&darr; Bulk Land No.</div>
+                            <div class="mt-2 font-medium text-3xl leading-none">342</div>
+                        </div>
+                        
+                        <div class="flex flex-col mx-6 my-3">
+                            <div class="text-sm font-medium leading-none text-secondary">&darr; Grahyojana No.</div>
+                            <div class="mt-2 font-medium text-3xl leading-none">19</div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Current statement -->
+                <div class="relative flex flex-col flex-auto p-6 pr-3 pb-3 bg-card rounded-2xl shadow overflow-hidden">
+                    <div class="absolute bottom-0 right-0 w-24 h-24 -m-6">
+                        <mat-icon
+                            class="icon-size-24 opacity-25 text-green-500 dark:text-green-400"
+                            [svgIcon]="'heroicons_outline:check-circle'"></mat-icon>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="flex flex-col">
+                            <div class="text-lg font-medium tracking-tight leading-6 truncate">
+                                <mat-radio-button
+                                class="mb-4"
+                                [value]="'married'">
+                                Deep Resi. Building
+                                </mat-radio-button>
+                            </div>
+                            <!-- <div class="text-green-600 font-medium text-sm">
+                                Status - OK
+                            </div> -->
+                        </div>
+                       
+                    </div>
+                   
+                    <div class="flex flex-row flex-wrap mt-4 -mx-6">
+                        <div class="flex flex-col mx-6 my-3">
+                            <div class="text-sm font-medium leading-none text-secondary">&darr; Peth No.</div>
+                            <div class="mt-2 font-medium text-3xl leading-none">411</div>
+                        </div>
+                       
+                        <div class="flex flex-col mx-6 my-3">
+                            <div class="text-sm font-medium leading-none text-secondary">&darr; Bulk Land No.</div>
+                            <div class="mt-2 font-medium text-3xl leading-none">810</div>
+                        </div>
+                        <div class="flex flex-col mx-6 my-3">
+                            <div class="text-sm font-medium leading-none text-secondary">&darr; Grahyojana No.</div>
+                            <div class="mt-2 font-medium text-3xl leading-none">12</div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+        
+           
+            </div>
+          
+          
+        </div>   
+            <div class="mt-4 mb-4 "></div>
+
+        <div class="flex justify-end">
+            <button
+                class="px-8"
+                mat-flat-button
+                [color]="'primary'"
+                [disabled]="horizontalStepperStep1.stepControl.pristine || horizontalStepperStep1.stepControl.invalid"
+                type="button"
+                matStepperNext>
+                Next
+            </button>
+        </div>
+    </mat-step>
+
+    <mat-step
+        [formGroupName]="'step2'"
+        [stepControl]="horizontalStepperForm.get('step2')"
+        #horizontalStepperStep2>
+        <ng-template matStepLabel>Transferee</ng-template>
+
+        <div class=" mt-8">
+                    <!--  statement -->
+                    <div class="relative flex flex-col flex-auto p-6 pr-3 pb-3 bg-card rounded-2xl shadow overflow-hidden">
+          
+                <!-- <div class="flex  flex-auto w-full max-w-xs sm:max-w-5xl mx-auto"> -->
+               
+               
+       
+        <div class="flex flex-col sm:flex-row  w-full max-w-xs sm:max-w-none">
+            <mat-form-field class="fuse-mat-no-subscript w-1/3 pr-2 " >
+                <mat-label>First Name </mat-label>
+                <input
+                    matInput
+                    [formControlName]="'firstName'"
+                    [placeholder]="'Enter First name'"
+                    required>
+                <mat-icon
+                    class="icon-size-5"
+                    matPrefix
+                    [svgIcon]="'heroicons_solid:user-circle'"></mat-icon>
+            </mat-form-field> 
+            <mat-form-field class="fuse-mat-no-subscript w-1/3 px-2 " >
+                <mat-label>Middle Name </mat-label>
+                <input
+                    matInput
+                    [formControlName]="'middleName'"
+                    [placeholder]="'Enter Middle name'"
+                    required>
+                <mat-icon
+                    class="icon-size-5"
+                    matPrefix
+                    [svgIcon]="'heroicons_solid:user-circle'"></mat-icon>
+            </mat-form-field> 
+            <mat-form-field class="fuse-mat-no-subscript w-1/3 px-2 " >
+                <mat-label>Last Name </mat-label>
+                <input
+                    matInput
+                    [formControlName]="'lastName'"
+                    [placeholder]="'Enter Last name'"
+                    required>
+                <mat-icon
+                    class="icon-size-5"
+                    matPrefix
+                    [svgIcon]="'heroicons_solid:user-circle'"></mat-icon>
+            </mat-form-field>    
+        </div>
+        
+        <div class="flex">
+            <mat-form-field class="fuse-mat-textarea flex-auto">
+                <mat-label>Current Address </mat-label>
+                <textarea
+                    matInput
+                    [formControlName]="'currentAddress'"
+                    [placeholder]="'Enter Current Address'"
+                    [rows]="5"></textarea>
+                <mat-icon
+                    class="icon-size-5"
+                    matPrefix
+                    [svgIcon]="'heroicons_solid:location-marker'"></mat-icon>
+            </mat-form-field>
+        </div>
+        <div class="flex">
+            <mat-form-field class="fuse-mat-textarea flex-auto">
+                <mat-label>Permanent Address </mat-label>
+                <textarea
+                    matInput
+                    [formControlName]="'permanentAddress'"
+                    [placeholder]="'Enter Permanent Address'"
+                    [rows]="5"></textarea>
+                <mat-icon
+                    class="icon-size-5"
+                    matPrefix
+                    [svgIcon]="'heroicons_solid:location-marker'"></mat-icon>
+            </mat-form-field>
+        </div>
+
+        <div class="flex  gt-xs:flex-row">
+            <mat-form-field class="flex-auto pr-3">
+                <mat-label>Place Of Birth</mat-label>
+                <input
+                    matInput
+                    [formControlName]="'placeofbirth'"
+                    [placeholder]="'Enter Place Of Birth'"
+                    required>
+                <mat-icon
+                    class="icon-size-5"
+                    matPrefix
+                    [svgIcon]="'heroicons_solid:user-circle'"></mat-icon>
+            </mat-form-field>
+        </div>
+
+        <div class="flex  gt-xs:flex-row">
+            <mat-form-field class="flex-auto pr-3">
+                <mat-label>Age</mat-label>
+                <input
+                    matInput
+                    [formControlName]="'age'"
+                    [placeholder]="'Enter Age'"
+                    required>
+                <mat-icon
+                    class="icon-size-5"
+                    matPrefix
+                    [svgIcon]="'heroicons_solid:user-circle'"></mat-icon>
+            </mat-form-field>
+               
+        
+            <mat-form-field class="flex-auto px-3">
+                <mat-label>Date Of Birth</mat-label>
+                <input
+                    matInput [matDatepicker]="dp3" disabled
+                    [formControlName]="'dateofbirth'"
+                    [placeholder]="'Select Date Of Birth'"
+                    required>
+                    <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+                    <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+            </mat-form-field>   
+        </div>
+        
+            <div class="flex ">
+                <span class="font-medium mb-2">Marrital Status</span>
+                    <mat-radio-group
+                    [color]="'primary'"
+                    [formControlName]="'marritalstatus'">
+                    <mat-radio-button
+                        class="mb-4"
+                        [value]="'married'">
+                        Married
+                    </mat-radio-button>
+                    <mat-radio-button
+                        class="mb-4"
+                        [value]="'unmarried'">
+                        Unmarried
+                    </mat-radio-button>  
+                </mat-radio-group>    
+            </div>
+        
+           <div class="flex  gt-xs:flex-row">
+            <mat-form-field class="flex-auto pr-3">
+                <mat-label>Job</mat-label>
+                <input
+                    matInput
+                    [formControlName]="'job'"
+                    [placeholder]="'Enter Job'"
+                    required>
+                <mat-icon
+                    class="icon-size-5"
+                    matPrefix
+                    [svgIcon]="'heroicons_solid:user-circle'"></mat-icon>
+            </mat-form-field>   
+          </div>
+          <div class="flex">
+            <mat-form-field class="fuse-mat-textarea flex-auto">
+                <mat-label>Company Name with Address </mat-label>
+                <textarea
+                    matInput
+                    [formControlName]="'companyNameWithAddress'"
+                    [placeholder]="'Enter Company Name with Address'"
+                    [rows]="5"></textarea>
+                <mat-icon
+                    class="icon-size-5"
+                    matPrefix
+                    [svgIcon]="'heroicons_solid:location-marker'"></mat-icon>
+            </mat-form-field>
+        </div>
+
+        <div class="flex">
+            <div class="container">
+                <mat-label>Photo Upload </mat-label>
+                <img [src]="url"  height="50px" width="50px">
+                <input
+                  type="file"
+                  id="img"
+                  [formControlName]="'photo'"
+                  accept="image/*"
+                  (change)="onSelect($event)"
+                />
+                <!-- <label for="img" >Upload Image</label> -->
+              </div>
+       
+            </div>
+        </div>
+      </div>
+      
+      <div class="mt-4 mb-4 "></div>
+
+        <div class="flex justify-end">
+            <button
+                class="px-8 mr-2"
+                mat-flat-button
+                [color]="'accent'"
+                type="button"
+                matStepperPrevious>
+                Back
+            </button>
+            <button
+                class="px-8"
+                mat-flat-button
+                [color]="'primary'"
+                [disabled]="horizontalStepperStep2.stepControl.pristine || horizontalStepperStep2.stepControl.invalid"
+                type="button"
+                matStepperNext>
+                Next
+            </button>
+        </div>
+    </mat-step>
+
+    <mat-step
+        [formGroupName]="'step3'"
+        [stepControl]="horizontalStepperForm.get('step3')">
+        <ng-template matStepLabel>Documents</ng-template>
+        <div class=" mt-8">
+            
+             <div class="relative flex flex-col flex-auto p-6 pr-3 pb-3 bg-card rounded-2xl shadow overflow-hidden">
+           
+        <!-- <div class="mt-4 mb-4 "></div> -->
+
+        <div class="flex items-center justify-between w-full">
+        <div> 
+            <div class="text-lg font-medium tracking-tight leading-6 truncate">Please attach the following Documents(Only Pdf Format)</div>
+        </div>
+        <div class="flex items-center ml-6">
+                <button
+                    class="hidden sm:inline-flex ml-3"
+                    mat-flat-button
+                    [color]="'primary'">
+                    <span class="material-icons">download</span>
+                    <span class="ml-2">Download</span>
+                </button>
+        </div>
+        </div>
+            
+
+        <mat-nav-list>
+            <mat-list-item >
+          <div class="flex  flex-row">
+            <div class="flex flex-row">
+                <div class="container">
+                    <span matLine >1. Upload Application Form
+                    <!-- <mat-toolbar>
+                        <input matInput [(ngModel)]="myfilename"  />
+                      </mat-toolbar>
+                       -->
+                       <div class="mt-2 mb-2 "></div>
+                      <input  class="flex flex-row" type="file" #UploadFileInput id="fileUpload"  name="fileUpload"
+                        multiple="multiple" accept="image/*" /></span>
+                 </div>
+            </div>
+        </div>
+       </mat-list-item>
+
+        <div class="mt-8 mb-8 "></div>
+
+        <mat-list-item >
+            <div class="flex flex-row">
+                <div class="container">
+                    <mat-label>2.Declaration for No Loan </mat-label>
+                       <div class="mt-2 mb-2 "></div>
+                      <input  class="flex" type="file" #UploadFileInput id="fileUpload"  name="fileUpload"
+                        multiple="multiple" accept="image/*" />
+                 </div>
+            </div>
+        </mat-list-item>
+
+        <div class="mt-8 mb-8 "></div>
+
+            <mat-list-item >
+            <div class="flex flex-row">
+                <div class="container">
+                    <mat-label>3. Declaration for No Loan </mat-label>
+                       <div class="mt-2 mb-2 "></div>
+                      <input  class="flex" type="file" #UploadFileInput id="fileUpload"  name="fileUpload"
+                        multiple="multiple" accept="image/*" />
+                 </div>
+            </div>
+            </mat-list-item>
+
+            <div class="mt-8 mb-8 "></div>
+
+            <mat-list-item >
+            <div class="flex flex-row">
+                <div class="container">
+                    <mat-label>4. Warranty Letter </mat-label>
+                       <div class="mt-2 mb-2 "></div>
+                      <input  class="flex" type="file" #UploadFileInput id="fileUpload"  name="fileUpload"
+                        multiple="multiple" accept="image/*" />
+                 </div>
+            </div>
+            </mat-list-item>
+
+            <div class="mt-8 mb-8 "></div>
+
+            <mat-list-item >
+            <div class="flex flex-row">
+                <div class="container">
+                    <mat-label>5. Transferee Details </mat-label>
+                       <div class="mt-2 mb-2 "></div>
+                    <input  class="flex" type="file" #UploadFileInput id="fileUpload"  name="fileUpload"
+                        multiple="multiple" accept="image/*" />
+                 </div>
+            </div>
+            </mat-list-item>
+                
+        </mat-nav-list>
+         </div>
+         </div>
+         <!-- <div class="mt-4 mb-4 "></div> -->
+            
+                
+        <div class="flex justify-end mt-8">
+            <button
+                class="px-8 mr-2"
+                mat-flat-button
+                [color]="'accent'"
+                type="button"
+                matStepperPrevious>
+                Back
+            </button>
+            <button
+                class="px-8"
+                mat-flat-button
+                [color]="'primary'"
+                type="button"
+                matStepperNext>
+                Next
+            </button>
+        </div>
+    </mat-step>
+
+    <mat-step
+        [formGroupName]="'step4'"
+        [stepControl]="horizontalStepperForm.get('step3')">
+        <ng-template matStepLabel>Payment</ng-template>
+        <div class=" mt-8">
+            
+             <div class="relative flex flex-col flex-auto p-6 pr-3 pb-3 bg-card rounded-2xl shadow overflow-hidden">
+             
+         
+        <p class="my-6 font-medium">
+            Pay your Application Fee Payment through Online Gateway by using Debit Card / Credit Card / Net Banking / UPI.
+        </p>
+        <p class="my-6 font-medium">
+            Application fees - Rs. 300
+        </p>
+
+        <div class="mt-4 mb-4 "></div>
+
+        <!-- <div class="flex flex-col gt-sm:flex-row">
+            <div class="flex flex-col">
+               
+                <div
+                    class="flex flex-col"
+                    [formGroupName]="'byEmail'">
+                    <mat-checkbox
+                        class="mb-1">
+                        I have read and agree to PMRDA Payment Policy, tearms and conditions and Privacy policy
+                    </mat-checkbox>
+                </div>
+            </div> 
+          </div> -->
+          <div class="inline-flex items-end w-full mt-1.5">
+            <mat-checkbox
+                [color]="'primary'"
+                [formControlName]="'agreements'">
+                <span> I have read and agree to PMRDA Payment Policy, tearms and conditions and Privacy policy
+                </span>
+                <a
+                    class="ml-1 text-primary-500 hover:underline"
+                    [routerLink]="['./']">Terms of Service
+                </a>
+                <span>and</span>
+                <a
+                    class="ml-1 text-primary-500 hover:underline"
+                    [routerLink]="['./']">Privacy Policy
+                </a>
+            </mat-checkbox>
+        </div>
+         
+         </div>
+        </div>
+        <div class="flex justify-end mt-8">
+            <button
+                class="px-8 mr-2"
+                mat-flat-button
+                [color]="'accent'"
+                type="button"
+                matStepperPrevious>
+                Back
+            </button>
+                <button
+                class="px-8"
+                mat-flat-button
+                [color]="'primary'"
+                >
+                Submit
+            </button>
+
+        </div>
+    </mat-step>
+
+   
+</mat-horizontal-stepper>
+</form>
+
+
+
